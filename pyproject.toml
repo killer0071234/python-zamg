@@ -1,0 +1,144 @@
+[tool.poetry]
+name = "zamg"
+version = "0.0.1"
+description = "Asynchronous Python client for ZAMG weather data."
+authors = ["Daniel Gangl <killer007@gmx.at>"]
+maintainers = ["Daniel Gangl <killer007@gmx.at>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/killer0071234/python-zamg"
+repository = "https://github.com/killer0071234/python-zamg"
+documentation = "https://github.com/killer0071234/python-zamg"
+keywords = ["zamg", "api", "async", "client"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Framework :: AsyncIO",
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+packages = [
+    { include = "zamg", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiohttp = ">=3.8.0"
+yarl = ">=1.7.2"
+backoff = ">=1.11.0"
+cachetools = ">=5.0.0"
+
+[tool.poetry.dev-dependencies]
+aresponses = "^2.1.4"
+black = "^21.12b0"
+blacken-docs = "^1.12.0"
+coverage = {version = "^6.2", extras = ["toml"]}
+flake8 = "^4.0.1"
+flake8-docstrings = "^1.5.0"
+isort = "^5.10.1"
+mypy = "^0.931"
+pre-commit = "^2.17.0"
+pre-commit-hooks = "^4.1.0"
+pylint = "^2.12.2"
+pytest = "^6.2.5"
+pytest-asyncio = "^0.17.2"
+pytest-cov = "^3.0.0"
+yamllint = "^1.26.3"
+pyupgrade = "^2.31.0"
+flake8-simplify = "^0.15.1"
+vulture = "^2.3"
+flake8-bandit = "^2.1.2"
+flake8-bugbear = "^22.1.11"
+flake8-builtins = "^1.5.3"
+flake8-comprehensions = "^3.8.0"
+flake8-eradicate = "^1.2.0"
+flake8-markdown = "^0.3.0"
+darglint = "^1.8.1"
+safety = "^1.10.3"
+codespell = "^2.1.0"
+bandit = "^1.7.0"
+types-cachetools = "^4.2.9"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/killer0071234/python-zamg/issues"
+Changelog = "https://github.com/killer0071234/python-zamg/releases"
+
+[tool.black]
+target-version = ['py37']
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
+
+[tool.coverage.run]
+branch = true
+source = ["zamg"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pylint.MASTER]
+load-plugins = [
+  "pylint.extensions.bad_builtin",
+  "pylint.extensions.code_style",
+  "pylint.extensions.docparams",
+  "pylint.extensions.docstyle",
+  "pylint.extensions.empty_comment",
+  "pylint.extensions.overlapping_exceptions",
+  "pylint.extensions.typing",
+]
+ignore= [
+  "tests"
+]
+
+[tool.pylint.BASIC]
+good-names = [
+    "_",
+    "ex",
+    "fp",
+    "i",
+    "id",
+    "j",
+    "k",
+    "on",
+    "Run",
+    "T",
+    "wv",
+]
+
+[tool.pylint."MESSAGES CONTROL"]
+disable= [
+    "too-few-public-methods",
+    "duplicate-code",
+    "format",
+    "unsubscriptable-object",
+]
+
+[tool.pylint.SIMILARITIES]
+ignore-imports = true
+
+[tool.pylint.FORMAT]
+max-line-length=88
+
+[tool.pylint.DESIGN]
+max-attributes=20
+
+[tool.pytest.ini_options]
+addopts = " --cov"
+
+[tool.vulture]
+min_confidence = 80
+paths = ["src", "tests"]
+verbose = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
