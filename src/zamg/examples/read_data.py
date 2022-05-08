@@ -1,23 +1,10 @@
-# python-zamg
-Python library to read hourly weather data from ZAMG
+# pylint: disable=W0621
+"""Asynchronous Python client for ZAMG weather data."""
 
-## About
-
-This package alows you to read the weather data from the major weather stations of ZAMG weather service.
-ZAMG is the Zentralanstalt für Meteorologie und Geodynamik in Austria.
-
-## Installation
-
-```bash
-pip install zamg
-```
-
-## Usage
-
-```python
 import asyncio
 from os import curdir
 import src.zamg.zamg
+
 
 async def main():
     """Sample of getting data"""
@@ -50,6 +37,6 @@ async def main():
         print(f"SO % = {zamg.get_data('SO %')} %")
         print(f"TP °C = {zamg.get_data('TP °C')} °C")
 
+
 if __name__ == "__main__":
     asyncio.run(main())
-```

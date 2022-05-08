@@ -29,10 +29,15 @@ class ZamgData:
     _update_time: str | None = None
     _station_id: str = ""
 
-    def __init__(self, default_station_id: str = ""):
+    def __init__(
+        self,
+        default_station_id: str = "",
+        session: aiohttp.client.ClientSession | None = None,
+    ):
         """Initialize the probe."""
         self.data = {}
         self._station_id = default_station_id
+        self.session = session
 
     async def zamg_stations(self, cache_dir: str = ""):
         """Return {station_id: (lat, lon, name)} for all public data stations.
@@ -83,6 +88,7 @@ class ZamgData:
             return None
 
     def set_default_station(self, station_id: str):
+        """Set the default station_id for get_data(), if there is no one given."""
         self._station_id = station_id
 
     @property

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zamg"
-version = "0.0.1"
+version = "0.0.3"
 description = "Asynchronous Python client for ZAMG weather data."
 authors = ["Daniel Gangl <killer007@gmx.at>"]
 maintainers = ["Daniel Gangl <killer007@gmx.at>"]
@@ -28,9 +28,6 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 aiohttp = ">=3.8.0"
-yarl = ">=1.7.2"
-backoff = ">=1.11.0"
-cachetools = ">=5.0.0"
 
 [tool.poetry.dev-dependencies]
 aresponses = "^2.1.4"
