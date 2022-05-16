@@ -2,15 +2,15 @@
 from __future__ import annotations
 
 import csv
-from datetime import datetime, timedelta
 import gzip
 import json
-import zoneinfo
 import os
-import async_timeout
+import zoneinfo
+from datetime import datetime, timedelta
 
-from aiohttp.hdrs import USER_AGENT
 import aiohttp
+import async_timeout
+from aiohttp.hdrs import USER_AGENT
 
 
 class ZamgData:
@@ -101,7 +101,7 @@ class ZamgData:
         return None
 
     async def update(self):
-        """Returns a list of all current observations."""
+        """Return a list of all current observations."""
         if self.last_update and (
             self.last_update + timedelta(hours=1)
             > datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
@@ -136,7 +136,7 @@ class ZamgData:
 
     async def _get_ogd_stations(self):
         """Return all station IDs in the OGD dataset."""
-        return {r for r in await self.update()}
+        return set(await self.update())
 
     async def _get_zamg_stations(self):
         """Return {station_id: (lat, lon, name)} for all public data stations."""

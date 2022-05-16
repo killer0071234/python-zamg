@@ -3,12 +3,13 @@
 
 import asyncio
 from os import curdir
-import src.zamg.zamg
+
+from zamg import ZamgData
 
 
 async def main():
-    """Sample of getting data"""
-    async with src.zamg.zamg.ZamgData() as zamg:
+    """Sample of getting data."""
+    async with ZamgData() as zamg:
         data = await zamg.closest_station(46.99, 15.499, curdir)
         print(f"closest_station = {data} -> {zamg.get_data('Name', data)}")
         print("---------- Weather for all stations")
