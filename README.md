@@ -1,5 +1,14 @@
 # python-zamg
 
+[![GitHub Release][releases-shield]][releases]
+[![GitHub Activity][commits-shield]][commits]
+[![License][license-shield]](LICENSE)
+
+[![pre-commit][pre-commit-shield]][pre-commit]
+[![Black][black-shield]][black]
+
+[![Project Maintenance][maintenance-shield]][user_profile]
+
 Python library to read hourly weather data from ZAMG
 
 ## About
@@ -54,3 +63,19 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+## Contributions are welcome!
+
+If you want to contribute to this please read the [Contribution guidelines](https://github.com/killer0071234/python-zamg/blob/master/CONTRIBUTING.md)
+
+[black]: https://github.com/psf/black
+[black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
+[commits-shield]: https://img.shields.io/github/commit-activity/y/killer0071234/python-zamg.svg?style=for-the-badge
+[commits]: https://github.com/killer0071234/python-cybro/commits/main
+[license-shield]: https://img.shields.io/github/license/killer0071234/python-zamg.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-@killer0071234-blue.svg?style=for-the-badge
+[pre-commit]: https://github.com/pre-commit/pre-commit
+[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge
+[releases-shield]: https://img.shields.io/github/release/killer0071234/python-zamg.svg?style=for-the-badge
+[releases]: https://github.com/killer0071234/python-zamg/releases
+[user_profile]: https://github.com/killer0071234
