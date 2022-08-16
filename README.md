@@ -1,9 +1,10 @@
 # python-zamg
+
 Python library to read hourly weather data from ZAMG
 
 ## About
 
-This package alows you to read the weather data from the major weather stations of ZAMG weather service.
+This package allows you to read the weather data from the major weather stations of ZAMG weather service.
 ZAMG is the Zentralanstalt für Meteorologie und Geodynamik in Austria.
 
 ## Installation

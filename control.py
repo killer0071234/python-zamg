@@ -1,8 +1,8 @@
 # pylint: disable=W0621
 """Asynchronous Python client for ZAMG weather data."""
-
 import asyncio
 from os import curdir
+
 import src.zamg.zamg
 
 

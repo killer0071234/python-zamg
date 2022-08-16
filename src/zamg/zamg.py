@@ -6,7 +6,8 @@ import gzip
 import json
 import os
 import zoneinfo
-from datetime import datetime, timedelta
+from datetime import datetime
+from datetime import timedelta
 
 import aiohttp
 import async_timeout
