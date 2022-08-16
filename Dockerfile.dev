@@ -17,8 +17,11 @@ WORKDIR /workspaces
 
 # Install Python dependencies from requirements
 COPY requirements.txt ./
+COPY .github/workflows/constraints.txt ./
 RUN pip3 install -r requirements.txt
+RUN pip3 install -r constraints.txt
 RUN rm -rf requirements.txt
+RUN rm -rf constraints.txt
 
 # Set the default shell to bash instead of sh
 ENV SHELL /bin/bash
