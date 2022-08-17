@@ -10,7 +10,7 @@ codecov==2.1.12
 coverage==6.4.4
 freezegun==1.2.1
 mock-open==1.4.0
-mypy==0.950
+mypy==0.971
 pipdeptree==2.2.1
 pylint-strict-informational==0.1
 pytest-aiohttp==0.3.0
