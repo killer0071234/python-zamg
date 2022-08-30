@@ -24,13 +24,15 @@ pip install zamg
 
 ## Usage
 
+Simple usage example to fetch all data from the closest station.
+
 ```python
 import asyncio
 
 import src.zamg.zamg
 
 async def main():
-    """Sample of getting data for the closest station to the given coordinates"""
+    """Sample of getting data for the closest station to the given coordinates for the closest station to the given coordinates"""
     async with src.zamg.zamg.ZamgData() as zamg:
         data = await zamg.closest_station(46.99, 15.499)
         zamg.set_default_station(data)
@@ -63,6 +65,8 @@ If you want to contribute to this please read the [Contribution guidelines](http
 
 Code template to read dataset API was mainly taken from [@LuisTheOne](https://github.com/LuisThe0ne)'s [zamg-api-cli-client][zamg_api_cli_client]
 
+[Dataset API Dokumentation][dataset_api_doc]
+
 ---
 
 [black]: https://github.com/psf/black
@@ -77,3 +81,4 @@ Code template to read dataset API was mainly taken from [@LuisTheOne](https://gi
 [releases]: https://github.com/killer0071234/python-zamg/releases
 [user_profile]: https://github.com/killer0071234
 [zamg_api_cli_client]: https://github.com/LuisThe0ne/zamg-api-cli-client
+[dataset_api_doc]: https://dataset.api.hub.zamg.ac.at/v1/docs/index.html
