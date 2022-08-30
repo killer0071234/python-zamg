@@ -105,6 +105,7 @@ class ZamgData:
 
     def get_data(self, parameter: str, data_type: str = "data"):
         """Get a specific data entry.
+        To get possible parameters use get_all_parameters()
         Possible data_types:
         - data: default, data value of parameter
         - name: name of parameter
@@ -120,6 +121,15 @@ class ZamgData:
         if self._station_parameters is None:
             return None
         return self._station_parameters.split(",")
+
+    @property
+    def get_station_name(self) -> str:
+        """Return the current Station name."""
+        try:
+            _, _, name = self._stations[self._station_id]
+            return name
+        except (KeyError):
+            return "Unknown station with id: " + self._station_id
 
     def set_default_station(self, station_id: str):
         """Set the default station_id for update()."""
