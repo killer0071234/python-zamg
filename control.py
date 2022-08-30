@@ -1,25 +1,33 @@
 # pylint: disable=W0621
 """Asynchronous Python client for ZAMG weather data."""
 import asyncio
-from os import curdir
+import logging
 
 import src.zamg.zamg
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s (%(threadName)s) [%(name)s] %(message)s",
+    datefmt="%y-%m-%d %H:%M:%S"
+    # filename=('log.log'),
+    # filemode=('w')
+)
+log = logging.getLogger(__name__)
 
 
 async def main():
     """Sample of getting data"""
     async with src.zamg.zamg.ZamgData() as zamg:
-        data = await zamg.closest_station(46.99, 15.499, curdir)
-        print(f"closest_station={data}")
+        data = await zamg.closest_station(46.99, 15.499)
+        log.info("closest_station = %s", str(data))
         zamg.set_default_station(data)
-        print("RF %=%s", zamg.get_data("RF %"))
-        print("LDstat hPa=%s", zamg.get_data("LDstat hPa"))
-        print("LDred hPa=%s", zamg.get_data("LDred hPa"))
-        print("WG km/h=%s", zamg.get_data("WG km/h"))
-        print("WSG km/h=%s", zamg.get_data("WSG km/h"))
-        print("SO %=%s", zamg.get_data("SO %"))
-        print("T °C=%s", zamg.get_data("T °C"))
-        print("TP °C=%s", zamg.get_data("TP °C"))
+        await zamg.update()
+        for param in zamg.get_all_parameters():
+            name = zamg.get_data(parameter=param, data_type="name")
+            unit = zamg.get_data(parameter=param, data_type="unit")
+            val = zamg.get_data(parameter=param)
+            log.info("%s --> %s %s", str(name), str(val), str(unit))
+        log.info("last update: %s", zamg.last_update)
 
 
 if __name__ == "__main__":
