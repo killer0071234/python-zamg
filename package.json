@@ -1,6 +1,6 @@
 {
   "name": "zamg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Asynchronous Python client for ZAMG weather data.",
   "scripts": {
