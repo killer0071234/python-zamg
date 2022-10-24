@@ -159,6 +159,10 @@ class ZamgData:
             if self.session is None:
                 self.session = aiohttp.client.ClientSession()
 
+            # initialize station parameters
+            if self._station_parameters is None:
+                await self.zamg_stations()
+
             async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.get(
                     url=self.dataset_data_url
