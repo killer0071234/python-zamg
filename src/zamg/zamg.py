@@ -8,6 +8,8 @@ from datetime import timedelta
 
 import aiohttp
 import async_timeout
+from aiohttp.client_exceptions import ClientConnectorError
+from aiohttp.client_exceptions import ServerTimeoutError
 from aiohttp.hdrs import USER_AGENT
 
 
@@ -40,7 +42,7 @@ class ZamgData:
         self._station_id = default_station_id
         self.session = session
 
-    async def zamg_stations(self):
+    async def zamg_stations(self) -> dict[str:(float, float, str)]:
         """Return {station_id: (lat, lon, name)} for all public data stations."""
 
         def _to_float(val: str) -> str | float:
@@ -83,17 +85,19 @@ class ZamgData:
                 self._stations = stations
                 return stations
 
-        except (ValueError):
+        except (ClientConnectorError, ServerTimeoutError, ValueError):
             if self.session is not None:
                 await self.session.close()
                 self.session = None
-            return None
+            return {"0": (0.0, 0.0, "None")}
 
-    async def closest_station(self, lat: float, lon: float):
+    async def closest_station(self, lat: float, lon: float) -> str:
         """Return the station_id of the closest station to our lat/lon."""
         if lat is None or lon is None:
-            return
-        stations = await self.zamg_stations()
+            return ""
+
+        if (stations := await self.zamg_stations()) is None:
+            return ""
 
         def _comparable_dist(zamg_id):
             """Calculate the pseudo-distance from lat/lon."""
@@ -103,7 +107,7 @@ class ZamgData:
         self._station_id = min(stations, key=_comparable_dist)
         return self._station_id
 
-    def get_data(self, parameter: str, data_type: str = "data"):
+    def get_data(self, parameter: str, data_type: str = "data") -> str | None:
         """Get a specific data entry.
         To get possible parameters use get_all_parameters()
         Possible data_types:
@@ -115,11 +119,11 @@ class ZamgData:
         except (KeyError):
             return None
 
-    def get_all_parameters(self):
+    def get_all_parameters(self) -> list[str]:
         """Get a list of all possible Parameters.
         The returned list are possible data_type parameter for function get_data()"""
         if self._station_parameters is None:
-            return None
+            return {}
         return self._station_parameters.split(",")
 
     @property
@@ -128,8 +132,8 @@ class ZamgData:
         try:
             _, _, name = self._stations[self._station_id]
             return name
-        except (KeyError):
-            return "Unknown station with id: " + self._station_id
+        except (KeyError, TypeError):
+            return f"Unknown station with id: {self._station_id}"
 
     def set_default_station(self, station_id: str):
         """Set the default station_id for update()."""
@@ -144,7 +148,7 @@ class ZamgData:
             ).replace(tzinfo=zoneinfo.ZoneInfo("Europe/Vienna"))
         return None
 
-    async def update(self):
+    async def update(self) -> dict | None:
         """Return a list of all current observations of the default station id."""
         if self._station_id is None:
             return None
@@ -156,12 +160,12 @@ class ZamgData:
                 self.data
             )  # Not time to update yet; we are just reading every 5 minutes
         try:
-            if self.session is None:
-                self.session = aiohttp.client.ClientSession()
-
             # initialize station parameters
             if self._station_parameters is None:
                 await self.zamg_stations()
+
+            if self.session is None:
+                self.session = aiohttp.client.ClientSession()
 
             async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.get(
@@ -191,11 +195,11 @@ class ZamgData:
                     ][observation]["data"][0]
 
                 return self.data
-        except (ValueError):
+        except (ClientConnectorError, ServerTimeoutError, TypeError, ValueError):
             if self.session is not None:
                 await self.session.close()
                 self.session = None
-            return None
+            return {}
 
     async def __aenter__(self) -> ZamgData:
         """Async enter.
