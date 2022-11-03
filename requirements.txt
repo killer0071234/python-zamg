@@ -9,5 +9,5 @@ vulture
 tox
 tox-pip-version
 colorlog
-reorder-python-imports==3.8.5
+reorder-python-imports==3.9.0
 prettier
