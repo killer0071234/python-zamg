@@ -12,14 +12,13 @@ async def main():
         zamg.set_default_station(data)
         print("closest_station = " + str(zamg.get_station_name) + " / " + str(data))
         await zamg.update()
-        print(
-            "---------- Weather for station %s (%s)",
-            str(zamg.get_data("name", data)),
-            str(data),
-        )
+
+        print(f"---------- Weather for station {zamg.get_station_name} ({data})")
         for param in zamg.get_all_parameters():
             print(
-                str(zamg.get_data(parameter=param, data_type="name"))
+                str(param)
+                + " -> "
+                + str(zamg.get_data(parameter=param, data_type="name"))
                 + " -> "
                 + str(zamg.get_data(parameter=param))
                 + " "

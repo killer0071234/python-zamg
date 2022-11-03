@@ -10,3 +10,4 @@ tox
 tox-pip-version
 colorlog
 reorder-python-imports==3.9.0
+prettier
