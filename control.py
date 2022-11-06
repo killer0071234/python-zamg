@@ -10,13 +10,25 @@ async def main():
     """Sample of getting data"""
     try:
         async with src.zamg.zamg.ZamgData() as zamg:
+            # option to disable verify of ssl check
+            zamg.verify_ssl = False
+            # trying to read zamg station id of the closest station
             data = await zamg.closest_station(46.99, 15.499)
+            # set closest station as default one to read
             zamg.set_default_station(data)
             print("closest_station = " + str(zamg.get_station_name) + " / " + str(data))
+            # print list with all possible parameters
+            print(f"Possible station parameters: {zamg.get_all_parameters()}")
+            # set parameters directly
+            zamg.station_parameters = "TL,SO"
+            # or set parameters as list
+            zamg.set_parameters(("TL", "SO"))
+            # if none of the above parameters are set, all possible parameters are read
+            # do an update
             await zamg.update()
 
             print(f"---------- Weather for station {zamg.get_station_name} ({data})")
-            for param in zamg.get_all_parameters():
+            for param in zamg.get_parameters():
                 print(
                     str(param)
                     + " -> "
