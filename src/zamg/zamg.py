@@ -32,6 +32,8 @@ class ZamgData:
         USER_AGENT: "python-zamg",
     }
     session: aiohttp.client.ClientSession | None = None
+    verify_ssl: bool | None = None
+    """Set to False to ignore SSL errors."""
     _timestamp: str | None = None
     _station_id: str = ""
     _station_parameters: str | None = None
@@ -68,6 +70,7 @@ class ZamgData:
                     url=self.dataset_metadata_url,
                     allow_redirects=False,
                     headers=self.headers,
+                    verify_ssl=self.verify_ssl,
                 )
             if response.status == 200:
                 contents = await response.read()
@@ -182,6 +185,7 @@ class ZamgData:
                     + str(self._station_id),
                     allow_redirects=False,
                     headers=self.headers,
+                    verify_ssl=self.verify_ssl,
                 )
             if response.status == 200:
                 contents = await response.read()
