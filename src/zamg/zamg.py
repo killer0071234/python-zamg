@@ -12,6 +12,11 @@ from aiohttp.client_exceptions import ClientConnectorError
 from aiohttp.client_exceptions import ServerTimeoutError
 from aiohttp.hdrs import USER_AGENT
 
+from .exceptions import ZamgApiError
+from .exceptions import ZamgNoDataError
+from .exceptions import ZamgStationNotFoundError
+from .exceptions import ZamgStationUnknownError
+
 
 class ZamgData:
     """The class for handling the data retrieval."""
@@ -85,27 +90,29 @@ class ZamgData:
                 self._stations = stations
                 return stations
 
-        except (ClientConnectorError, ServerTimeoutError, ValueError):
+        except (ClientConnectorError, ServerTimeoutError) as exc:
             if self.session is not None:
                 await self.session.close()
                 self.session = None
-            return {"0": (0.0, 0.0, "None")}
+            raise ZamgApiError(exc) from exc
+        except (ValueError) as exc:
+            raise ZamgNoDataError(exc) from exc
 
     async def closest_station(self, lat: float, lon: float) -> str:
         """Return the station_id of the closest station to our lat/lon."""
-        if lat is None or lon is None:
-            return ""
 
-        if (stations := await self.zamg_stations()) is None:
-            return ""
+        try:
+            stations = await self.zamg_stations()
 
-        def _comparable_dist(zamg_id):
-            """Calculate the pseudo-distance from lat/lon."""
-            station_lat, station_lon, _ = stations[zamg_id]
-            return (lat - station_lat) ** 2 + (lon - station_lon) ** 2
+            def _comparable_dist(zamg_id):
+                """Calculate the pseudo-distance from lat/lon."""
+                station_lat, station_lon, _ = stations[zamg_id]
+                return (lat - station_lat) ** 2 + (lon - station_lon) ** 2
 
-        self._station_id = min(stations, key=_comparable_dist)
-        return self._station_id
+            self._station_id = min(stations, key=_comparable_dist)
+            return self._station_id
+        except (KeyError, ValueError) as exc:
+            raise ZamgStationNotFoundError(exc) from exc
 
     def get_data(self, parameter: str, data_type: str = "data") -> str | None:
         """Get a specific data entry.
@@ -116,8 +123,8 @@ class ZamgData:
         - unit: data value unit of parameter"""
         try:
             return self.data[self._station_id][parameter][data_type]
-        except (KeyError):
-            return None
+        except (KeyError) as exc:
+            raise ZamgNoDataError(exc) from exc
 
     def get_all_parameters(self) -> list[str]:
         """Get a list of all possible Parameters.
@@ -132,8 +139,8 @@ class ZamgData:
         try:
             _, _, name = self._stations[self._station_id]
             return name
-        except (KeyError, TypeError):
-            return f"Unknown station with id: {self._station_id}"
+        except (KeyError, TypeError) as exc:
+            raise ZamgStationUnknownError(exc) from exc
 
     def set_default_station(self, station_id: str):
         """Set the default station_id for update()."""
@@ -195,11 +202,13 @@ class ZamgData:
                     ][observation]["data"][0]
 
                 return self.data
-        except (ClientConnectorError, ServerTimeoutError, TypeError, ValueError):
+        except (ClientConnectorError, ServerTimeoutError, ZamgApiError) as exc:
             if self.session is not None:
                 await self.session.close()
                 self.session = None
-            return {}
+            raise ZamgApiError(exc) from exc
+        except (TypeError, ValueError) as exc:
+            raise ZamgNoDataError(exc) from exc
 
     async def __aenter__(self) -> ZamgData:
         """Async enter.
