@@ -6,6 +6,7 @@
 
 [![pre-commit][pre-commit-shield]][pre-commit]
 [![Black][black-shield]][black]
+[![Code Coverage][codecov-shield]][codecov]
 
 [![Project Maintenance][maintenance-shield]][user_profile]
 
@@ -92,6 +93,8 @@ Code template to read dataset API was mainly taken from [@LuisTheOne](https://gi
 [black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/killer0071234/python-zamg.svg?style=for-the-badge
 [commits]: https://github.com/killer0071234/python-zamg/commits/main
+[codecov-shield]: https://img.shields.io/codecov/c/gh/killer0071234/python-zamg?style=for-the-badge&token=O5YDLF0X9G
+[codecov]: https://codecov.io/gh/killer0071234/python-zamg
 [license-shield]: https://img.shields.io/github/license/killer0071234/python-zamg.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-@killer0071234-blue.svg?style=for-the-badge
 [pre-commit]: https://github.com/pre-commit/pre-commit
