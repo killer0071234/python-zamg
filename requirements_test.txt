@@ -14,7 +14,7 @@ mypy==0.971
 pipdeptree==2.3.1
 pylint-strict-informational==0.1
 pytest-aiohttp==1.0.4
-aresponses
+aresponses==2.1.5
 pytest-asyncio
 pytest-cov==3.0.0
 pytest-freezegun==0.4.2
