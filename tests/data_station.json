@@ -1,0 +1,66 @@
+{
+  "media_type": "application/json",
+  "type": "FeatureCollection",
+  "version": "v1",
+  "timestamps": ["2022-11-13T10:20:00+00:00"],
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.44, 46.980555555555554]
+      },
+      "properties": {
+        "parameters": {
+          "TL": { "name": "Lufttemperatur", "unit": "°C", "data": [8.6] },
+          "P": { "name": "Luftdruck", "unit": "hPa", "data": [987.3] },
+          "PRED": {
+            "name": "Reduzierter Luftdruck",
+            "unit": "hPa",
+            "data": [1031.4]
+          },
+          "RFAM": {
+            "name": "Relative Feuchte arithmetisches Mittel",
+            "unit": "%",
+            "data": [null]
+          },
+          "FFAM": {
+            "name": "Arithmetisches Mittel der Windgeschwindigkeit",
+            "unit": "m/s",
+            "data": [null]
+          },
+          "DD": { "name": "Windrichtung", "unit": "°", "data": [160.0] },
+          "FFX": { "name": "Windspitze", "unit": "m/s", "data": [3.1] },
+          "DDX": {
+            "name": "Windrichtung der Windspitze",
+            "unit": "°",
+            "data": [null]
+          },
+          "SO": { "name": "Sonnenscheindauer", "unit": "sec", "data": [599.0] },
+          "TLAM": {
+            "name": "Lufttempertur arithmetisches Mittel",
+            "unit": "°C",
+            "data": [null]
+          },
+          "RR": {
+            "name": "Niederschlag der letzten 10 Minuten",
+            "unit": "mm",
+            "data": [0.0]
+          },
+          "SCHNEE": { "name": "Schneehöhe", "unit": "cm", "data": [0.0] },
+          "TP": {
+            "name": "Taupunktstemperatur gemessen",
+            "unit": "°C",
+            "data": [6.5]
+          },
+          "TPAM": {
+            "name": "Taupunkt arithmetisches Mittel",
+            "unit": "°C",
+            "data": [null]
+          }
+        },
+        "station": "11240"
+      }
+    }
+  ]
+}

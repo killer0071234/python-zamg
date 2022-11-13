@@ -9,6 +9,7 @@ from datetime import timedelta
 import aiohttp
 import async_timeout
 from aiohttp.client_exceptions import ClientConnectorError
+from aiohttp.client_exceptions import ServerDisconnectedError
 from aiohttp.client_exceptions import ServerTimeoutError
 from aiohttp.hdrs import USER_AGENT
 
@@ -100,7 +101,11 @@ class ZamgData:
                 self._stations = stations
                 return stations
 
-        except (ClientConnectorError, ServerTimeoutError) as exc:
+        except (
+            ClientConnectorError,
+            ServerTimeoutError,
+            ServerDisconnectedError,
+        ) as exc:
             if self.session is not None:
                 await self.session.close()
                 self.session = None
@@ -180,7 +185,7 @@ class ZamgData:
 
     async def update(self) -> dict | None:
         """Return a list of all current observations of the default station id."""
-        if self._station_id is None:
+        if self._station_id == "":
             return None
         if self.last_update and (
             self.last_update + timedelta(minutes=5)
@@ -226,12 +231,13 @@ class ZamgData:
                     ][observation]["data"][0]
 
                 return self.data
+            raise ZamgApiError(f"Got status {response.status} from zamg")
         except (ClientConnectorError, ServerTimeoutError, ZamgApiError) as exc:
             if self.session is not None:
                 await self.session.close()
                 self.session = None
             raise ZamgApiError(exc) from exc
-        except (TypeError, ValueError) as exc:
+        except (TypeError, ValueError, KeyError) as exc:
             raise ZamgNoDataError(exc) from exc
 
     async def __aenter__(self) -> ZamgData:
