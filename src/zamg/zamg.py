@@ -178,9 +178,9 @@ class ZamgData:
     def last_update(self) -> datetime | None:
         """Return the timestamp of the most recent data."""
         if self._timestamp is not None:
-            return datetime.strptime(
-                self._timestamp, "%Y-%m-%dT%H:%M+00:00"
-            ).replace(tzinfo=zoneinfo.ZoneInfo("Europe/Vienna"))
+            return datetime.strptime(self._timestamp, "%Y-%m-%dT%H:%M+00:00").replace(
+                tzinfo=zoneinfo.ZoneInfo("Europe/Vienna")
+            )
         return None
 
     async def update(self) -> dict | None:
