@@ -311,8 +311,8 @@
   "frequency": "10T",
   "type": "station",
   "mode": "current",
-  "response_formats": ["geojson"],
-  "time": "2022-11-13T10:20:00+00:00",
+  "response_formats": ["geojson", "csv"],
+  "time": "2022-12-15T10:20+00:00",
   "stations": [
     {
       "type": "INDIVIDUAL",
@@ -323,10 +323,11 @@
       "lat": 47.49944444444444,
       "lon": 11.706666666666665,
       "altitude": 931.0,
-      "valid_from": "2016-06-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-06-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -337,10 +338,11 @@
       "lat": 47.39694444444444,
       "lon": 11.940277777777778,
       "altitude": 929.0,
-      "valid_from": "2007-10-22T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-10-22T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -351,10 +353,11 @@
       "lat": 47.1625,
       "lon": 11.851666666666667,
       "altitude": 640.0,
-      "valid_from": "2007-08-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -365,10 +368,11 @@
       "lat": 47.56666666666667,
       "lon": 13.343333333333334,
       "altitude": 709.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -379,10 +383,11 @@
       "lat": 47.532777777777774,
       "lon": 14.138333333333334,
       "altitude": 641.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -393,10 +398,11 @@
       "lat": 47.4575,
       "lon": 9.848611111111111,
       "altitude": 715.0,
-      "valid_from": "1996-01-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1996-01-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -407,10 +413,11 @@
       "lat": 48.69083333333333,
       "lon": 15.366944444444444,
       "altitude": 599.0,
-      "valid_from": "1988-05-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1988-05-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -421,10 +428,11 @@
       "lat": 47.87916666666667,
       "lon": 13.773333333333333,
       "altitude": 438.0,
-      "valid_from": "2014-06-25T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2014-06-25T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -435,10 +443,11 @@
       "lat": 48.10888888888889,
       "lon": 14.895,
       "altitude": 266.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -449,10 +458,11 @@
       "lat": 46.72777777777778,
       "lon": 13.8525,
       "altitude": 890.0,
-      "valid_from": "2003-11-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-11-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -463,10 +473,11 @@
       "lat": 47.575,
       "lon": 16.10138888888889,
       "altitude": 454.0,
-      "valid_from": "2007-11-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-11-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -477,10 +488,11 @@
       "lat": 47.61055555555556,
       "lon": 13.758333333333333,
       "altitude": 743.0,
-      "valid_from": "1992-08-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-08-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -491,10 +503,11 @@
       "lat": 46.625277777777775,
       "lon": 13.684444444444445,
       "altitude": 909.0,
-      "valid_from": "2007-08-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -505,10 +518,11 @@
       "lat": 46.49055555555556,
       "lon": 14.593333333333334,
       "altitude": 623.0,
-      "valid_from": "1992-08-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-08-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -519,10 +533,11 @@
       "lat": 47.11055555555556,
       "lon": 13.133333333333333,
       "altitude": 1092.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -533,10 +548,11 @@
       "lat": 46.87222222222222,
       "lon": 15.903611111111111,
       "altitude": 269.0,
-      "valid_from": "2003-04-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-04-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -547,10 +563,11 @@
       "lat": 47.70611111111111,
       "lon": 13.647222222222222,
       "altitude": 507.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -561,10 +578,11 @@
       "lat": 46.69222222222222,
       "lon": 15.993333333333332,
       "altitude": 207.0,
-      "valid_from": "2016-02-08T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-02-08T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -575,10 +593,11 @@
       "lat": 48.355000000000004,
       "lon": 14.663611111111111,
       "altitude": 554.0,
-      "valid_from": "2008-07-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-07-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -589,10 +608,11 @@
       "lat": 48.39111111111111,
       "lon": 15.002777777777778,
       "altitude": 969.0,
-      "valid_from": "2003-11-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-11-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -603,10 +623,11 @@
       "lat": 47.939166666666665,
       "lon": 16.101111111111113,
       "altitude": 337.0,
-      "valid_from": "2007-07-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -617,10 +638,11 @@
       "lat": 47.40833333333333,
       "lon": 16.261388888888888,
       "altitude": 631.0,
-      "valid_from": "2007-04-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-04-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -631,10 +653,11 @@
       "lat": 47.406666666666666,
       "lon": 13.221111111111112,
       "altitude": 550.0,
-      "valid_from": "1981-03-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1981-03-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -645,10 +668,11 @@
       "lat": 47.147777777777776,
       "lon": 9.829444444444444,
       "altitude": 571.0,
-      "valid_from": "2015-07-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2015-07-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -659,10 +683,11 @@
       "lat": 48.22416666666667,
       "lon": 13.028333333333334,
       "altitude": 382.0,
-      "valid_from": "1992-11-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-11-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -673,10 +698,11 @@
       "lat": 47.49916666666667,
       "lon": 9.74611111111111,
       "altitude": 424.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -687,10 +713,11 @@
       "lat": 47.007222222222225,
       "lon": 11.510833333333334,
       "altitude": 1412.0,
-      "valid_from": "2007-09-12T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-09-12T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -701,10 +728,11 @@
       "lat": 47.40555555555555,
       "lon": 15.249722222222221,
       "altitude": 482.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -715,10 +743,11 @@
       "lat": 48.01277777777778,
       "lon": 16.845,
       "altitude": 166.0,
-      "valid_from": "2007-11-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-11-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -729,10 +758,11 @@
       "lat": 48.106944444444444,
       "lon": 16.27,
       "altitude": 291.0,
-      "valid_from": "2008-08-27T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-08-27T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -743,10 +773,11 @@
       "lat": 46.91277777777778,
       "lon": 10.861666666666666,
       "altitude": 3437.0,
-      "valid_from": "2002-01-18T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-01-18T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -757,10 +788,11 @@
       "lat": 48.21361111111111,
       "lon": 15.945,
       "altitude": 460.0,
-      "valid_from": "2009-06-25T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2009-06-25T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -771,10 +803,11 @@
       "lat": 46.98027777777778,
       "lon": 10.031666666666668,
       "altitude": 985.0,
-      "valid_from": "2007-07-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -785,10 +818,11 @@
       "lat": 47.467777777777776,
       "lon": 13.62638888888889,
       "altitude": 2700.0,
-      "valid_from": "2017-03-27T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2017-03-27T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -799,10 +833,11 @@
       "lat": 47.474444444444444,
       "lon": 13.6325,
       "altitude": 2520.0,
-      "valid_from": "2017-05-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2017-05-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -813,10 +848,11 @@
       "lat": 46.82166666666667,
       "lon": 15.226944444444445,
       "altitude": 354.0,
-      "valid_from": "1994-10-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-10-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -827,10 +863,11 @@
       "lat": 46.95805555555556,
       "lon": 12.9025,
       "altitude": 1071.0,
-      "valid_from": "2004-05-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2004-05-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -841,10 +878,11 @@
       "lat": 47.4325,
       "lon": 9.725555555555555,
       "altitude": 407.0,
-      "valid_from": "1993-06-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-06-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -855,10 +893,11 @@
       "lat": 47.40416666666667,
       "lon": 10.92,
       "altitude": 982.0,
-      "valid_from": "2007-08-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -869,10 +908,11 @@
       "lat": 47.85416666666667,
       "lon": 16.538333333333334,
       "altitude": 184.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -883,10 +923,11 @@
       "lat": 48.19583333333333,
       "lon": 14.450277777777776,
       "altitude": 317.0,
-      "valid_from": "2008-04-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -897,10 +938,11 @@
       "lat": 47.78944444444444,
       "lon": 13.008611111111112,
       "altitude": 430.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -911,24 +953,11 @@
       "lat": 47.41833333333333,
       "lon": 12.359166666666667,
       "altitude": 1794.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
-    },
-    {
-      "type": "INDIVIDUAL",
-      "id": "11232",
-      "group_id": null,
-      "name": "FEISTRITZ OB BLEIBURG",
-      "state": "Kärnten",
-      "lat": 46.55888888888889,
-      "lon": 14.766666666666667,
-      "altitude": 532.0,
-      "valid_from": "2004-08-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
-      "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -939,10 +968,11 @@
       "lat": 46.94888888888889,
       "lon": 15.879722222222222,
       "altitude": 323.0,
-      "valid_from": "1999-08-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1999-08-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -953,10 +983,11 @@
       "lat": 47.27111111111111,
       "lon": 9.609722222222222,
       "altitude": 438.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -967,10 +998,11 @@
       "lat": 46.721944444444446,
       "lon": 14.096944444444444,
       "altitude": 546.0,
-      "valid_from": "1995-05-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1995-05-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -981,10 +1013,11 @@
       "lat": 46.53111111111111,
       "lon": 14.314166666666667,
       "altitude": 459.0,
-      "valid_from": "2007-08-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -995,10 +1028,11 @@
       "lat": 47.81666666666667,
       "lon": 13.717777777777778,
       "altitude": 1618.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1009,10 +1043,11 @@
       "lat": 46.94083333333333,
       "lon": 14.036111111111111,
       "altitude": 1437.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1023,10 +1058,11 @@
       "lat": 47.314166666666665,
       "lon": 9.674444444444443,
       "altitude": 807.0,
-      "valid_from": "2003-07-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-07-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1037,10 +1073,11 @@
       "lat": 48.49472222222222,
       "lon": 14.506388888888889,
       "altitude": 539.0,
-      "valid_from": "2014-01-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2014-01-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1051,10 +1088,11 @@
       "lat": 47.25555555555555,
       "lon": 15.315000000000001,
       "altitude": 421.0,
-      "valid_from": "2008-08-27T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-08-27T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1065,10 +1103,11 @@
       "lat": 47.030833333333334,
       "lon": 16.080833333333334,
       "altitude": 271.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1079,10 +1118,11 @@
       "lat": 48.33777777777778,
       "lon": 16.71361111111111,
       "altitude": 163.0,
-      "valid_from": "2002-11-12T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-11-12T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1093,10 +1133,11 @@
       "lat": 46.96805555555556,
       "lon": 10.185555555555556,
       "altitude": 1587.0,
-      "valid_from": "1997-02-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-02-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1107,10 +1148,11 @@
       "lat": 47.12972222222222,
       "lon": 10.230277777777777,
       "altitude": 2079.0,
-      "valid_from": "1981-03-05T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1981-03-05T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1121,10 +1163,11 @@
       "lat": 48.591944444444444,
       "lon": 15.7,
       "altitude": 273.0,
-      "valid_from": "2016-02-08T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-02-08T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1135,10 +1178,11 @@
       "lat": 47.11555555555556,
       "lon": 15.708055555555555,
       "altitude": 377.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1149,10 +1193,11 @@
       "lat": 47.79111111111111,
       "lon": 13.054166666666667,
       "altitude": 419.0,
-      "valid_from": "1992-08-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-08-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1163,10 +1208,11 @@
       "lat": 46.90277777777778,
       "lon": 13.534166666666666,
       "altitude": 738.0,
-      "valid_from": "2008-04-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1177,10 +1223,11 @@
       "lat": 47.59111111111111,
       "lon": 13.181666666666667,
       "altitude": 490.0,
-      "valid_from": "2008-09-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-09-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1191,10 +1238,26 @@
       "lat": 47.07777777777778,
       "lon": 15.44888888888889,
       "altitude": 367.0,
-      "valid_from": "1992-08-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-08-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
+    },
+    {
+      "type": "INDIVIDUAL",
+      "id": "11232",
+      "group_id": null,
+      "name": "FEISTRITZ OB BLEIBURG",
+      "state": "Kärnten",
+      "lat": 46.55888888888889,
+      "lon": 14.766666666666667,
+      "altitude": 522.0,
+      "valid_from": "2004-08-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
+      "has_sunshine": false,
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1205,10 +1268,11 @@
       "lat": 46.980555555555554,
       "lon": 15.44,
       "altitude": 340.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1219,10 +1283,11 @@
       "lat": 47.04611111111111,
       "lon": 15.410277777777779,
       "altitude": 357.0,
-      "valid_from": "2007-08-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1233,10 +1298,11 @@
       "lat": 48.19972222222222,
       "lon": 16.559166666666666,
       "altitude": 154.0,
-      "valid_from": "1994-01-12T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-01-12T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1247,10 +1313,11 @@
       "lat": 47.0625,
       "lon": 16.321944444444444,
       "altitude": 215.0,
-      "valid_from": "2008-04-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1261,10 +1328,11 @@
       "lat": 47.87138888888889,
       "lon": 15.876111111111111,
       "altitude": 709.0,
-      "valid_from": "1996-09-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1996-09-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1275,10 +1343,11 @@
       "lat": 47.25972222222222,
       "lon": 10.889444444444443,
       "altitude": 659.0,
-      "valid_from": "2007-08-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1289,10 +1358,11 @@
       "lat": 47.59444444444445,
       "lon": 14.490833333333333,
       "altitude": 637.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1303,10 +1373,11 @@
       "lat": 47.28055555555555,
       "lon": 15.97861111111111,
       "altitude": 330.0,
-      "valid_from": "1994-10-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-10-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1317,10 +1388,11 @@
       "lat": 46.609722222222224,
       "lon": 13.492222222222221,
       "altitude": 562.0,
-      "valid_from": "2008-06-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-06-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1331,10 +1403,11 @@
       "lat": 47.623333333333335,
       "lon": 15.833333333333334,
       "altitude": 1318.0,
-      "valid_from": "1994-06-13T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-06-13T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1345,10 +1418,11 @@
       "lat": 47.47027777777778,
       "lon": 12.621111111111112,
       "altitude": 962.0,
-      "valid_from": "2007-10-22T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-10-22T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1359,10 +1433,11 @@
       "lat": 47.82222222222222,
       "lon": 16.035,
       "altitude": 937.0,
-      "valid_from": "1993-05-14T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-05-14T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1373,10 +1448,11 @@
       "lat": 47.2575,
       "lon": 10.338611111111112,
       "altitude": 1092.0,
-      "valid_from": "2007-08-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1387,10 +1463,11 @@
       "lat": 47.23694444444445,
       "lon": 10.742222222222221,
       "altitude": 773.0,
-      "valid_from": "2007-08-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1401,10 +1478,11 @@
       "lat": 48.675,
       "lon": 15.643888888888888,
       "altitude": 308.0,
-      "valid_from": "2018-07-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2018-07-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1415,10 +1493,11 @@
       "lat": 47.26,
       "lon": 11.356666666666666,
       "altitude": 578.0,
-      "valid_from": "2002-07-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-07-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1429,10 +1508,11 @@
       "lat": 47.26,
       "lon": 11.384166666666665,
       "altitude": 578.0,
-      "valid_from": "2009-07-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2009-07-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1443,10 +1523,11 @@
       "lat": 47.458333333333336,
       "lon": 15.335555555555556,
       "altitude": 515.0,
-      "valid_from": "1997-02-13T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-02-13T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1457,10 +1538,11 @@
       "lat": 48.33444444444444,
       "lon": 15.339166666666667,
       "altitude": 955.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1471,10 +1553,11 @@
       "lat": 47.00472222222222,
       "lon": 12.646388888888888,
       "altitude": 1352.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1485,10 +1568,11 @@
       "lat": 47.421388888888885,
       "lon": 14.759722222222223,
       "altitude": 744.0,
-      "valid_from": "1994-05-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-05-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1499,10 +1583,11 @@
       "lat": 46.67722222222222,
       "lon": 13.901944444444444,
       "altitude": 1520.0,
-      "valid_from": "2001-12-18T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2001-12-18T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1513,10 +1598,11 @@
       "lat": 47.06055555555555,
       "lon": 13.614722222222222,
       "altitude": 1635.0,
-      "valid_from": "1998-10-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1998-10-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1527,10 +1613,11 @@
       "lat": 46.684999999999995,
       "lon": 12.88888888888889,
       "altitude": 990.0,
-      "valid_from": "2017-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2017-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1541,10 +1628,11 @@
       "lat": 47.566111111111105,
       "lon": 12.463055555555554,
       "altitude": 637.0,
-      "valid_from": "2006-02-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2006-02-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1555,10 +1643,11 @@
       "lat": 47.443888888888885,
       "lon": 12.389166666666666,
       "altitude": 772.0,
-      "valid_from": "2014-10-14T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2014-10-14T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1569,10 +1658,11 @@
       "lat": 46.67638888888889,
       "lon": 12.998333333333333,
       "altitude": 705.0,
-      "valid_from": "1990-09-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-09-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1583,10 +1673,11 @@
       "lat": 46.64833333333333,
       "lon": 14.318333333333333,
       "altitude": 450.0,
-      "valid_from": "2002-07-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-07-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1597,10 +1688,11 @@
       "lat": 48.08861111111111,
       "lon": 16.001666666666665,
       "altitude": 389.0,
-      "valid_from": "2007-11-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-11-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1611,10 +1703,11 @@
       "lat": 47.2075,
       "lon": 16.335555555555555,
       "altitude": 265.0,
-      "valid_from": "1978-05-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1978-05-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1625,10 +1718,11 @@
       "lat": 47.66277777777778,
       "lon": 12.393888888888888,
       "altitude": 588.0,
-      "valid_from": "2008-07-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-07-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1639,10 +1733,11 @@
       "lat": 47.27916666666667,
       "lon": 12.495833333333332,
       "altitude": 783.0,
-      "valid_from": "2017-08-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2017-08-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1653,10 +1748,11 @@
       "lat": 48.60277777777778,
       "lon": 13.839166666666667,
       "altitude": 714.0,
-      "valid_from": "2007-12-05T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-12-05T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1667,10 +1763,11 @@
       "lat": 47.06944444444445,
       "lon": 12.98472222222222,
       "altitude": 1626.0,
-      "valid_from": "2003-11-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-11-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1681,10 +1778,11 @@
       "lat": 48.055,
       "lon": 14.131111111111112,
       "altitude": 382.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1695,10 +1793,11 @@
       "lat": 47.37861111111111,
       "lon": 16.042222222222225,
       "altitude": 444.0,
-      "valid_from": "2016-04-11T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-04-11T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1709,10 +1808,11 @@
       "lat": 47.22916666666667,
       "lon": 12.181944444444444,
       "altitude": 1009.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1723,10 +1823,11 @@
       "lat": 47.57527777777778,
       "lon": 12.162777777777778,
       "altitude": 490.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1737,10 +1838,11 @@
       "lat": 48.731388888888894,
       "lon": 16.389722222222222,
       "altitude": 184.0,
-      "valid_from": "2006-12-12T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2006-12-12T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1751,10 +1853,11 @@
       "lat": 47.140277777777776,
       "lon": 10.563611111111111,
       "altitude": 796.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1765,10 +1868,11 @@
       "lat": 47.13166666666667,
       "lon": 10.123333333333333,
       "altitude": 1221.0,
-      "valid_from": "2007-08-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1779,10 +1883,11 @@
       "lat": 48.472500000000004,
       "lon": 15.697222222222223,
       "altitude": 207.0,
-      "valid_from": "1990-07-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-07-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1793,10 +1898,11 @@
       "lat": 48.55888888888889,
       "lon": 16.371666666666666,
       "altitude": 457.0,
-      "valid_from": "1999-09-27T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1999-09-27T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1807,10 +1913,11 @@
       "lat": 47.37833333333333,
       "lon": 15.086666666666668,
       "altitude": 544.0,
-      "valid_from": "2012-06-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2012-06-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1821,10 +1928,11 @@
       "lat": 46.82555555555556,
       "lon": 12.80638888888889,
       "altitude": 661.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1835,10 +1943,11 @@
       "lat": 48.028055555555554,
       "lon": 15.5875,
       "altitude": 696.0,
-      "valid_from": "1993-04-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-04-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1849,10 +1958,11 @@
       "lat": 48.296388888888885,
       "lon": 14.285555555555556,
       "altitude": 262.0,
-      "valid_from": "1992-11-18T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-11-18T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1863,10 +1973,11 @@
       "lat": 48.23527777777778,
       "lon": 14.188055555555556,
       "altitude": 298.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1877,10 +1988,11 @@
       "lat": 48.95472222222222,
       "lon": 15.038333333333334,
       "altitude": 558.0,
-      "valid_from": "1976-04-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1976-04-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1891,10 +2003,11 @@
       "lat": 47.58444444444444,
       "lon": 12.695277777777777,
       "altitude": 622.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1905,10 +2018,11 @@
       "lat": 46.443888888888885,
       "lon": 14.249166666666666,
       "altitude": 1097.0,
-      "valid_from": "2007-08-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1919,10 +2033,11 @@
       "lat": 47.85444444444445,
       "lon": 15.067499999999999,
       "altitude": 612.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1933,10 +2048,11 @@
       "lat": 47.46527777777778,
       "lon": 16.645555555555553,
       "altitude": 201.0,
-      "valid_from": "1995-10-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1995-10-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1947,10 +2063,11 @@
       "lat": 47.59777777777778,
       "lon": 12.64611111111111,
       "altitude": 1619.0,
-      "valid_from": "1995-02-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1995-02-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1961,10 +2078,11 @@
       "lat": 47.78916666666667,
       "lon": 15.302222222222223,
       "altitude": 864.0,
-      "valid_from": "1987-07-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1987-07-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1975,10 +2093,11 @@
       "lat": 47.745,
       "lon": 16.389166666666664,
       "altitude": 284.0,
-      "valid_from": "2007-11-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-11-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -1989,10 +2108,11 @@
       "lat": 48.09722222222222,
       "lon": 13.151111111111112,
       "altitude": 460.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2003,10 +2123,11 @@
       "lat": 47.977222222222224,
       "lon": 13.105555555555556,
       "altitude": 502.0,
-      "valid_from": "1972-01-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2017,10 +2138,11 @@
       "lat": 48.209722222222226,
       "lon": 15.331388888888888,
       "altitude": 307.0,
-      "valid_from": "2008-06-20T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-06-20T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2031,10 +2153,11 @@
       "lat": 48.57083333333334,
       "lon": 16.609444444444446,
       "altitude": 191.0,
-      "valid_from": "2004-06-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2004-06-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2045,10 +2168,11 @@
       "lat": 47.32333333333334,
       "lon": 10.1525,
       "altitude": 1204.0,
-      "valid_from": "2009-02-23T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2009-02-23T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2059,10 +2183,11 @@
       "lat": 47.51111111111111,
       "lon": 16.033333333333335,
       "altitude": 991.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2073,10 +2198,11 @@
       "lat": 47.850833333333334,
       "lon": 13.347222222222223,
       "altitude": 481.0,
-      "valid_from": "2008-07-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-07-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2087,10 +2213,11 @@
       "lat": 47.6475,
       "lon": 14.761666666666667,
       "altitude": 530.0,
-      "valid_from": "2005-06-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2005-06-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2101,10 +2228,11 @@
       "lat": 47.602222222222224,
       "lon": 15.672777777777776,
       "altitude": 705.0,
-      "valid_from": "2007-11-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-11-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2115,10 +2243,11 @@
       "lat": 47.111111111111114,
       "lon": 14.176944444444445,
       "altitude": 816.0,
-      "valid_from": "1990-07-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-07-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2129,10 +2258,11 @@
       "lat": 46.89111111111111,
       "lon": 10.496944444444443,
       "altitude": 1330.0,
-      "valid_from": "2003-10-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-10-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2143,10 +2273,11 @@
       "lat": 47.562777777777775,
       "lon": 16.38138888888889,
       "altitude": 429.0,
-      "valid_from": "2015-08-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2015-08-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2157,10 +2288,11 @@
       "lat": 47.069722222222225,
       "lon": 14.424722222222222,
       "altitude": 869.0,
-      "valid_from": "1993-05-27T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-05-27T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2171,10 +2303,11 @@
       "lat": 47.950833333333335,
       "lon": 16.841666666666665,
       "altitude": 148.0,
-      "valid_from": "1984-12-05T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1984-12-05T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2185,10 +2318,11 @@
       "lat": 47.10277777777778,
       "lon": 11.291944444444445,
       "altitude": 1007.0,
-      "valid_from": "2004-10-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2004-10-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2199,10 +2333,11 @@
       "lat": 47.94916666666666,
       "lon": 16.828888888888887,
       "altitude": 117.0,
-      "valid_from": "2016-10-14T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-10-14T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2213,10 +2348,11 @@
       "lat": 48.0625,
       "lon": 15.213888888888889,
       "altitude": 295.0,
-      "valid_from": "2007-07-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2227,10 +2363,11 @@
       "lat": 47.24888888888889,
       "lon": 13.559722222222224,
       "altitude": 1772.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2241,10 +2378,11 @@
       "lat": 46.93527777777778,
       "lon": 13.194444444444445,
       "altitude": 688.0,
-      "valid_from": "2014-02-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2014-02-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2255,10 +2393,11 @@
       "lat": 47.20194444444445,
       "lon": 14.286666666666667,
       "altitude": 842.0,
-      "valid_from": "2007-07-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2269,10 +2408,11 @@
       "lat": 46.86694444444444,
       "lon": 11.024444444444445,
       "altitude": 1941.0,
-      "valid_from": "1982-02-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1982-02-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2283,10 +2423,11 @@
       "lat": 48.05305555555555,
       "lon": 12.831666666666667,
       "altitude": 412.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2297,10 +2438,11 @@
       "lat": 47.20888888888889,
       "lon": 11.462222222222222,
       "altitude": 2251.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2311,10 +2453,11 @@
       "lat": 46.926944444444445,
       "lon": 10.879166666666666,
       "altitude": 2864.0,
-      "valid_from": "1993-12-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-12-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2325,10 +2468,11 @@
       "lat": 47.86611111111111,
       "lon": 16.834444444444443,
       "altitude": 116.0,
-      "valid_from": "2014-05-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2014-05-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2339,10 +2483,11 @@
       "lat": 46.630833333333335,
       "lon": 14.165277777777778,
       "altitude": 450.0,
-      "valid_from": "1996-12-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1996-12-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2353,10 +2498,11 @@
       "lat": 47.700833333333335,
       "lon": 16.008055555555554,
       "altitude": 416.0,
-      "valid_from": "2007-07-24T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-24T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2367,10 +2513,11 @@
       "lat": 48.66916666666666,
       "lon": 16.6375,
       "altitude": 198.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2381,10 +2528,11 @@
       "lat": 47.52166666666667,
       "lon": 14.954166666666666,
       "altitude": 1215.0,
-      "valid_from": "2000-09-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2000-09-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2395,10 +2543,11 @@
       "lat": 46.93805555555555,
       "lon": 14.915000000000001,
       "altitude": 1034.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2409,10 +2558,11 @@
       "lat": 47.790277777777774,
       "lon": 15.906944444444445,
       "altitude": 583.0,
-      "valid_from": "1991-03-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1991-03-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2423,10 +2573,11 @@
       "lat": 48.84805555555556,
       "lon": 15.501944444444444,
       "altitude": 459.0,
-      "valid_from": "2008-03-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-03-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2437,10 +2588,11 @@
       "lat": 47.38,
       "lon": 13.440833333333334,
       "altitude": 835.0,
-      "valid_from": "2016-02-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-02-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2451,10 +2603,11 @@
       "lat": 47.22361111111111,
       "lon": 12.9925,
       "altitude": 934.0,
-      "valid_from": "1993-06-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1993-06-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2465,10 +2618,11 @@
       "lat": 47.7175,
       "lon": 15.778611111111111,
       "altitude": 1547.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2479,10 +2633,11 @@
       "lat": 48.45916666666667,
       "lon": 14.345555555555556,
       "altitude": 689.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2493,10 +2648,11 @@
       "lat": 47.69972222222222,
       "lon": 15.836944444444445,
       "altitude": 488.0,
-      "valid_from": "1991-01-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1991-01-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2507,10 +2663,11 @@
       "lat": 48.33111111111111,
       "lon": 13.376111111111111,
       "altitude": 351.0,
-      "valid_from": "2007-12-05T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-12-05T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2521,10 +2678,11 @@
       "lat": 48.76111111111111,
       "lon": 15.941666666666666,
       "altitude": 320.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2535,10 +2693,11 @@
       "lat": 47.49444444444445,
       "lon": 10.715277777777777,
       "altitude": 842.0,
-      "valid_from": "1994-12-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-12-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2549,10 +2708,11 @@
       "lat": 48.217222222222226,
       "lon": 13.475,
       "altitude": 427.0,
-      "valid_from": "1997-06-16T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-06-16T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2563,10 +2723,11 @@
       "lat": 47.24916666666667,
       "lon": 11.50388888888889,
       "altitude": 924.0,
-      "valid_from": "2007-10-22T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-10-22T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2577,10 +2738,11 @@
       "lat": 47.49722222222222,
       "lon": 9.63,
       "altitude": 395.0,
-      "valid_from": "2008-06-20T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-06-20T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2591,10 +2753,11 @@
       "lat": 47.507777777777775,
       "lon": 14.430277777777777,
       "altitude": 707.0,
-      "valid_from": "2009-06-25T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2009-06-25T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2605,10 +2768,11 @@
       "lat": 47.135,
       "lon": 12.625833333333334,
       "altitude": 2317.0,
-      "valid_from": "1980-07-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1980-07-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2619,10 +2783,11 @@
       "lat": 47.38777777777778,
       "lon": 12.648333333333333,
       "altitude": 975.0,
-      "valid_from": "2007-12-05T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-12-05T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2633,10 +2798,11 @@
       "lat": 48.03583333333333,
       "lon": 16.280833333333334,
       "altitude": 212.0,
-      "valid_from": "1991-11-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1991-11-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2647,10 +2813,11 @@
       "lat": 48.46416666666667,
       "lon": 13.434444444444445,
       "altitude": 307.0,
-      "valid_from": "1994-02-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1994-02-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2661,10 +2828,11 @@
       "lat": 47.08722222222222,
       "lon": 11.580277777777777,
       "altitude": 1464.0,
-      "valid_from": "2004-10-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2004-10-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2675,10 +2843,11 @@
       "lat": 47.328611111111115,
       "lon": 12.738055555555555,
       "altitude": 1956.0,
-      "valid_from": "1990-04-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-04-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2689,10 +2858,11 @@
       "lat": 47.198611111111106,
       "lon": 15.466388888888888,
       "altitude": 1443.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2703,10 +2873,11 @@
       "lat": 48.60333333333333,
       "lon": 16.061666666666667,
       "altitude": 253.0,
-      "valid_from": "2007-04-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-04-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2717,10 +2888,11 @@
       "lat": 47.311388888888885,
       "lon": 10.017777777777779,
       "altitude": 839.0,
-      "valid_from": "2007-08-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-08-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2731,10 +2903,11 @@
       "lat": 47.26166666666666,
       "lon": 10.086111111111112,
       "altitude": 1244.0,
-      "valid_from": "2007-10-22T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-10-22T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2745,10 +2918,11 @@
       "lat": 47.270833333333336,
       "lon": 14.778611111111111,
       "altitude": 872.0,
-      "valid_from": "2001-12-18T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2001-12-18T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2759,10 +2933,11 @@
       "lat": 47.32472222222223,
       "lon": 11.175555555555555,
       "altitude": 1182.0,
-      "valid_from": "1997-06-11T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-06-11T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2773,10 +2948,11 @@
       "lat": 47.97638888888889,
       "lon": 16.505,
       "altitude": 185.0,
-      "valid_from": "2002-12-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-12-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2787,10 +2963,11 @@
       "lat": 47.63333333333333,
       "lon": 15.828333333333333,
       "altitude": 988.0,
-      "valid_from": "1991-01-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1991-01-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2801,10 +2978,11 @@
       "lat": 46.74638888888889,
       "lon": 12.42361111111111,
       "altitude": 1081.0,
-      "valid_from": "1997-03-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-03-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2815,10 +2993,11 @@
       "lat": 47.05416666666667,
       "lon": 12.9575,
       "altitude": 3109.0,
-      "valid_from": "1997-08-31T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-08-31T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2829,10 +3008,11 @@
       "lat": 46.79055555555556,
       "lon": 13.487222222222222,
       "altitude": 542.0,
-      "valid_from": "1997-09-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-09-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2843,10 +3023,11 @@
       "lat": 46.76416666666667,
       "lon": 14.828055555555554,
       "altitude": 403.0,
-      "valid_from": "1976-11-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1976-11-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2857,10 +3038,11 @@
       "lat": 47.13138888888889,
       "lon": 10.266666666666667,
       "altitude": 1304.0,
-      "valid_from": "2001-01-28T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2001-01-28T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2871,10 +3053,11 @@
       "lat": 46.91694444444444,
       "lon": 12.35388888888889,
       "altitude": 1383.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2885,10 +3068,11 @@
       "lat": 47.02722222222222,
       "lon": 10.865555555555556,
       "altitude": 1454.0,
-      "valid_from": "2007-09-12T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-09-12T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2899,10 +3083,11 @@
       "lat": 47.09444444444445,
       "lon": 13.622777777777777,
       "altitude": 1052.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2913,10 +3098,11 @@
       "lat": 48.19972222222222,
       "lon": 15.631111111111112,
       "altitude": 274.0,
-      "valid_from": "2003-07-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-07-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2927,10 +3113,11 @@
       "lat": 46.73916666666667,
       "lon": 14.385555555555555,
       "altitude": 463.0,
-      "valid_from": "2007-07-31T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-31T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2941,10 +3128,11 @@
       "lat": 48.617777777777775,
       "lon": 15.20361111111111,
       "altitude": 502.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2955,10 +3143,11 @@
       "lat": 48.39694444444444,
       "lon": 16.1925,
       "altitude": 203.0,
-      "valid_from": "2002-04-10T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2002-04-10T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2969,10 +3158,11 @@
       "lat": 47.12305555555555,
       "lon": 14.188333333333334,
       "altitude": 1291.0,
-      "valid_from": "2007-07-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2983,10 +3173,11 @@
       "lat": 47.52194444444444,
       "lon": 9.914444444444445,
       "altitude": 1016.0,
-      "valid_from": "2008-06-20T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-06-20T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -2997,10 +3188,11 @@
       "lat": 47.13305555555556,
       "lon": 13.808333333333334,
       "altitude": 1025.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3011,10 +3203,11 @@
       "lat": 47.500277777777775,
       "lon": 10.505833333333333,
       "altitude": 1100.0,
-      "valid_from": "2008-07-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-07-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3025,10 +3218,11 @@
       "lat": 48.323888888888895,
       "lon": 16.118055555555557,
       "altitude": 175.0,
-      "valid_from": "1972-01-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3039,10 +3233,11 @@
       "lat": 47.13916666666667,
       "lon": 10.928888888888888,
       "altitude": 1035.0,
-      "valid_from": "2003-07-04T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-07-04T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3053,10 +3248,11 @@
       "lat": 47.1575,
       "lon": 10.212777777777777,
       "altitude": 2805.0,
-      "valid_from": "2009-05-06T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2009-05-06T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3067,10 +3263,11 @@
       "lat": 46.61805555555556,
       "lon": 13.873888888888889,
       "altitude": 493.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3081,10 +3278,11 @@
       "lat": 46.603611111111114,
       "lon": 13.672777777777776,
       "altitude": 2117.0,
-      "valid_from": "1997-08-31T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-08-31T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3095,10 +3293,11 @@
       "lat": 48.00666666666667,
       "lon": 13.645555555555555,
       "altitude": 432.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3109,10 +3308,11 @@
       "lat": 46.670833333333334,
       "lon": 14.639166666666666,
       "altitude": 466.0,
-      "valid_from": "2015-07-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2015-07-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3123,10 +3323,11 @@
       "lat": 48.0475,
       "lon": 14.46111111111111,
       "altitude": 384.0,
-      "valid_from": "2008-05-08T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-05-08T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3137,10 +3338,11 @@
       "lat": 48.32666666666667,
       "lon": 13.864722222222222,
       "altitude": 400.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3151,10 +3353,11 @@
       "lat": 47.255833333333335,
       "lon": 10.186111111111112,
       "altitude": 1478.0,
-      "valid_from": "1990-12-15T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-12-15T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3165,10 +3368,11 @@
       "lat": 46.84916666666667,
       "lon": 14.190833333333334,
       "altitude": 704.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3179,10 +3383,11 @@
       "lat": 48.702222222222225,
       "lon": 14.89861111111111,
       "altitude": 572.0,
-      "valid_from": "2003-08-21T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2003-08-21T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3193,10 +3398,11 @@
       "lat": 48.221111111111114,
       "lon": 16.26527777777778,
       "altitude": 450.0,
-      "valid_from": "2008-09-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-09-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3207,10 +3413,11 @@
       "lat": 48.30583333333333,
       "lon": 16.405555555555555,
       "altitude": 191.0,
-      "valid_from": "2008-07-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-07-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3221,10 +3428,11 @@
       "lat": 48.257222222222225,
       "lon": 16.43138888888889,
       "altitude": 160.0,
-      "valid_from": "2001-05-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2001-05-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3235,10 +3443,11 @@
       "lat": 48.19833333333333,
       "lon": 16.366944444444446,
       "altitude": 177.0,
-      "valid_from": "1990-03-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1990-03-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3249,10 +3458,11 @@
       "lat": 48.24861111111111,
       "lon": 16.35638888888889,
       "altitude": 198.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3263,10 +3473,11 @@
       "lat": 48.206944444444446,
       "lon": 16.229444444444443,
       "altitude": 225.0,
-      "valid_from": "1997-02-17T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-02-17T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3277,10 +3488,11 @@
       "lat": 48.1175,
       "lon": 16.58138888888889,
       "altitude": 183.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3291,10 +3503,11 @@
       "lat": 48.125,
       "lon": 16.419444444444444,
       "altitude": 200.0,
-      "valid_from": "1997-09-09T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-09-09T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3305,10 +3518,11 @@
       "lat": 47.83222222222223,
       "lon": 16.231388888888887,
       "altitude": 275.0,
-      "valid_from": "1972-01-03T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-03T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3319,10 +3533,11 @@
       "lat": 48.12722222222222,
       "lon": 15.146666666666667,
       "altitude": 259.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3333,10 +3548,11 @@
       "lat": 47.226111111111116,
       "lon": 16.096666666666664,
       "altitude": 404.0,
-      "valid_from": "2007-04-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-04-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3347,10 +3563,11 @@
       "lat": 48.105555555555554,
       "lon": 13.670833333333333,
       "altitude": 635.0,
-      "valid_from": "1972-01-01T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1972-01-01T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3361,10 +3578,11 @@
       "lat": 48.38027777777778,
       "lon": 16.5075,
       "altitude": 185.0,
-      "valid_from": "2008-06-20T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-06-20T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3375,10 +3593,11 @@
       "lat": 47.94555555555555,
       "lon": 14.809722222222224,
       "altitude": 384.0,
-      "valid_from": "2016-10-14T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2016-10-14T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3389,10 +3608,11 @@
       "lat": 48.338055555555556,
       "lon": 16.83138888888889,
       "altitude": 144.0,
-      "valid_from": "1997-03-20T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1997-03-20T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3403,10 +3623,11 @@
       "lat": 48.16277777777778,
       "lon": 14.071388888888889,
       "altitude": 309.0,
-      "valid_from": "1992-08-29T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1992-08-29T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3417,10 +3638,11 @@
       "lat": 46.95861111111111,
       "lon": 14.405833333333334,
       "altitude": 640.0,
-      "valid_from": "2007-07-19T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-07-19T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3431,10 +3653,11 @@
       "lat": 48.41861111111111,
       "lon": 15.622222222222224,
       "altitude": 202.0,
-      "valid_from": "1996-05-07T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1996-05-07T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3445,10 +3668,11 @@
       "lat": 47.769999999999996,
       "lon": 17.035555555555558,
       "altitude": 117.0,
-      "valid_from": "1995-08-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "1995-08-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3459,10 +3683,11 @@
       "lat": 47.10305555555556,
       "lon": 9.738333333333333,
       "altitude": 1029.0,
-      "valid_from": "2001-06-26T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2001-06-26T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3473,10 +3698,11 @@
       "lat": 46.61944444444445,
       "lon": 14.316666666666666,
       "altitude": 441.0,
-      "valid_from": "2021-01-14T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2021-01-14T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3487,10 +3713,11 @@
       "lat": 48.60583333333334,
       "lon": 16.913055555555555,
       "altitude": 151.0,
-      "valid_from": "2007-03-30T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2007-03-30T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     },
     {
       "type": "INDIVIDUAL",
@@ -3501,10 +3728,12 @@
       "lat": 47.88305555555556,
       "lon": 14.134444444444444,
       "altitude": 443.0,
-      "valid_from": "2008-04-02T00:00:00+00:00",
-      "valid_to": "2023-11-13T10:27:09+00:00",
+      "valid_from": "2008-04-02T00:00+00:00",
+      "valid_to": "2023-12-15T10:26+00:00",
       "has_sunshine": false,
-      "has_global_radiation": false
+      "has_global_radiation": false,
+      "is_active": true
     }
-  ]
+  ],
+  "id_type": "Synop"
 }
