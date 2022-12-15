@@ -275,7 +275,7 @@ async def test_last_update(fix_data, fix_metadata) -> None:
     zamg.set_default_station("11240")
     await zamg.update()
     assert zamg.last_update == datetime(
-        2022, 11, 13, 10, 20, tzinfo=zoneinfo.ZoneInfo(key="Europe/Vienna")
+        2022, 11, 13, 10, 20, tzinfo=zoneinfo.ZoneInfo(key="UTC")
     )
 
 
