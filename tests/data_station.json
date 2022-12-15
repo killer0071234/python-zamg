@@ -2,7 +2,7 @@
   "media_type": "application/json",
   "type": "FeatureCollection",
   "version": "v1",
-  "timestamps": ["2022-11-13T10:20:00+00:00"],
+  "timestamps": ["2022-11-13T10:20+00:00"],
   "features": [
     {
       "type": "Feature",
