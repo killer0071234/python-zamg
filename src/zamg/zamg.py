@@ -5,6 +5,7 @@ import json
 import zoneinfo
 from datetime import datetime
 from datetime import timedelta
+from sys import version_info
 
 import aiohttp
 import async_timeout
@@ -13,10 +14,13 @@ from aiohttp.client_exceptions import ServerDisconnectedError
 from aiohttp.client_exceptions import ServerTimeoutError
 from aiohttp.hdrs import USER_AGENT
 
+from . import __version__
 from .exceptions import ZamgApiError
 from .exceptions import ZamgNoDataError
 from .exceptions import ZamgStationNotFoundError
 from .exceptions import ZamgStationUnknownError
+
+CLIENT_AGENT = f"Python/{version_info[0]}.{version_info[1]} +https://github.com/killer0071234/python-zamg python-zamg/{__version__}"
 
 
 class ZamgData:
@@ -30,7 +34,7 @@ class ZamgData:
     """API url to fetch current conditions of a weather station."""
     request_timeout: float = 8.0
     headers = {
-        USER_AGENT: "python-zamg",
+        USER_AGENT: CLIENT_AGENT,
     }
     session: aiohttp.client.ClientSession | None = None
     verify_ssl: bool | None = None
