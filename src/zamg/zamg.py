@@ -114,7 +114,7 @@ class ZamgData:
                 await self.session.close()
                 self.session = None
             raise ZamgApiError(exc) from exc
-        except (ValueError) as exc:
+        except ValueError as exc:
             raise ZamgNoDataError(exc) from exc
 
     async def closest_station(self, lat: float, lon: float) -> str:
@@ -142,7 +142,7 @@ class ZamgData:
         - unit: data value unit of parameter"""
         try:
             return self.data[self._station_id][parameter][data_type]
-        except (KeyError) as exc:
+        except KeyError as exc:
             raise ZamgNoDataError(exc) from exc
 
     def get_all_parameters(self) -> list[str]:
