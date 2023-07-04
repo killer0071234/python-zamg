@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zamg"
-version = "0.2.3"
+version = "0.2.4"
 description = "Asynchronous Python client for ZAMG weather data."
 authors = ["Daniel Gangl <killer007@gmx.at>"]
 maintainers = ["Daniel Gangl <killer007@gmx.at>"]
