@@ -77,11 +77,11 @@ class ZamgData:
             async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.get(
                     url=self.dataset_metadata_url,
-                    allow_redirects=False,
+                    allow_redirects=True,
                     headers=self.headers,
                     verify_ssl=self.verify_ssl,
                 )
-            if response.status == 200:
+            if response.status in (200, 301):
                 contents = await response.read()
                 response.close()
                 # extract all possible parameters
@@ -210,11 +210,11 @@ class ZamgData:
                     + self.station_parameters
                     + "&station_ids="
                     + str(self._station_id),
-                    allow_redirects=False,
+                    allow_redirects=True,
                     headers=self.headers,
                     verify_ssl=self.verify_ssl,
                 )
-            if response.status == 200:
+            if response.status in (200, 301):
                 contents = await response.read()
                 response.close()
 
