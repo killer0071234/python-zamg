@@ -103,4 +103,4 @@ Code template to read dataset API was mainly taken from [@LuisTheOne](https://gi
 [releases]: https://github.com/killer0071234/python-zamg/releases
 [user_profile]: https://github.com/killer0071234
 [zamg_api_cli_client]: https://github.com/LuisThe0ne/zamg-api-cli-client
-[dataset_api_doc]: https://dataset.api.hub.zamg.ac.at/v1/docs/index.html
+[dataset_api_doc]: https://github.com/Geosphere-Austria/dataset-api-docs
