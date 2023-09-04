@@ -26,11 +26,9 @@ CLIENT_AGENT = f"Python/{version_info[0]}.{version_info[1]} +https://github.com/
 class ZamgData:
     """The class for handling the data retrieval."""
 
-    dataset_metadata_url: str = (
-        "https://dataset.api.hub.zamg.ac.at/v1/station/current/tawes-v1-10min/metadata"
-    )
+    dataset_metadata_url: str = "https://dataset.api.hub.geosphere.at/v1/station/current/tawes-v1-10min/metadata"
     """API url to fetch possible stations and parameters."""
-    dataset_data_url: str = "https://dataset.api.hub.zamg.ac.at/v1/station/current/tawes-v1-10min?parameters="
+    dataset_data_url: str = "https://dataset.api.hub.geosphere.at/v1/station/current/tawes-v1-10min?parameters="
     """API url to fetch current conditions of a weather station."""
     request_timeout: float = 8.0
     headers = {

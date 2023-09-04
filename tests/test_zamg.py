@@ -41,7 +41,7 @@ async def test_update_fixed_param(fix_data) -> None:
 async def test_update_fail(aresponses) -> None:
     """Test update function."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min",
         "GET",
         aresponses.Response(text="error", status=500),
@@ -57,7 +57,7 @@ async def test_update_fail(aresponses) -> None:
 async def test_update_fail_1(aresponses) -> None:
     """Test update function."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min",
         "GET",
         aresponses.Response(text="error", status=500),
@@ -73,7 +73,7 @@ async def test_update_fail_1(aresponses) -> None:
 async def test_update_fail_2(aresponses) -> None:
     """Test update function."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min",
         "GET",
         aresponses.Response(text="{}", status=200),
@@ -89,7 +89,7 @@ async def test_update_fail_2(aresponses) -> None:
 async def test_update_fail_3(aresponses) -> None:
     """Test update function."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min",
         "GET",
         aresponses.Response(text="{}", status=200),
@@ -135,7 +135,7 @@ async def test_properties_pre_loaded(fix_metadata) -> None:
 async def test_properties_fail_1(aresponses) -> None:
     """Test getting properties."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min/metadata",
         "GET",
         response=aresponses.Response(text="", status=404),
@@ -160,7 +160,7 @@ async def test_properties_fail_2(aresponses) -> None:
 async def test_properties_fail_3(aresponses) -> None:
     """Test getting properties."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min/metadata",
         "GET",
         response=aresponses.Response(text=""),
@@ -236,7 +236,7 @@ async def test_closest_station(fix_metadata) -> None:
 async def test_closest_station_not_found(aresponses) -> None:
     """Test getting closest station."""
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min/metadata",
         "GET",
         response={"title": "TAWES", "stations": []},
@@ -305,7 +305,7 @@ def fix_metadata(aresponses):
         .read_text(encoding="utf-8")
     )
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min/metadata",
         "GET",
         response=data_metadata,
@@ -321,7 +321,7 @@ def fix_data(aresponses):
         .read_text(encoding="utf-8")
     )
     aresponses.add(
-        "dataset.api.hub.zamg.ac.at",
+        "dataset.api.hub.geosphere.at",
         "/v1/station/current/tawes-v1-10min",
         "GET",
         response=data_station,
