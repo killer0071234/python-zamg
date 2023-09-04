@@ -18,6 +18,7 @@ classifiers = [
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -65,7 +66,7 @@ types-cachetools = "^5.2.1"
 Changelog = "https://github.com/killer0071234/python-zamg/releases"
 
 [tool.black]
-target-version = ['py39']
+target-version = ['py311']
 
 [tool.coverage.paths]
 source = ["src"]
@@ -87,7 +88,7 @@ multi_line_output = 3
 # free to run mypy on Windows, Linux, or macOS and get consistent
 # results.
 platform = "linux"
-python_version = 3.9
+python_version = 3.11
 
 # flake8-mypy expects the two following for sensible formatting
 show_column_numbers = true

@@ -1,6 +1,6 @@
 """Asynchronous Python client for ZAMG weather data."""
 
-__version__ = "0.2.4"
+__version__ = "0.3.0"
 
 from .exceptions import ZamgApiError
 from .exceptions import ZamgError
