@@ -35,6 +35,7 @@ class ZamgData:
         USER_AGENT: CLIENT_AGENT,
     }
     session: aiohttp.client.ClientSession | None = None
+    _close_session: bool = False
     verify_ssl: bool | None = None
     """Set to False to ignore SSL errors."""
     station_parameters: str | None = None
@@ -71,6 +72,7 @@ class ZamgData:
         try:
             if self.session is None:
                 self.session = aiohttp.client.ClientSession()
+                self._close_session = True
 
             async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.get(
@@ -108,9 +110,6 @@ class ZamgData:
             ServerTimeoutError,
             ServerDisconnectedError,
         ) as exc:
-            if self.session is not None:
-                await self.session.close()
-                self.session = None
             raise ZamgApiError(exc) from exc
         except ValueError as exc:
             raise ZamgNoDataError(exc) from exc
@@ -128,7 +127,7 @@ class ZamgData:
 
             self._station_id = min(stations, key=_comparable_dist)
             return self._station_id
-        except (KeyError, ValueError) as exc:
+        except (KeyError, TypeError, ValueError) as exc:
             raise ZamgStationNotFoundError(exc) from exc
 
     def get_data(self, parameter: str, data_type: str = "data") -> str | None:
@@ -201,6 +200,7 @@ class ZamgData:
 
             if self.session is None:
                 self.session = aiohttp.client.ClientSession()
+                self._close_session = True
 
             async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.get(
@@ -233,9 +233,6 @@ class ZamgData:
                 return self.data
             raise ZamgApiError(f"Got status {response.status} from zamg")
         except (ClientConnectorError, ServerTimeoutError, ZamgApiError) as exc:
-            if self.session is not None:
-                await self.session.close()
-                self.session = None
             raise ZamgApiError(exc) from exc
         except (TypeError, ValueError, KeyError) as exc:
             raise ZamgNoDataError(exc) from exc
@@ -254,6 +251,6 @@ class ZamgData:
         Args:
             _exc_info: Exec type.
         """
-        if self.session is not None:
+        if self.session is not None and self._close_session:
             await self.session.close()
             self.session = None
