@@ -19,6 +19,7 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -29,6 +30,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 aiohttp = ">=3.8.0"
+async-timeout = "4.0.3"
 
 [tool.poetry.dev-dependencies]
 aresponses = "^2.1.5"
