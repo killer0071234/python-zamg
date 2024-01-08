@@ -6,7 +6,7 @@
 # contain hints for available should be kept in sync with them
 
 -r requirements.txt
-codecov==2.1.12
+codecov==2.1.13
 coverage==6.4.4
 freezegun==1.2.2
 mock-open==1.4.0
