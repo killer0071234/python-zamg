@@ -1,4 +1,4 @@
-"""Asynchronous Zamg client."""
+"""Asynchronous GeoSphere Austria client."""
 import sys
 
 sys.path.append(".")
