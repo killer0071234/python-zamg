@@ -27,6 +27,37 @@ async def test_update(fix_data, fix_metadata) -> None:
 
 
 @pytest.mark.asyncio
+async def test_update_twice(fix_data, fix_metadata) -> None:
+    """Test update function with short interval."""
+
+    zamg = ZamgData()
+    zamg.set_default_station("11240")
+    await zamg.update()
+    zamg._timestamp = datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M%z")
+    await zamg.update()
+    # picking few values to compare
+    assert zamg.get_data("TL") == 8.6
+    assert zamg.get_data("P") == 987.3
+
+
+@pytest.mark.asyncio
+async def test_update_aenter(fix_data, fix_metadata) -> None:
+    """Test update function."""
+
+    async with ZamgData(session=aiohttp.client.ClientSession()) as zamg:
+        zamg.set_default_station("11240")
+        zamg._close_session = True
+
+
+@pytest.mark.asyncio
+async def test_update_aenter_session(fix_data, fix_metadata) -> None:
+    """Test update function."""
+
+    async with ZamgData() as zamg:
+        zamg.set_default_station("11240")
+
+
+@pytest.mark.asyncio
 async def test_update_fixed_param(fix_data) -> None:
     """Test update function."""
 
