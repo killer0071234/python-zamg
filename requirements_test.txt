@@ -26,7 +26,7 @@ pytest-xdist==3.3.1
 pytest==7.4.3
 requests_mock==1.11.0
 respx==0.20.2
-stdlib-list==0.8.0
+stdlib-list==0.10.0
 tqdm==4.66.1
 types-atomicwrites==1.4.5.1
 types-croniter==2.0.0.0
