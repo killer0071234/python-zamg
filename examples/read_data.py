@@ -1,5 +1,5 @@
 # pylint: disable=W0621
-"""Asynchronous Python client for ZAMG weather data."""
+"""Asynchronous Python client for GeoSphere Austria weather data."""
 import asyncio
 from os import curdir
 

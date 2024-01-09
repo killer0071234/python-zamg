@@ -1,21 +1,21 @@
-"""Exceptions for Zamg."""
+"""Exceptions for GeoSphere Austria."""
 
 
 class ZamgError(Exception):
-    """Generic Zamg exception."""
+    """Generic GeoSphere Austria exception."""
 
 
 class ZamgStationNotFoundError(ZamgError):
-    """Zamg weather station not found."""
+    """GeoSphere Austria weather station not found."""
 
 
 class ZamgStationUnknownError(ZamgError):
-    """Zamg weather station is not known."""
+    """GeoSphere Austria weather station is not known."""
 
 
 class ZamgNoDataError(ZamgError):
-    """Zamg no data exception."""
+    """GeoSphere Austria no data exception."""
 
 
 class ZamgApiError(ZamgError):
-    """Zamg api exception."""
+    """GeoSphere Austria api exception."""

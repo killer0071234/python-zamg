@@ -1,4 +1,4 @@
-"""Zamg Weather Data Client."""
+"""GeoSphere Austria Weather Data Client."""
 from __future__ import annotations
 
 import json
@@ -39,7 +39,7 @@ class ZamgData:
     verify_ssl: bool | None = None
     """Set to False to ignore SSL errors."""
     station_parameters: str | None = None
-    """Comma separated list of station parameter to get from zamg."""
+    """Comma separated list of station parameter to get from GeoSphere Austria."""
     _timestamp: str | None = None
     _station_id: str = ""
     _all_station_parameters: str | None = None
@@ -143,20 +143,20 @@ class ZamgData:
             raise ZamgNoDataError(exc) from exc
 
     def get_all_parameters(self) -> list[str]:
-        """Get a list of all possible Parameters which can be read from zamg."""
+        """Get a list of all possible Parameters which can be read from GeoSphere Austria."""
         if self._all_station_parameters is None:
             return {}
         return self._all_station_parameters.split(",")
 
     def get_parameters(self) -> list[str]:
-        """Get a list of parameters which are read from zamg.
+        """Get a list of parameters which are read from GeoSphere Austria.
         The returned list are possible data_type parameter for function get_data()"""
         if self.station_parameters is None:
             return {}
         return self.station_parameters.split(",")
 
     def set_parameters(self, param: list[str]) -> None:
-        """Set the list of parameters to read with uodate() function from zamg."""
+        """Set the list of parameters to read with uodate() function from GeoSphere Austria."""
         station_parameters = ""
         for parameter in param:
             station_parameters += parameter + ","
@@ -231,7 +231,7 @@ class ZamgData:
                     ][observation]["data"][0]
 
                 return self.data
-            raise ZamgApiError(f"Got status {response.status} from zamg")
+            raise ZamgApiError(f"Got status {response.status} from GeoSphere Austria")
         except (ClientConnectorError, ServerTimeoutError, ZamgApiError) as exc:
             raise ZamgApiError(exc) from exc
         except (TypeError, ValueError, KeyError) as exc:
@@ -241,7 +241,7 @@ class ZamgData:
         """Async enter.
 
         Returns:
-            The ZAMG object.
+            The GeoSphere Austria object.
         """
         return self
 
