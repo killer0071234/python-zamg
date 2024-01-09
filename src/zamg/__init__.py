@@ -1,4 +1,4 @@
-"""Asynchronous Python client for ZAMG weather data."""
+"""Asynchronous Python client for GeoSphere Austria weather data."""
 
 __version__ = "0.3.4"
 

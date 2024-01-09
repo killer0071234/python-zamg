@@ -1,4 +1,4 @@
-"""Tests Zamg."""
+"""Tests GeoSphere Austria."""
 import json
 import pathlib
 import zoneinfo

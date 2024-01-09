@@ -10,12 +10,12 @@
 
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-Python library to read 10 min weather data from Geosphere Austria former ZAMG
+Python library to read 10 min weather data from GeoSphere Austria former ZAMG
 
 ## About
 
-This package allows you to read the weather data from weather stations of Geosphere Austria weather service.
-Geosphere Austria joins Zentralanstalt für Meteorologie und Geodynamik (ZAMG) and the Geologische Bundesanstalt (GBA)
+This package allows you to read the weather data from weather stations of GeoSphere Austria weather service.
+GeoSphere Austria joins Zentralanstalt für Meteorologie und Geodynamik (ZAMG) and the Geologische Bundesanstalt (GBA)
 since 1st January 2023.
 
 ## Installation
@@ -29,7 +29,7 @@ pip install zamg
 Simple usage example to fetch specific data from the closest station.
 
 ```python
-"""Asynchronous Python client for ZAMG weather data."""
+"""Asynchronous Python client for GeoSphere Austria weather data."""
 import asyncio
 
 import src.zamg.zamg
