@@ -33,7 +33,11 @@ async def test_update_twice(fix_data, fix_metadata) -> None:
     zamg = ZamgData()
     zamg.set_default_station("11240")
     await zamg.update()
-    zamg._timestamp = datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M%z")
+    zamg._timestamp = (
+        datetime.utcnow()
+        .replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
+        .strftime("%Y-%m-%dT%H:%M%z")
+    )
     await zamg.update()
     # picking few values to compare
     assert zamg.get_data("TL") == 8.6
