@@ -11,7 +11,7 @@ coverage==6.4.4
 freezegun==1.2.2
 mock-open==1.4.0
 mypy==1.8.0
-pipdeptree==2.13.0
+pipdeptree==2.13.1
 pylint-strict-informational==0.1
 pytest-aiohttp==1.0.4
 aresponses==2.1.6
