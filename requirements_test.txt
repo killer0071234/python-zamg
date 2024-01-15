@@ -13,7 +13,7 @@ mock-open==1.4.0
 mypy==1.8.0
 pipdeptree==2.13.2
 pylint-strict-informational==0.1
-pytest-aiohttp==1.0.4
+pytest-aiohttp==1.0.5
 aresponses==2.1.6
 pytest-asyncio
 pytest-cov==4.1.0
