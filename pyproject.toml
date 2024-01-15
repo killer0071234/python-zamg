@@ -32,7 +32,7 @@ aiohttp = ">=3.8.0"
 async-timeout = "4.0.3"
 
 [tool.poetry.dev-dependencies]
-aresponses = "^2.1.5"
+aresponses = "^3.0.0"
 black = "^23.12"
 blacken-docs = "^1.12.1"
 coverage = {version = "^7.2", extras = ["toml"]}
