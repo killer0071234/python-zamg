@@ -42,4 +42,4 @@ types-pytz==2023.3.1.1
 types-PyYAML==6.0.12.11
 types-requests==2.31.0.2
 types-toml==0.10.8.7
-types-ujson==5.8.0.1
+types-ujson==5.9.0.0
