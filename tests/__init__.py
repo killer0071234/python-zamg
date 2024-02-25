@@ -1,4 +1,4 @@
-"""Asynchronous GeoSphere Austria client."""
+"""Asynchronous GeoSphere Austria client."""  # fmt: skip
 import sys
 
 sys.path.append(".")
