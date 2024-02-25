@@ -1,5 +1,4 @@
-"""GeoSphere Austria Weather Data Client."""
-
+"""GeoSphere Austria Weather Data Client."""  # fmt: skip
 from __future__ import annotations
 
 import json

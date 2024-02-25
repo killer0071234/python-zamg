@@ -1,4 +1,4 @@
-"""Tests GeoSphere Austria."""
+"""Tests GeoSphere Austria."""  # fmt: skip
 import json
 import pathlib
 import zoneinfo
