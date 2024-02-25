@@ -94,7 +94,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
       - name: ⬇️ Download coverage data
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
       - name: 🏗 Set up Python 3.11
         id: python
         uses: actions/setup-python@v5
