@@ -1,6 +1,6 @@
 {
   "name": "zamg",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": true,
   "description": "Asynchronous Python client for GeoSphere Austria (ZAMG) weather data.",
   "scripts": {
