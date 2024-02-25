@@ -58,7 +58,7 @@ jobs:
         run: |
           echo "::set-output name=dir::$(pip cache dir)"
       - name: ⤵️ Restore cached Python PIP packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: pip-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
@@ -71,7 +71,7 @@ jobs:
           poetry config virtualenvs.in-project true
       - name: ⤵️ Restore cached Python virtual environment
         id: cached-poetry-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .venv
           key: venv-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
@@ -105,7 +105,7 @@ jobs:
         run: |
           echo "::set-output name=dir::$(pip cache dir)"
       - name: ⤵️ Restore cached Python PIP packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: pip-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
@@ -118,7 +118,7 @@ jobs:
           poetry config virtualenvs.in-project true
       - name: ⤵️ Restore cached Python virtual environment
         id: cached-poetry-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .venv
           key: >-
