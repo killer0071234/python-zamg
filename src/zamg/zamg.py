@@ -414,7 +414,6 @@ class ZamgData:
                     verify_ssl=self.verify_ssl,
                 )
             if response.status in (200, 301):
-                print(response.url)
                 contents = await response.read()
                 response.close()
 
