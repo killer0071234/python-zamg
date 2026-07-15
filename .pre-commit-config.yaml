@@ -18,6 +18,8 @@ repos:
     rev: 1.7.4
     hooks:
       - id: bandit
+        additional_dependencies:
+          - pbr
         args:
           - --quiet
           - --format=custom
@@ -58,6 +60,12 @@ repos:
         files: ^(src|examples|tests)/.+\.py$
   - repo: local
     hooks:
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        types: [python]
+        args: [--profile=black]
       - id: black
         name: black
         entry: black
@@ -70,12 +78,6 @@ repos:
         language: system
         types: [python]
         require_serial: true
-      - id: reorder-python-imports
-        name: Reorder python imports
-        entry: reorder-python-imports
-        language: system
-        types: [python]
-        args: [--application-directories=src]
       - id: pytest
         name: 🧪 Running tests and test coverage with pytest
         language: system
