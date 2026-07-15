@@ -91,7 +91,9 @@ class ZamgData:
                 for timestamp in timestamps
             ]
 
-            now_utc = datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
+            now_utc = datetime.utcnow().replace(
+                tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+            )
             index = next(
                 (
                     idx
