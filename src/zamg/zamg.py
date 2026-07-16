@@ -285,8 +285,8 @@ class ZamgData:
             raise ZamgNoDataError(exc) from exc
 
     @property
-    def forecast_metadata(self) -> list[str]:
-        return self._forecast_metadata
+    def forecast_metadata(self) -> dict | None:
+        return getattr(self, "_forecast_metadata", None)
 
     async def closest_station(self, lat: float, lon: float) -> str:
         """Return the station_id of the closest station to our lat/lon."""
