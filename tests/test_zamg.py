@@ -309,6 +309,69 @@ async def test_get_station_name_unknown(fix_metadata) -> None:
 
 
 @pytest.mark.asyncio
+async def test_get_station_location(fix_metadata) -> None:
+    """Test getting get_station_location."""
+
+    zamg = ZamgData()
+    await zamg.zamg_stations()
+    zamg.set_default_station("11240")
+    assert zamg.get_station_location == (46.980555555555554, 15.44)
+
+
+@pytest.mark.asyncio
+async def test_get_station_location_unknown(fix_metadata) -> None:
+    """Test getting get_station_location."""
+
+    zamg = ZamgData()
+    await zamg.zamg_stations()
+    with pytest.raises(ZamgStationUnknownError):
+        _ = zamg.get_station_location
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_uses_station_location(aresponses) -> None:
+    """Test get_forecast uses default station location when lat_lon isn't provided."""
+
+    async with ZamgData() as zamg:
+        zamg._stations = {
+            "11240": (46.980555555555554, 15.44, "GRAZ-THALERHOF-FLUGHAFEN")
+        }
+        zamg.set_default_station("11240")
+
+        now_utc = datetime.utcnow().replace(
+            tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+        )
+        timestamp = now_utc.strftime("%Y-%m-%dT%H:%M%z")
+
+        aresponses.add(
+            "dataset.api.hub.geosphere.at",
+            "/v1/timeseries/forecast/nwp-v1-1h-2500m",
+            "GET",
+            response={
+                "reference_time": timestamp,
+                "timestamps": [timestamp],
+                "features": [
+                    {
+                        "properties": {
+                            "parameters": {
+                                "t2m": {"data": [0.0]},
+                                "rh2m": {"data": [0.0]},
+                                "u10m": {"data": [0.0]},
+                                "v10m": {"data": [0.0]},
+                                "tcc": {"data": [0.0]},
+                                "rr_acc": {"data": [0.0]},
+                            }
+                        }
+                    }
+                ],
+            },
+        )
+
+        result = await zamg.get_forecast(current_only=True)
+        assert result["timestamp"] == timestamp
+
+
+@pytest.mark.asyncio
 async def test_last_update(fix_data, fix_metadata) -> None:
     """Test getting last_update."""
 

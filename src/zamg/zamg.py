@@ -91,8 +91,8 @@ class ZamgData:
                 for timestamp in timestamps
             ]
 
-            now_utc = datetime.utcnow().replace(
-                tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+            now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(
+                second=0, microsecond=0
             )
             index = next(
                 (
@@ -141,8 +141,8 @@ class ZamgData:
                 for timestamp in timestamps
             ]
 
-            now_utc = datetime.utcnow().replace(
-                tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+            now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(
+                second=0, microsecond=0
             )
             index = next(
                 (
@@ -365,6 +365,15 @@ class ZamgData:
         except (KeyError, TypeError) as exc:
             raise ZamgStationUnknownError(exc) from exc
 
+    @property
+    def get_station_location(self) -> tuple[float, float]:
+        """Return the current Station location as (lat, lon)."""
+        try:
+            lat, lon, _ = self._stations[self._station_id]
+            return (lat, lon)
+        except (KeyError, TypeError) as exc:
+            raise ZamgStationUnknownError(exc) from exc
+
     def set_default_station(self, station_id: str):
         """Set the default station_id for update()."""
         self._station_id = station_id
@@ -389,7 +398,7 @@ class ZamgData:
             return None
         if self.last_update and (
             self.last_update + timedelta(minutes=5)
-            > datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
+            > datetime.now(zoneinfo.ZoneInfo("UTC"))
         ):
             return (
                 self.data
@@ -443,12 +452,12 @@ class ZamgData:
             raise ZamgNoDataError(exc) from exc
 
     async def get_forecast(
-        self, lat_lon: str, current_only: bool = False
+        self, lat_lon: str | None = None, current_only: bool = False
     ) -> dict | None:
         """Return a list of all current observations of the default station id."""
         if self.last_forecast_update and (
             self.last_forecast_update + timedelta(minutes=5)
-            > datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
+            > datetime.now(zoneinfo.ZoneInfo("UTC"))
         ):
             if current_only:
                 return self.get_forecast_current()
@@ -465,6 +474,9 @@ class ZamgData:
                 forecast_params = (
                     self.forecast_parameters or "t2m,rr_acc,u10m,v10m,tcc,rh2m"
                 )
+                if lat_lon is None:
+                    station_lat, station_lon = self.get_station_location
+                    lat_lon = f"{station_lat},{station_lon}"
                 response = await self.session.get(
                     url=self.forecast_url + forecast_params + "&lat_lon=" + lat_lon,
                     allow_redirects=True,
@@ -477,8 +489,8 @@ class ZamgData:
 
                 self.data_forecast = json.loads(contents)
                 self._timestamp_forecast = (
-                    datetime.utcnow()
-                    .replace(tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0)
+                    datetime.now(zoneinfo.ZoneInfo("UTC"))
+                    .replace(second=0, microsecond=0)
                     .strftime("%Y-%m-%dT%H:%M%z")
                 )
                 if current_only:
