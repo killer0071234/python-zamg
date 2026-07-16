@@ -141,7 +141,9 @@ class ZamgData:
                 for timestamp in timestamps
             ]
 
-            now_utc = datetime.utcnow().replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
+            now_utc = datetime.utcnow().replace(
+                tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+            )
             index = next(
                 (
                     idx
@@ -460,10 +462,11 @@ class ZamgData:
                 self._close_session = True
 
             async with async_timeout.timeout(self.request_timeout):
+                forecast_params = (
+                    self.forecast_parameters or "t2m,rr_acc,u10m,v10m,tcc,rh2m"
+                )
                 response = await self.session.get(
-                    url=self.forecast_url + "t2m,rr_acc,u10m,v10m,tcc,rh2m"
-                    # + self.forecast_parameters
-                    + "&lat_lon=" + lat_lon,
+                    url=self.forecast_url + forecast_params + "&lat_lon=" + lat_lon,
                     allow_redirects=True,
                     headers=self.headers,
                     verify_ssl=self.verify_ssl,
@@ -473,7 +476,11 @@ class ZamgData:
                 response.close()
 
                 self.data_forecast = json.loads(contents)
-                self._timestamp_forecast = self.data_forecast.get("reference_time")
+                self._timestamp_forecast = (
+                    datetime.utcnow()
+                    .replace(tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0)
+                    .strftime("%Y-%m-%dT%H:%M%z")
+                )
                 if current_only:
                     return self.get_forecast_current()
                 return self._get_forecast_from_now()

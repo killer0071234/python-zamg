@@ -82,6 +82,6 @@ repos:
         name: 🧪 Running tests and test coverage with pytest
         language: system
         types: [python]
-        entry: poetry run pytest
+        entry: bash -c 'poetry run python -m coverage --version >/dev/null 2>&1 && poetry run python -m coverage run -m pytest && poetry run python -m coverage report -m || poetry run pytest'
         pass_filenames: false
         always_run: true

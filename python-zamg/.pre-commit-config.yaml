@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/PyCQA/bandit
+    rev: master
+    hooks:
+      - id: bandit
+        args: ["--skip", "B608,B108"]
