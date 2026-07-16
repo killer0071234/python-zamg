@@ -17,6 +17,8 @@ async def main():
             data = await zamg.closest_station(46.99, 15.499)
             # set closest station as default one to read
             zamg.set_default_station(data)
+            # print station location of the closest station
+            print("get_station_location = " + str(zamg.get_station_location))
             print("closest_station = " + str(zamg.get_station_name) + " / " + str(data))
             # print list with all possible parameters
             print(f"Possible station parameters: {zamg.get_all_parameters()}")

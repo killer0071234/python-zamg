@@ -309,6 +309,26 @@ async def test_get_station_name_unknown(fix_metadata) -> None:
 
 
 @pytest.mark.asyncio
+async def test_get_station_location(fix_metadata) -> None:
+    """Test getting get_station_location."""
+
+    zamg = ZamgData()
+    await zamg.zamg_stations()
+    zamg.set_default_station("11240")
+    assert zamg.get_station_location == (46.980555555555554, 15.44)
+
+
+@pytest.mark.asyncio
+async def test_get_station_location_unknown(fix_metadata) -> None:
+    """Test getting get_station_location."""
+
+    zamg = ZamgData()
+    await zamg.zamg_stations()
+    with pytest.raises(ZamgStationUnknownError):
+        _ = zamg.get_station_location
+
+
+@pytest.mark.asyncio
 async def test_last_update(fix_data, fix_metadata) -> None:
     """Test getting last_update."""
 

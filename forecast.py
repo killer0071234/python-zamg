@@ -13,15 +13,17 @@ async def main():
         async with src.zamg.zamg.ZamgData() as zamg:
             # option to disable verify of ssl check
             zamg.verify_ssl = False
-
-            # data = await zamg.zamg_stations()
-
+            # trying to read GeoSphere Austria station id of the closest station
+            data = await zamg.closest_station(46.99, 15.499)
+            # set closest station as default one to read
+            zamg.set_default_station(data)
             # print(f"forecast_metadata: {zamg.forecast_metadata}")
             # print(f"get_forecast_all_parameters: {zamg.get_forecast_all_parameters()}")
 
             data = await zamg.get_forecast("46.99,15.499", current_only=True)
             print(f"get_forecast(current_only=True): {data}")
-            data = await zamg.get_forecast("46.99,15.499", current_only=False)
+            # get forecast for the default station (closest station) with all parameters
+            data = await zamg.get_forecast(current_only=False)
             print(f"get_forecast(current_only=False): {data}")
 
             return
