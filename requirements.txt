@@ -11,4 +11,4 @@ tox-pip-version
 colorlog
 reorder-python-imports==3.12.0
 prettier
-aresponses==2.1.6
+aresponses==3.0.0

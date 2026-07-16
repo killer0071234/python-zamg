@@ -1,0 +1,21 @@
+tests:
+  - name: B101
+    description: "Ensure that the code does not use assert statements."
+  - name: B102
+    description: "Check for the use of exec."
+  - name: B103
+    description: "Check for the use of eval."
+  - name: B104
+    description: "Check for the use of subprocess."
+  - name: B105
+    description: "Check for hardcoded passwords."
+  - name: B106
+    description: "Check for the use of insecure functions."
+  - name: B107
+    description: "Check for the use of insecure random number generators."
+  - name: B109
+    description: "Check for the use of weak cryptographic algorithms."
+  - name: B110
+    description: "Check for the use of insecure URL handling."
+  - name: B111
+    description: "Check for the use of insecure file handling."

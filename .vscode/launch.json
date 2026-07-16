@@ -6,16 +6,24 @@
   "configurations": [
     {
       "name":"Python: Current File",
-      "type":"python",
+      "type":"debugpy",
       "request":"launch",
       "module":"${file}",
       "console":"integratedTerminal"
     },
     {
       "name": "Python: Run (control.py)",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "control",
+      "justMyCode": false,
+      "args": ["--debug", "-c", "config"]
+    },
+    {
+      "name": "Python: Run (forecast_test.py)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "forecast_test",
       "justMyCode": false,
       "args": ["--debug", "-c", "config"]
     },

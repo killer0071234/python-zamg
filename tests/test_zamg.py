@@ -2,15 +2,18 @@
 import json
 import pathlib
 import zoneinfo
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import aiohttp
 import pytest
-from aiohttp.client_exceptions import ClientConnectorError
-from src.zamg.exceptions import ZamgApiError
-from src.zamg.exceptions import ZamgNoDataError
-from src.zamg.exceptions import ZamgStationNotFoundError
-from src.zamg.exceptions import ZamgStationUnknownError
+from aiohttp.client_exceptions import ServerTimeoutError
+
+from src.zamg.exceptions import (
+    ZamgApiError,
+    ZamgNoDataError,
+    ZamgStationNotFoundError,
+    ZamgStationUnknownError,
+)
 from src.zamg.zamg import ZamgData
 
 
@@ -182,11 +185,14 @@ async def test_properties_fail_1(aresponses) -> None:
 
 
 @pytest.mark.asyncio
-async def test_properties_fail_2(aresponses) -> None:
+async def test_properties_fail_2() -> None:
     """Test getting properties."""
-    aresponses.side_effect = ClientConnectorError
 
-    zamg = ZamgData(session=aiohttp.client.ClientSession())
+    class TimeoutSession:
+        async def get(self, **_kwargs):
+            raise ServerTimeoutError()
+
+    zamg = ZamgData(session=TimeoutSession())
     with pytest.raises(ZamgApiError):
         await zamg.zamg_stations()
 
@@ -329,6 +335,98 @@ def test_last_update_unknown() -> None:
     zamg = ZamgData()
     update = zamg.last_update
     assert update is None
+
+
+def test_get_forecast_current() -> None:
+    """Test extracting current forecast values."""
+
+    zamg = ZamgData()
+    now_utc = datetime.utcnow().replace(
+        tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+    )
+    timestamps = [
+        (now_utc - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M%z"),
+        (now_utc + timedelta(minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),
+        (now_utc + timedelta(hours=1, minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),
+    ]
+    forecast_data = {
+        "reference_time": now_utc.strftime("%Y-%m-%dT%H:%M%z"),
+        "timestamps": timestamps,
+        "features": [
+            {
+                "properties": {
+                    "parameters": {
+                        "t2m": {"data": [10.0, 11.0, 12.0]},
+                        "rh2m": {"data": [80.0, 81.0, 82.0]},
+                        "u10m": {"data": [1.0, 2.0, 3.0]},
+                        "v10m": {"data": [4.0, 5.0, 6.0]},
+                        "tcc": {"data": [0.1, 0.2, 0.3]},
+                        "rr_acc": {"data": [0.5, 0.9, 1.4]},
+                    }
+                }
+            }
+        ],
+    }
+
+    result = zamg.get_forecast_current(forecast_data)
+
+    assert result["timestamp"] == timestamps[1]
+    assert result["t2m"] == 11.0
+    assert result["rh2m"] == 81.0
+    assert result["u10m"] == 2.0
+    assert result["v10m"] == 5.0
+    assert result["rain"] == 0.4
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_trims_past_data() -> None:
+    """Test get_forecast returns only timestamps from now onward."""
+
+    zamg = ZamgData()
+    now_utc = datetime.utcnow().replace(
+        tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+    )
+    timestamps = [
+        (now_utc - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M%z"),
+        (now_utc + timedelta(minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),
+        (now_utc + timedelta(hours=1, minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),
+    ]
+
+    zamg.data_forecast = {
+        "reference_time": now_utc.strftime("%Y-%m-%dT%H:%M%z"),
+        "timestamps": timestamps,
+        "features": [
+            {
+                "properties": {
+                    "parameters": {
+                        "t2m": {"data": [10.0, 11.0, 12.0]},
+                        "rh2m": {"data": [80.0, 81.0, 82.0]},
+                        "u10m": {"data": [1.0, 2.0, 3.0]},
+                        "v10m": {"data": [4.0, 5.0, 6.0]},
+                        "tcc": {"data": [0.1, 0.2, 0.3]},
+                        "rr_acc": {"data": [0.5, 0.9, 1.4]},
+                    }
+                }
+            }
+        ],
+    }
+    zamg._timestamp_forecast = now_utc.strftime("%Y-%m-%dT%H:%M%z")
+
+    result = await zamg.get_forecast("46.99,15.499", current_only=False)
+
+    assert result["timestamps"] == timestamps[1:]
+    assert result["features"][0]["properties"]["parameters"]["t2m"]["data"] == [
+        11.0,
+        12.0,
+    ]
+    assert result["features"][0]["properties"]["parameters"]["rain"]["data"] == [
+        0.4,
+        0.5,
+    ]
+    assert result["features"][0]["properties"]["parameters"]["wind_speed"]["data"] == [
+        19.4,
+        24.1,
+    ]
 
 
 @pytest.fixture

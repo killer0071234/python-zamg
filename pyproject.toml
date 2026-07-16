@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zamg"
-version = "0.3.6"
+version = "0.4.0"
 description = "Asynchronous Python client for GeoSphere Austria (ZAMG) weather data."
 authors = ["Daniel Gangl <killer007@gmx.at>"]
 maintainers = ["Daniel Gangl <killer007@gmx.at>"]
@@ -15,10 +15,10 @@ classifiers = [
   "Framework :: AsyncIO",
   "Intended Audience :: Developers",
   "Natural Language :: English",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -31,7 +31,7 @@ python = "^3.8"
 aiohttp = ">=3.8.0"
 async-timeout = "^4.0.3"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 aresponses = "^3.0.0"
 black = "^23.12"
 blacken-docs = "^1.12.1"
@@ -89,7 +89,7 @@ multi_line_output = 3
 # free to run mypy on Windows, Linux, or macOS and get consistent
 # results.
 platform = "linux"
-python_version = 3.11
+python_version = 3.14
 
 # flake8-mypy expects the two following for sensible formatting
 show_column_numbers = true
@@ -168,7 +168,7 @@ max-line-length=88
 max-attributes=20
 
 [tool.pytest.ini_options]
-addopts = " --cov=src/. --cov-report=term-missing"
+addopts = ""
 
 [tool.vulture]
 min_confidence = 80

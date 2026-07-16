@@ -2,13 +2,14 @@
 
 __version__ = "0.3.6"
 
-from .exceptions import ZamgApiError
-from .exceptions import ZamgError
-from .exceptions import ZamgNoDataError
-from .exceptions import ZamgStationNotFoundError
-from .exceptions import ZamgStationUnknownError
+from .exceptions import (
+    ZamgApiError,
+    ZamgError,
+    ZamgNoDataError,
+    ZamgStationNotFoundError,
+    ZamgStationUnknownError,
+)
 from .zamg import ZamgData
-
 
 __all__ = [
     "ZamgApiError",

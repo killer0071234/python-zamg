@@ -42,7 +42,7 @@ async def main():
         async with src.zamg.zamg.ZamgData() as zamg:
             # option to disable verify of ssl check
             zamg.verify_ssl = False
-            # trying to read zamg station id of the closest station
+            # trying to read GeoSphere Austria station id of the closest station
             data = await zamg.closest_station(46.99, 15.499)
             # set closest station as default one to read
             zamg.set_default_station(data)
@@ -69,7 +69,7 @@ async def main():
                     + str(zamg.get_data(parameter=param, data_type="unit"))
                 )
             print("last update: %s", zamg.last_update)
-    except (ZamgError) as exc:
+    except ZamgError as exc:
         print(exc)
 
 
