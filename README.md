@@ -71,7 +71,7 @@ async def main():
                     + " "
                     + str(zamg_instance.get_data(parameter=param, data_type="unit"))
                 )
-            print("last update: %s", zamg_instance.last_update)
+print(f"last update: {zamg_instance.last_update}")
     except ZamgError as exc:
         print(exc)
 
