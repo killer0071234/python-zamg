@@ -10,38 +10,45 @@ from src.zamg.exceptions import ZamgError
 async def main():
     """Sample of getting data"""
     try:
-        async with src.zamg.zamg.ZamgData() as zamg:
+        async with src.zamg.zamg.ZamgData() as zamg_instance:
             # option to disable verify of ssl check
-            zamg.verify_ssl = False
+            zamg_instance.verify_ssl = False
             # trying to read GeoSphere Austria station id of the closest station
-            data = await zamg.closest_station(46.99, 15.499)
+            data = await zamg_instance.closest_station(46.99, 15.499)
             # set closest station as default one to read
-            zamg.set_default_station(data)
+            zamg_instance.set_default_station(data)
             # print station location of the closest station
-            print("get_station_location = " + str(zamg.get_station_location))
-            print("closest_station = " + str(zamg.get_station_name) + " / " + str(data))
+            print("get_station_location = " + str(zamg_instance.get_station_location))
+            print(
+                "closest_station = "
+                + str(zamg_instance.get_station_name)
+                + " / "
+                + str(data)
+            )
             # print list with all possible parameters
-            print(f"Possible station parameters: {zamg.get_all_parameters()}")
+            print(f"Possible station parameters: {zamg_instance.get_all_parameters()}")
             # set parameters directly
-            zamg.station_parameters = "TL,SO"
+            zamg_instance.station_parameters = "TL,SO"
             # or set parameters as list
-            zamg.set_parameters(("TL", "SO"))
+            zamg_instance.set_parameters(("TL", "SO"))
             # if none of the above parameters are set, all possible parameters are read
             # do an update
-            await zamg.update()
+            await zamg_instance.update()
 
-            print(f"---------- Weather for station {zamg.get_station_name} ({data})")
-            for param in zamg.get_parameters():
+            print(
+                f"---------- Weather for station {zamg_instance.get_station_name} ({data})"
+            )
+            for param in zamg_instance.get_parameters():
                 print(
                     str(param)
                     + " -> "
-                    + str(zamg.get_data(parameter=param, data_type="name"))
+                    + str(zamg_instance.get_data(parameter=param, data_type="name"))
                     + " -> "
-                    + str(zamg.get_data(parameter=param))
+                    + str(zamg_instance.get_data(parameter=param))
                     + " "
-                    + str(zamg.get_data(parameter=param, data_type="unit"))
+                    + str(zamg_instance.get_data(parameter=param, data_type="unit"))
                 )
-            print("last update: %s", zamg.last_update)
+            print(f"last update: {zamg_instance.last_update}")
     except ZamgError as exc:
         print(exc)
 
