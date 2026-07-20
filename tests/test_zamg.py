@@ -441,6 +441,8 @@ def test_get_forecast_current() -> None:
     assert result["u10m"] == 2.0
     assert result["v10m"] == 5.0
     assert result["rain"] == 0.4
+    assert result["tcc"] == 0.2
+    assert result["sy"] == 2.0
 
 
 @pytest.mark.asyncio
@@ -469,6 +471,7 @@ async def test_get_forecast_trims_past_data() -> None:
                         "u10m": {"data": [1.0, 2.0, 3.0]},
                         "v10m": {"data": [4.0, 5.0, 6.0]},
                         "tcc": {"data": [0.1, 0.2, 0.3]},
+                        "sy": {"data": [1.0, 2.0, 3.0]},
                         "rr_acc": {"data": [0.5, 0.9, 1.4]},
                     }
                 }
@@ -492,6 +495,11 @@ async def test_get_forecast_trims_past_data() -> None:
         19.4,
         24.1,
     ]
+    assert result["features"][0]["properties"]["parameters"]["tcc"]["data"] == [
+        0.2,
+        0.3,
+    ]
+    assert result["features"][0]["properties"]["parameters"]["sy"]["data"] == [2.0, 3.0]
 
 
 @pytest.fixture
