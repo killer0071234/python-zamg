@@ -33,14 +33,14 @@ Simple usage example to fetch specific data from the closest station.
 
 import asyncio
 
-import src.zamg.zamg
-from src.zamg.exceptions import ZamgError
+import zamg.zamg
+from zamg.exceptions import ZamgError
 
 
 async def main():
     """Sample of getting data"""
     try:
-        async with src.zamg.zamg.ZamgData() as zamg_instance:
+        async with zamg.ZamgData() as zamg_instance:
             # option to disable verify of ssl check
             zamg_instance.verify_ssl = False
             # trying to read GeoSphere Austria station id of the closest station
@@ -88,14 +88,14 @@ Simple usage example to fetch weather forecast for a specific location.
 
 import asyncio
 
-import src.zamg.zamg
-from src.zamg.exceptions import ZamgError
+import zamg.zamg
+from zamg.exceptions import ZamgError
 
 
 async def main():
     """Sample of getting data"""
     try:
-        async with src.zamg.zamg.ZamgData() as zamg_instance:
+        async with zamg.zamg.ZamgData() as zamg_instance:
             # option to disable verify of ssl check
             zamg_instance.verify_ssl = False
             # trying to read GeoSphere Austria station id of the closest station
