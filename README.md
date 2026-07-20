@@ -30,6 +30,7 @@ Simple usage example to fetch specific data from the closest station.
 
 ```python
 """Asynchronous Python client for GeoSphere Austria weather data."""
+
 import asyncio
 
 import src.zamg.zamg
@@ -39,36 +40,77 @@ from src.zamg.exceptions import ZamgError
 async def main():
     """Sample of getting data"""
     try:
-        async with src.zamg.zamg.ZamgData() as zamg:
+        async with src.zamg.zamg.ZamgData() as zamg_instance:
             # option to disable verify of ssl check
-            zamg.verify_ssl = False
+            zamg_instance.verify_ssl = False
             # trying to read GeoSphere Austria station id of the closest station
-            data = await zamg.closest_station(46.99, 15.499)
+            data = await zamg_instance.closest_station(46.99, 15.499)
             # set closest station as default one to read
-            zamg.set_default_station(data)
-            print("closest_station = " + str(zamg.get_station_name) + " / " + str(data))
+            zamg_instance.set_default_station(data)
+            # print station location of the closest station
+            print("get_station_location = " + str(zamg_instance.get_station_location))
+            print("closest_station = " + str(zamg_instance.get_station_name) + " / " + str(data))
             # print list with all possible parameters
-            print(f"Possible station parameters: {zamg.get_all_parameters()}")
+            print(f"Possible station parameters: {zamg_instance.get_all_parameters()}")
             # set parameters directly
-            zamg.station_parameters = "TL,SO"
+            zamg_instance.station_parameters = "TL,SO"
             # or set parameters as list
-            zamg.set_parameters(("TL", "SO"))
+            zamg_instance.set_parameters(("TL", "SO"))
             # if none of the above parameters are set, all possible parameters are read
             # do an update
-            await zamg.update()
+            await zamg_instance.update()
 
-            print(f"---------- Weather for station {zamg.get_station_name} ({data})")
-            for param in zamg.get_parameters():
+            print(f"---------- Weather for station {zamg_instance.get_station_name} ({data})")
+            for param in zamg_instance.get_parameters():
                 print(
                     str(param)
                     + " -> "
-                    + str(zamg.get_data(parameter=param, data_type="name"))
+                    + str(zamg_instance.get_data(parameter=param, data_type="name"))
                     + " -> "
-                    + str(zamg.get_data(parameter=param))
+                    + str(zamg_instance.get_data(parameter=param))
                     + " "
-                    + str(zamg.get_data(parameter=param, data_type="unit"))
+                    + str(zamg_instance.get_data(parameter=param, data_type="unit"))
                 )
-            print("last update: %s", zamg.last_update)
+            print("last update: %s", zamg_instance.last_update)
+    except ZamgError as exc:
+        print(exc)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+
+Simple usage example to fetch weather forecast for a specific location.
+
+```python
+"""Asynchronous Python client for GeoSphere Austria forecast weather data."""
+
+import asyncio
+
+import src.zamg.zamg
+from src.zamg.exceptions import ZamgError
+
+
+async def main():
+    """Sample of getting data"""
+    try:
+        async with src.zamg.zamg.ZamgData() as zamg_instance:
+            # option to disable verify of ssl check
+            zamg_instance.verify_ssl = False
+            # trying to read GeoSphere Austria station id of the closest station
+            data = await zamg_instance.closest_station(46.99, 15.499)
+            # set closest station as default one to read
+            zamg_instance.set_default_station(data)
+            # print(f"forecast_metadata: {zamg_instance.forecast_metadata}")
+            # print(f"get_forecast_all_parameters: {zamg_instance.get_forecast_all_parameters()}")
+
+            data = await zamg_instance.get_forecast("46.99,15.499", current_only=True)
+            print(f"get_forecast(current_only=True): {data}")
+            # get forecast for the default station (closest station) with all parameters
+            data = await zamg_instance.get_forecast(current_only=False)
+            print(f"get_forecast(current_only=False): {data}")
+
     except ZamgError as exc:
         print(exc)
 
