@@ -77,7 +77,15 @@ class ZamgData:
     def get_forecast_current(
         self,
         forecast_data: dict | None = None,
-        parameters: tuple[str, ...] = ("t2m", "rh2m", "u10m", "v10m", "tcc", "rr_acc"),
+        parameters: tuple[str, ...] = (
+            "t2m",
+            "rh2m",
+            "u10m",
+            "v10m",
+            "tcc",
+            "sy",
+            "rr_acc",
+        ),
     ) -> dict:
         """Return selected forecast parameters for the current/next timestamp.
 
@@ -472,7 +480,7 @@ class ZamgData:
 
             async with async_timeout.timeout(self.request_timeout):
                 forecast_params = (
-                    self.forecast_parameters or "t2m,rr_acc,u10m,v10m,tcc,rh2m"
+                    self.forecast_parameters or "t2m,rr_acc,u10m,v10m,tcc,sy,rh2m"
                 )
                 if lat_lon is None:
                     station_lat, station_lon = self.get_station_location

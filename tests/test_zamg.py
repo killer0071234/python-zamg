@@ -359,6 +359,7 @@ async def test_get_forecast_uses_station_location(aresponses) -> None:
                                 "u10m": {"data": [0.0]},
                                 "v10m": {"data": [0.0]},
                                 "tcc": {"data": [0.0]},
+                                "sy": {"data": [0.0]},
                                 "rr_acc": {"data": [0.0]},
                             }
                         }
@@ -424,6 +425,7 @@ def test_get_forecast_current() -> None:
                         "u10m": {"data": [1.0, 2.0, 3.0]},
                         "v10m": {"data": [4.0, 5.0, 6.0]},
                         "tcc": {"data": [0.1, 0.2, 0.3]},
+                        "sy": {"data": [1.0, 2.0, 3.0]},
                         "rr_acc": {"data": [0.5, 0.9, 1.4]},
                     }
                 }
