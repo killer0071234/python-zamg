@@ -22,6 +22,7 @@ from .exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from .symbols import symbol_to_condition, symbol_to_text
 
 CLIENT_AGENT = f"Python/{version_info[0]}.{version_info[1]} +https://github.com/killer0071234/python-zamg python-zamg/{__version__}"
 
@@ -134,6 +135,11 @@ class ZamgData:
                 (u10m**2 + v10m**2) ** 0.5 * 3.6, 1
             )  # Convert from m/s to km/h
             result["wind_speed"] = wind_speed
+            # Translate the weather symbol into a description and condition.
+            if "sy" in forecast_parameters:
+                symbol = forecast_parameters["sy"]["data"][index]
+                result["sy_text"] = symbol_to_text(symbol)
+                result["condition"] = symbol_to_condition(symbol)
 
             return result
         except (TypeError, ValueError, KeyError, IndexError) as exc:
@@ -202,6 +208,20 @@ class ZamgData:
                     "unit": "km h-1",
                     "data": wind_speed_data,
                 }
+
+                # Translate the weather symbol into descriptions and conditions.
+                if "sy" in parameters:
+                    sy_data = parameters["sy"]["data"][index:]
+                    trimmed_parameters["sy_text"] = {
+                        "name": "weather symbol text",
+                        "unit": None,
+                        "data": [symbol_to_text(symbol) for symbol in sy_data],
+                    }
+                    trimmed_parameters["condition"] = {
+                        "name": "weather condition",
+                        "unit": None,
+                        "data": [symbol_to_condition(symbol) for symbol in sy_data],
+                    }
 
                 properties["parameters"] = trimmed_parameters
                 trimmed_feature["properties"] = properties

@@ -9,6 +9,13 @@ from .exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from .symbols import (
+    SYMBOL_CONDITION,
+    SYMBOL_TEXT_DE,
+    SYMBOL_TEXT_EN,
+    symbol_to_condition,
+    symbol_to_text,
+)
 from .zamg import ZamgData
 
 __all__ = [
@@ -18,4 +25,9 @@ __all__ = [
     "ZamgStationNotFoundError",
     "ZamgStationUnknownError",
     "ZamgData",
+    "SYMBOL_CONDITION",
+    "SYMBOL_TEXT_DE",
+    "SYMBOL_TEXT_EN",
+    "symbol_to_condition",
+    "symbol_to_text",
 ]

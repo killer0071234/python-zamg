@@ -120,6 +120,22 @@ if __name__ == "__main__":
 
 ```
 
+The forecast contains the GeoSphere Austria weather symbol (`sy` parameter)
+as a numeric code. It is automatically translated into a textual description
+(`sy_text`) and a [Home Assistant weather condition](https://www.home-assistant.io/integrations/weather/#condition-mapping)
+(`condition`). The translation helpers can also be used directly:
+
+```python
+from zamg import symbol_to_condition, symbol_to_text
+
+print(symbol_to_text(3))  # "Partly cloudy"
+print(symbol_to_text(3, lang="de"))  # "Wolkig"
+print(symbol_to_condition(3))  # "partlycloudy"
+```
+
+The official (German) symbol code list is documented in
+[Geosphere-Austria/dataset-api-docs#30](https://github.com/Geosphere-Austria/dataset-api-docs/issues/30).
+
 ## Contributions are welcome!
 
 If you want to contribute to this please read the [Contribution guidelines](https://github.com/killer0071234/python-zamg/blob/master/CONTRIBUTING.md)

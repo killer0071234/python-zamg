@@ -14,6 +14,7 @@ from src.zamg.exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from src.zamg.symbols import symbol_to_condition, symbol_to_text
 from src.zamg.zamg import ZamgData
 
 
@@ -443,6 +444,8 @@ def test_get_forecast_current() -> None:
     assert result["rain"] == 0.4
     assert result["tcc"] == 0.2
     assert result["sy"] == 2.0
+    assert result["sy_text"] == "Mostly clear"
+    assert result["condition"] == "sunny"
 
 
 @pytest.mark.asyncio
@@ -500,6 +503,42 @@ async def test_get_forecast_trims_past_data() -> None:
         0.3,
     ]
     assert result["features"][0]["properties"]["parameters"]["sy"]["data"] == [2.0, 3.0]
+    assert result["features"][0]["properties"]["parameters"]["sy_text"]["data"] == [
+        "Mostly clear",
+        "Partly cloudy",
+    ]
+    assert result["features"][0]["properties"]["parameters"]["condition"]["data"] == [
+        "sunny",
+        "partlycloudy",
+    ]
+
+
+def test_symbol_to_text() -> None:
+    """Test translating weather symbol codes to descriptions."""
+
+    assert symbol_to_text(1) == "Clear"
+    assert symbol_to_text(26.0) == "Thunderstorm"
+    assert symbol_to_text(32) == "Heavy thunderstorm with snowfall"
+    assert symbol_to_text(1, lang="de") == "Wolkenlos"
+    assert symbol_to_text(26.0, lang="de") == "Gewitter"
+    assert symbol_to_text(None) is None
+    assert symbol_to_text(0) is None
+    assert symbol_to_text(33) is None
+
+
+def test_symbol_to_condition() -> None:
+    """Test translating weather symbol codes to weather conditions."""
+
+    assert symbol_to_condition(1) == "sunny"
+    assert symbol_to_condition(3) == "partlycloudy"
+    assert symbol_to_condition(6.0) == "fog"
+    assert symbol_to_condition(10) == "pouring"
+    assert symbol_to_condition(16) == "snowy"
+    assert symbol_to_condition(20) == "snowy-rainy"
+    assert symbol_to_condition(28) == "lightning-rainy"
+    assert symbol_to_condition(None) is None
+    assert symbol_to_condition(0) is None
+    assert symbol_to_condition(33) is None
 
 
 @pytest.fixture
