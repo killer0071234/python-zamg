@@ -80,12 +80,13 @@ jobs:
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Run pytest
-        run: poetry run pytest --cov cybro tests
+        run: poetry run pytest --cov src.zamg tests
       - name: ⬆️ Upload coverage artifact
         uses: actions/upload-artifact@v7
         with:
           name: coverage-${{ matrix.python }}
           path: .coverage
+          include-hidden-files: true
 
   coverage:
     runs-on: ubuntu-latest
