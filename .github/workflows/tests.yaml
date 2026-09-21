@@ -33,7 +33,7 @@ jobs:
 
       - name: Install Python modules
         run: |
-          pip install --constraint=.github/workflows/constraints.txt pre-commit black flake8 reorder-python-imports poetry pytest pytest-asyncio pytest-cov aiohttp async_timeout yarl xmltodict numpy cachetools backoff aresponses
+          pip install --constraint=.github/workflows/constraints.txt pre-commit black isort flake8 reorder-python-imports poetry pytest pytest-asyncio pytest-cov aiohttp async_timeout yarl xmltodict numpy cachetools backoff aresponses
 
       - name: Run pre-commit on all files
         run: |
@@ -80,12 +80,13 @@ jobs:
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Run pytest
-        run: poetry run pytest --cov cybro tests
+        run: poetry run pytest --cov src.zamg tests
       - name: ⬆️ Upload coverage artifact
         uses: actions/upload-artifact@v7
         with:
           name: coverage-${{ matrix.python }}
           path: .coverage
+          include-hidden-files: true
 
   coverage:
     runs-on: ubuntu-latest
