@@ -41,5 +41,5 @@ types-python-slugify==8.0.2.20240310
 types-pytz==2023.3.1.1
 types-PyYAML==6.0.12.20260906
 types-requests==2.33.0.20260712
-types-toml==0.10.8.7
+types-toml==0.10.8.20260518
 types-ujson==5.10.0.20250822
