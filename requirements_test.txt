@@ -18,7 +18,7 @@ aresponses==3.0.0
 pytest-asyncio
 pytest-cov==4.1.0
 pytest-freezegun==0.4.2
-pytest-socket==0.6.0
+pytest-socket==0.8.1
 pytest-test-groups==1.0.3
 pytest-sugar==1.0.0
 pytest-timeout==2.4.0
