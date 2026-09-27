@@ -37,10 +37,8 @@ async def test_update_twice(fix_data, fix_metadata) -> None:
     zamg = ZamgData()
     zamg.set_default_station("11240")
     await zamg.update()
-    zamg._timestamp = (
-        datetime.utcnow()
-        .replace(tzinfo=zoneinfo.ZoneInfo("UTC"))
-        .strftime("%Y-%m-%dT%H:%M%z")
+    zamg._timestamp = datetime.now(zoneinfo.ZoneInfo("UTC")).strftime(
+        "%Y-%m-%dT%H:%M%z"
     )
     await zamg.update()
     # picking few values to compare
@@ -339,8 +337,8 @@ async def test_get_forecast_uses_station_location(aresponses) -> None:
         }
         zamg.set_default_station("11240")
 
-        now_utc = datetime.utcnow().replace(
-            tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
+        now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(
+            second=0, microsecond=0
         )
         timestamp = now_utc.strftime("%Y-%m-%dT%H:%M%z")
 
@@ -406,9 +404,7 @@ def test_get_forecast_current() -> None:
     """Test extracting current forecast values."""
 
     zamg = ZamgData()
-    now_utc = datetime.utcnow().replace(
-        tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
-    )
+    now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(second=0, microsecond=0)
     timestamps = [
         (now_utc - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M%z"),
         (now_utc + timedelta(minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),
@@ -453,9 +449,7 @@ async def test_get_forecast_trims_past_data() -> None:
     """Test get_forecast returns only timestamps from now onward."""
 
     zamg = ZamgData()
-    now_utc = datetime.utcnow().replace(
-        tzinfo=zoneinfo.ZoneInfo("UTC"), second=0, microsecond=0
-    )
+    now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(second=0, microsecond=0)
     timestamps = [
         (now_utc - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M%z"),
         (now_utc + timedelta(minutes=1)).strftime("%Y-%m-%dT%H:%M%z"),

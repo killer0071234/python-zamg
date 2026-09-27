@@ -43,8 +43,9 @@ jobs:
     name: Python ${{ matrix.python }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python: ["3.9", "3.10", "3.11"]
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v7
@@ -56,7 +57,7 @@ jobs:
       - name: 🏗 Get pip cache dir
         id: pip-cache
         run: |
-          echo "::set-output name=dir::$(pip cache dir)"
+          echo "dir=$(pip cache dir)" >> "$GITHUB_OUTPUT"
       - name: ⤵️ Restore cached Python PIP packages
         uses: actions/cache@v6
         with:
@@ -104,7 +105,7 @@ jobs:
       - name: 🏗 Get pip cache dir
         id: pip-cache
         run: |
-          echo "::set-output name=dir::$(pip cache dir)"
+          echo "dir=$(pip cache dir)" >> "$GITHUB_OUTPUT"
       - name: ⤵️ Restore cached Python PIP packages
         uses: actions/cache@v6
         with:
