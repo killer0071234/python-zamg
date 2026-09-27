@@ -140,6 +140,18 @@ The official (German) symbol code list is documented in
 
 If you want to contribute to this please read the [Contribution guidelines](https://github.com/killer0071234/python-zamg/blob/master/CONTRIBUTING.md)
 
+## Contributors
+
+Thanks to everyone who has contributed to this project:
+
+- [Daniel Gangl (@killer0071234)](https://github.com/killer0071234) – maintainer
+- [Tim-Matthias Klecka (@tklecka)](https://github.com/tklecka)
+- [Daniel Lang (@dlang-geosphereat)](https://github.com/dlang-geosphereat)
+- [Felix Hochgruber (@felix-hoc)](https://github.com/felix-hoc)
+- [Marc Mueller (@cdce8p)](https://github.com/cdce8p)
+
+See the full list on the [contributors page](https://github.com/killer0071234/python-zamg/graphs/contributors).
+
 ## Credits
 
 Code template to read dataset API was mainly taken from [@LuisTheOne](https://github.com/LuisThe0ne)'s [zamg-api-cli-client][zamg_api_cli_client]
