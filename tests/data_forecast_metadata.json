@@ -1,0 +1,141 @@
+{
+  "title": "numerical weather prediction",
+  "parameters": [
+    {
+      "name": "cape",
+      "long_name": "Convective available potential energy",
+      "desc": "Convectively available potential energy",
+      "unit": "m2 s-2"
+    },
+    {
+      "name": "cin",
+      "long_name": "Convective inhibition",
+      "desc": "Convective inhibition",
+      "unit": "J kg-1"
+    },
+    {
+      "name": "grad",
+      "long_name": "surface global radiation",
+      "desc": "Surface downwelling shortwave is the sum of direct and diffuse solar radiation incident on the surface, and is sometimes called global radiation",
+      "unit": "Ws m-2"
+    },
+    {
+      "name": "mnt2m",
+      "long_name": "minimum 2m temperature in the last forecast period",
+      "desc": "Minimum 2m temperature in the last forecast intervall",
+      "unit": "degree Celsius"
+    },
+    {
+      "name": "mxt2m",
+      "long_name": "maximum 2m temperature in the last forecast period",
+      "desc": "Maximum 2m temperature in the last forecast intervall",
+      "unit": "degree Celsius"
+    },
+    {
+      "name": "rain_acc",
+      "long_name": "total rainfall amount",
+      "desc": "Accumulated total amount of rainfall since start of the forecast",
+      "unit": "kg m-2"
+    },
+    {
+      "name": "rh2m",
+      "long_name": "relative humidity 2m above ground",
+      "desc": "relative humidity 2m above ground",
+      "unit": "%"
+    },
+    {
+      "name": "rr_acc",
+      "long_name": "total precipitation amount",
+      "desc": "Accumulated total amount of liquid and solid precipitation since start of the forecast",
+      "unit": "kg m-2"
+    },
+    {
+      "name": "snow_acc",
+      "long_name": "total snowfall amount",
+      "desc": "Total snowfall amount since start of forecast",
+      "unit": "kg m-2"
+    },
+    {
+      "name": "snowlmt",
+      "long_name": "snowlimit",
+      "desc": "Height above ground where falling snow melts",
+      "unit": "m"
+    },
+    {
+      "name": "sp",
+      "long_name": "surface pressure",
+      "desc": "surface pressure",
+      "unit": "Pa"
+    },
+    {
+      "name": "sundur_acc",
+      "long_name": "sunshine duration accumulated",
+      "desc": "sunshine duration since forecast start",
+      "unit": "s"
+    },
+    {
+      "name": "sy",
+      "long_name": "weather symbol",
+      "desc": "Codes for GeoSphere Austria weather symbol.",
+      "unit": "1"
+    },
+    {
+      "name": "t2m",
+      "long_name": "2m temperature",
+      "desc": "air temperature 2m above ground",
+      "unit": "degree Celsius"
+    },
+    {
+      "name": "tcc",
+      "long_name": "Total cloud cover",
+      "desc": "total cloud cover",
+      "unit": "1"
+    },
+    {
+      "name": "u10m",
+      "long_name": "10m wind speed in eastward direction",
+      "desc": "wind speed in eastward direction",
+      "unit": "m s-1"
+    },
+    {
+      "name": "ugust",
+      "long_name": "u component of maximum wind gust",
+      "desc": "U component of maximum wind gust in the last forecast intervall",
+      "unit": "m s-1"
+    },
+    {
+      "name": "v10m",
+      "long_name": "10m wind speed in northward direction",
+      "desc": "wind speed in northward direction 10m above ground",
+      "unit": "m s-1"
+    },
+    {
+      "name": "vgust",
+      "long_name": "v compoment of maximum wind gust",
+      "desc": "V component of maximum wind gust in the last forecast intervall",
+      "unit": "m s-1"
+    }
+  ],
+  "frequency": "1H",
+  "type": "grid",
+  "mode": "forecast",
+  "response_formats": ["geojson", "netcdf"],
+  "last_forecast_reftime": "2026-09-27T06:00+00:00",
+  "max_forecast_offset": 5,
+  "available_forecast_reftimes": [
+    "2026-09-27T06:00+00:00",
+    "2026-09-27T03:00+00:00",
+    "2026-09-27T00:00+00:00",
+    "2026-09-26T21:00+00:00",
+    "2026-09-26T18:00+00:00",
+    "2026-09-26T15:00+00:00"
+  ],
+  "forecast_length": 61,
+  "bbox": [42.981, 5.498, 51.81900000000034, 22.10199999999975],
+  "bbox_outer": [42.972, 5.484, 51.82800000000034, 22.11599999999975],
+  "spatial_resolution": [0.028, 0.018],
+  "spatial_resolution_unit": "deg",
+  "spatial_resolution_m": 2500,
+  "crs": "EPSG:4326",
+  "grid_bounds": [42.981, 5.498, 51.81900000000034, 22.10199999999975]
+}

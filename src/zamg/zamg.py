@@ -62,6 +62,8 @@ class ZamgData:
     _station_id: str = ""
     _all_station_parameters: str | None = None
     """Comma separated list of all possible station parameters."""
+    _all_forecast_parameters: str | None = None
+    """Comma separated list of all possible forecast parameters."""
     _stations: tuple | None = None
 
     def __init__(
@@ -359,10 +361,7 @@ class ZamgData:
 
     def set_parameters(self, param: list[str]) -> None:
         """Set the list of parameters to read with uodate() function from GeoSphere Austria."""
-        station_parameters = ""
-        for parameter in param:
-            station_parameters += parameter + ","
-        self.station_parameters = station_parameters.rstrip(station_parameters[-1])
+        self.station_parameters = ",".join(param)
 
     def get_forecast_all_parameters(self) -> list[str]:
         """Get a list of all possible Parameters which can be read from GeoSphere Austria."""
@@ -379,10 +378,7 @@ class ZamgData:
 
     def set_forecast_parameters(self, param: list[str]) -> None:
         """Set the list of parameters to read with uodate() function from GeoSphere Austria."""
-        forecast_parameters = ""
-        for parameter in param:
-            forecast_parameters += parameter + ","
-        self.forecast_parameters = forecast_parameters.rstrip(forecast_parameters[-1])
+        self.forecast_parameters = ",".join(param)
 
     @property
     def get_station_name(self) -> str:
