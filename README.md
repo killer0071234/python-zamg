@@ -10,11 +10,13 @@
 
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-Python library to read 10 min weather data from GeoSphere Austria former ZAMG
+Python library for GeoSphere Austria station observations and coordinate-based
+numerical weather prediction forecasts.
 
 ## About
 
-This package allows you to read the weather data from weather stations of GeoSphere Austria weather service.
+This package reads weather-station observations and independent NWP forecasts
+from the GeoSphere Austria weather service.
 GeoSphere Austria joins Zentralanstalt für Meteorologie und Geodynamik (ZAMG) and the Geologische Bundesanstalt (GBA)
 since 1st January 2023.
 
@@ -25,6 +27,61 @@ pip install zamg
 ```
 
 ## Usage
+
+### NWP v2 forecast
+
+Use `NwpClient` for an independent coordinate-based hourly forecast. It uses
+GeoSphere Austria's `nwp-v2-1h-1km` model and does not select or request a
+weather station.
+
+```python
+import asyncio
+
+from zamg import NwpClient
+
+
+async def main():
+    async with NwpClient() as client:
+        forecast = await client.get_forecast(
+            latitude=48.2082,
+            longitude=16.3738,
+        )
+
+    print(forecast.reference_time)
+    print(forecast.resolved_latitude, forecast.resolved_longitude)
+    for record in forecast.records:
+        print(record.valid_time, record.temperature, record.condition)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+The typed records preserve GeoSphere API native units:
+
+| Field                            | Unit/meaning                                        |
+| -------------------------------- | --------------------------------------------------- |
+| `temperature`                    | degrees Celsius                                     |
+| `relative_humidity`              | percent                                             |
+| `cloud_cover`                    | percent                                             |
+| `mean_sea_level_pressure`        | Pa                                                  |
+| `wind_u`, `wind_v`, `wind_speed` | m/s                                                 |
+| `wind_bearing`                   | meteorological direction from, degrees              |
+| `wind_gust`                      | m/s, maximum in the forecast interval               |
+| `precipitation`                  | kg/m², total precipitation in the forecast interval |
+| `symbol`                         | GeoSphere Austria weather-symbol code               |
+
+Meteorological values may be `None` when the API reports missing data. Both the
+requested coordinates and the resolved model-grid coordinates are available on
+`NwpForecast`. Forecast timestamps and the model reference time are
+timezone-aware.
+
+`NwpClient` performs no polling, retries, or caching. Applications should set
+their own update policy and should respect GeoSphere Austria's published rate
+limits. A rate-limit response is raised as `ZamgApiError` and includes the reset
+duration when supplied by the API.
+
+### Station observations
 
 Simple usage example to fetch specific data from the closest station.
 
@@ -80,6 +137,11 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 ```
+
+### Legacy forecast API
+
+The existing `ZamgData.get_forecast()` API remains available unchanged while
+its NWP v2 compatibility behavior is finalized.
 
 Simple usage example to fetch weather forecast for a specific location.
 
