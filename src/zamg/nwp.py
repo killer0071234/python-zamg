@@ -17,22 +17,45 @@ from aiohttp.hdrs import USER_AGENT
 
 from . import __version__
 from .exceptions import ZamgApiError, ZamgNoDataError
-from .symbols import symbol_to_condition, symbol_to_text
 
 FORECAST_URL = (
     "https://dataset.api.hub.geosphere.at/v1/timeseries/forecast/nwp-v2-1h-1km"
 )
-FORECAST_PARAMETERS = ("2t", "2r", "10u", "10v", "10fg", "tcc", "msl", "tp", "sy")
+FORECAST_PARAMETERS = (
+    "10fg",
+    "10u",
+    "10v",
+    "2r",
+    "2t",
+    "cape",
+    "msl",
+    "pt",
+    "rain",
+    "sf",
+    "snowlmt",
+    "ssrd",
+    "sund",
+    "sy",
+    "tcc",
+    "tp",
+)
 EXPECTED_UNITS = {
-    "2t": "degree Celsius",
-    "2r": "%",
+    "10fg": "m s-1",
     "10u": "m s-1",
     "10v": "m s-1",
-    "10fg": "m s-1",
-    "tcc": "%",
+    "2r": "%",
+    "2t": "degree Celsius",
+    "cape": "m2 s-2",
     "msl": "Pa",
-    "tp": "kg m-2",
+    "pt": "1",
+    "rain": "kg m-2",
+    "sf": "kg m-2",
+    "snowlmt": "m",
+    "ssrd": "W m-2",
+    "sund": "s",
     "sy": "1",
+    "tcc": "%",
+    "tp": "kg m-2",
 }
 CLIENT_AGENT = (
     f"Python/{version_info[0]}.{version_info[1]} "
@@ -45,19 +68,22 @@ class NwpForecastRecord:
     """One hourly NWP forecast record in GeoSphere API native units."""
 
     valid_time: datetime
-    temperature: float | None
-    relative_humidity: float | None
-    cloud_cover: float | None
-    mean_sea_level_pressure: float | None
+    wind_gust: float | None
     wind_u: float | None
     wind_v: float | None
-    wind_speed: float | None
-    wind_bearing: float | None
-    wind_gust: float | None
-    precipitation: float | None
+    relative_humidity: float | None
+    temperature: float | None
+    convective_available_potential_energy: float | None
+    mean_sea_level_pressure: float | None
+    severe_precipitation_type: float | None
+    rainfall: float | None
+    snowfall: float | None
+    snow_limit: float | None
+    surface_global_radiation: float | None
+    sunshine_duration: float | None
     symbol: float | None
-    symbol_text: str | None
-    condition: str | None
+    cloud_cover: float | None
+    precipitation: float | None
 
 
 @dataclass(frozen=True)
@@ -107,11 +133,20 @@ class NwpClient:
                     body = await response.read()
                     if not 200 <= response.status < 300:
                         message = f"Got status {response.status} from GeoSphere Austria"
+                        rate_limit_reset = None
                         if response.status == 429:
-                            reset = response.headers.get("ratelimit-reset")
-                            if reset is not None:
-                                message += f"; rate limit resets in {reset} seconds"
-                        raise ZamgApiError(message)
+                            rate_limit_reset = _parse_rate_limit_reset(
+                                response.headers.get("ratelimit-reset")
+                            )
+                            if rate_limit_reset is not None:
+                                message += (
+                                    f"; rate limit resets in {rate_limit_reset} seconds"
+                                )
+                        raise ZamgApiError(
+                            message,
+                            status_code=response.status,
+                            rate_limit_reset=rate_limit_reset,
+                        )
         except (aiohttp.ClientError, asyncio.TimeoutError) as exc:
             raise ZamgApiError(exc) from exc
 
@@ -155,10 +190,26 @@ def _validate_coordinate(
     """Validate and normalize a coordinate supplied by a caller."""
     if isinstance(value, bool) or not isinstance(value, Real):
         raise ValueError(f"{name} must be a real number")
-    normalized = float(value)
+    try:
+        normalized = float(value)
+    except OverflowError as exc:
+        raise ValueError(f"{name} must be between {minimum} and {maximum}") from exc
     if not math.isfinite(normalized) or not minimum <= normalized <= maximum:
         raise ValueError(f"{name} must be between {minimum} and {maximum}")
     return normalized
+
+
+def _parse_rate_limit_reset(value: str | None) -> int | None:
+    """Parse a non-negative reset delay without masking an HTTP error."""
+    if value is None:
+        return None
+    normalized = value.strip()
+    if not normalized or not normalized.isascii() or not normalized.isdecimal():
+        return None
+    try:
+        return int(normalized)
+    except ValueError:
+        return None
 
 
 def _parse_forecast(
@@ -243,26 +294,25 @@ def _build_records(
     """Build immutable hourly records from validated parameter arrays."""
     records = []
     for index, valid_time in enumerate(valid_times):
-        wind_u = parameter_values["10u"][index]
-        wind_v = parameter_values["10v"][index]
-        wind_speed, wind_bearing = _wind(wind_u, wind_v)
-        symbol = parameter_values["sy"][index]
         records.append(
             NwpForecastRecord(
                 valid_time=valid_time,
-                temperature=parameter_values["2t"][index],
-                relative_humidity=parameter_values["2r"][index],
-                cloud_cover=parameter_values["tcc"][index],
-                mean_sea_level_pressure=parameter_values["msl"][index],
-                wind_u=wind_u,
-                wind_v=wind_v,
-                wind_speed=wind_speed,
-                wind_bearing=wind_bearing,
                 wind_gust=parameter_values["10fg"][index],
+                wind_u=parameter_values["10u"][index],
+                wind_v=parameter_values["10v"][index],
+                relative_humidity=parameter_values["2r"][index],
+                temperature=parameter_values["2t"][index],
+                convective_available_potential_energy=parameter_values["cape"][index],
+                mean_sea_level_pressure=parameter_values["msl"][index],
+                severe_precipitation_type=parameter_values["pt"][index],
+                rainfall=parameter_values["rain"][index],
+                snowfall=parameter_values["sf"][index],
+                snow_limit=parameter_values["snowlmt"][index],
+                surface_global_radiation=parameter_values["ssrd"][index],
+                sunshine_duration=parameter_values["sund"][index],
+                symbol=parameter_values["sy"][index],
+                cloud_cover=parameter_values["tcc"][index],
                 precipitation=parameter_values["tp"][index],
-                symbol=symbol,
-                symbol_text=symbol_to_text(symbol),
-                condition=symbol_to_condition(symbol),
             )
         )
     return tuple(records)
@@ -299,19 +349,10 @@ def _optional_number(value: object, name: str) -> float | None:
         return None
     if isinstance(value, bool) or not isinstance(value, Real):
         raise ValueError(f"parameter {name} values must be numbers or null")
-    parsed = float(value)
+    try:
+        parsed = float(value)
+    except OverflowError as exc:
+        raise ValueError(f"parameter {name} values must be finite") from exc
     if not math.isfinite(parsed):
         raise ValueError(f"parameter {name} values must be finite")
     return parsed
-
-
-def _wind(
-    wind_u: float | None, wind_v: float | None
-) -> tuple[float | None, float | None]:
-    """Return native wind speed and meteorological direction from components."""
-    if wind_u is None or wind_v is None:
-        return None, None
-    if (speed := math.hypot(wind_u, wind_v)) == 0:
-        return 0.0, None
-    bearing = (270.0 - math.degrees(math.atan2(wind_v, wind_u))) % 360.0
-    return speed, bearing
