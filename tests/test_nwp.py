@@ -61,93 +61,68 @@ async def test_get_forecast_parses_native_v2_data(aresponses, nwp_payload) -> No
 
     record = forecast.records[1]
     assert record.valid_time == datetime.fromisoformat("2026-09-26T05:00+00:00")
-    assert record.temperature == 7.2
-    assert record.relative_humidity == 95.0
-    assert record.cloud_cover == 100.0
-    assert record.mean_sea_level_pressure == 102432.01
+    assert record.wind_gust == 1.3
     assert record.wind_u == -1.0
     assert record.wind_v == 0.0
-    assert record.wind_speed == 1.0
-    assert record.wind_bearing == 90.0
-    assert record.wind_gust == 1.3
-    assert record.precipitation == 0.006
-    assert (
-        record.precipitation
-        != nwp_payload["features"][0]["properties"]["parameters"]["rain"]["data"][1]
-    )
+    assert record.relative_humidity == 95.0
+    assert record.temperature == 7.2
+    assert record.convective_available_potential_energy == 5.4
+    assert record.mean_sea_level_pressure == 102432.01
+    assert record.severe_precipitation_type == 0.0
+    assert record.rainfall == 0.001
+    assert record.snowfall == 0.005
+    assert record.snow_limit == 3359.8
+    assert record.surface_global_radiation == 265.4
+    assert record.sunshine_duration == 3587.5
     assert record.symbol == 3.0
-    assert record.symbol_text == "Partly cloudy"
-    assert record.condition == "partlycloudy"
+    assert record.cloud_cover == 100.0
+    assert record.precipitation == 0.006
+    assert not hasattr(record, "wind_speed")
+    assert not hasattr(record, "wind_bearing")
+    assert not hasattr(record, "symbol_text")
+    assert not hasattr(record, "condition")
 
     request = aresponses.history[0].request
     assert request.query["lat_lon"] == "47.5,14.0"
     assert request.query["parameters"] == ",".join(FORECAST_PARAMETERS)
+    assert FORECAST_PARAMETERS == (
+        "10fg",
+        "10u",
+        "10v",
+        "2r",
+        "2t",
+        "cape",
+        "msl",
+        "pt",
+        "rain",
+        "sf",
+        "snowlmt",
+        "ssrd",
+        "sund",
+        "sy",
+        "tcc",
+        "tp",
+    )
 
 
 @pytest.mark.asyncio
-async def test_wind_bearings_cover_quadrants(aresponses, nwp_payload) -> None:
-    """Test meteorological wind-from bearings for all cardinal quadrants."""
-    add_forecast_response(aresponses, nwp_payload)
-
-    async with NwpClient() as client:
-        forecast = await client.get_forecast(latitude=47.5, longitude=14.0)
-
-    assert [record.wind_bearing for record in forecast.records] == [
-        0.0,
-        90.0,
-        180.0,
-        270.0,
-    ]
-
-
-@pytest.mark.asyncio
-async def test_wind_calm_and_null_components(aresponses, nwp_payload) -> None:
-    """Test calm wind and nullable wind components."""
-    parameters = nwp_payload["features"][0]["properties"]["parameters"]
-    parameters["10u"]["data"] = [0.0, None, 0.0, 1.0]
-    parameters["10v"]["data"] = [0.0, 1.0, 1.0, 0.0]
-    add_forecast_response(aresponses, nwp_payload)
-
-    async with NwpClient() as client:
-        forecast = await client.get_forecast(latitude=47.5, longitude=14.0)
-
-    assert forecast.records[0].wind_speed == 0.0
-    assert forecast.records[0].wind_bearing is None
-    assert forecast.records[1].wind_u is None
-    assert forecast.records[1].wind_v == 1.0
-    assert forecast.records[1].wind_speed is None
-    assert forecast.records[1].wind_bearing is None
-
-
-@pytest.mark.asyncio
-async def test_wind_speed_is_not_rounded(aresponses, nwp_payload) -> None:
-    """Test derived native wind speed retains its calculated precision."""
-    parameters = nwp_payload["features"][0]["properties"]["parameters"]
-    parameters["10u"]["data"][0] = 1.0
-    parameters["10v"]["data"][0] = 1.0
-    add_forecast_response(aresponses, nwp_payload)
-
-    async with NwpClient() as client:
-        forecast = await client.get_forecast(latitude=47.5, longitude=14.0)
-
-    assert forecast.records[0].wind_speed == math.sqrt(2)
-
-
-@pytest.mark.asyncio
-async def test_null_and_unknown_symbol_values(aresponses, nwp_payload) -> None:
-    """Test null weather values and unknown weather symbols are preserved."""
+async def test_null_and_unknown_raw_values(aresponses, nwp_payload) -> None:
+    """Test null weather values and unknown raw codes are preserved."""
     add_forecast_response(aresponses, nwp_payload)
 
     async with NwpClient() as client:
         forecast = await client.get_forecast(latitude=47.5, longitude=14.0)
 
     assert forecast.records[2].temperature is None
+    assert forecast.records[2].convective_available_potential_energy is None
+    assert forecast.records[2].severe_precipitation_type is None
+    assert forecast.records[2].rainfall is None
+    assert forecast.records[2].snowfall is None
+    assert forecast.records[2].snow_limit is None
+    assert forecast.records[2].surface_global_radiation is None
+    assert forecast.records[2].sunshine_duration is None
     assert forecast.records[2].symbol == 99.0
-    assert forecast.records[2].symbol_text is None
-    assert forecast.records[2].condition is None
     assert forecast.records[3].symbol is None
-    assert forecast.records[3].symbol_text is None
-    assert forecast.records[3].condition is None
 
 
 @pytest.mark.asyncio
@@ -159,6 +134,7 @@ async def test_null_and_unknown_symbol_values(aresponses, nwp_payload) -> None:
         (91.0, 14.0),
         (47.5, -181.0),
         ("47.5", 14.0),
+        (10**400, 14.0),
     ],
 )
 async def test_invalid_coordinates(latitude, longitude) -> None:
@@ -178,8 +154,11 @@ async def test_http_errors(aresponses, status) -> None:
     add_forecast_response(aresponses, "error", status=status)
 
     async with NwpClient() as client:
-        with pytest.raises(ZamgApiError, match=f"status {status}"):
+        with pytest.raises(ZamgApiError, match=f"status {status}") as exc_info:
             await client.get_forecast(latitude=47.5, longitude=14.0)
+
+    assert exc_info.value.status_code == status
+    assert exc_info.value.rate_limit_reset is None
 
 
 @pytest.mark.asyncio
@@ -193,10 +172,27 @@ async def test_rate_limit_reset_is_retained(aresponses) -> None:
     )
 
     async with NwpClient() as client:
-        with pytest.raises(ZamgApiError, match="resets in 42 seconds"):
+        with pytest.raises(ZamgApiError, match="resets in 42 seconds") as exc_info:
             await client.get_forecast(latitude=47.5, longitude=14.0)
 
+    assert exc_info.value.status_code == 429
+    assert exc_info.value.rate_limit_reset == 42
     assert len(aresponses.history) == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("reset", [None, "", "-1", "+1", "1.5", "invalid"])
+async def test_invalid_rate_limit_reset_is_ignored(aresponses, reset) -> None:
+    """Test invalid reset metadata does not mask the rate-limit failure."""
+    headers = {} if reset is None else {"ratelimit-reset": reset}
+    add_forecast_response(aresponses, "rate limited", status=429, headers=headers)
+
+    async with NwpClient() as client:
+        with pytest.raises(ZamgApiError, match="status 429") as exc_info:
+            await client.get_forecast(latitude=47.5, longitude=14.0)
+
+    assert exc_info.value.status_code == 429
+    assert exc_info.value.rate_limit_reset is None
 
 
 @pytest.mark.asyncio
@@ -213,8 +209,11 @@ async def test_transport_errors(failure) -> None:
 
     client = NwpClient(session=FailingSession())
 
-    with pytest.raises(ZamgApiError):
+    with pytest.raises(ZamgApiError) as exc_info:
         await client.get_forecast(latitude=47.5, longitude=14.0)
+
+    assert exc_info.value.status_code is None
+    assert exc_info.value.rate_limit_reset is None
 
 
 @pytest.mark.asyncio
@@ -235,8 +234,11 @@ async def test_request_timeout_expiration() -> None:
     client = NwpClient(session=SlowSession())
     client.request_timeout = 0.001
 
-    with pytest.raises(ZamgApiError):
+    with pytest.raises(ZamgApiError) as exc_info:
         await client.get_forecast(latitude=47.5, longitude=14.0)
+
+    assert exc_info.value.status_code is None
+    assert exc_info.value.rate_limit_reset is None
 
 
 @pytest.mark.asyncio
@@ -263,6 +265,7 @@ async def test_invalid_json(aresponses) -> None:
         "invalid_grid_coordinate",
         "naive_reference_time",
         "non_finite_value",
+        "overflowing_value",
     ],
 )
 async def test_malformed_successful_responses(
@@ -291,6 +294,8 @@ async def test_malformed_successful_responses(
         payload["reference_time"] = "2026-09-26T00:00"
     elif mutation == "non_finite_value":
         parameters["2t"]["data"][0] = math.inf
+    elif mutation == "overflowing_value":
+        parameters["2t"]["data"][0] = 10**400
     add_forecast_response(aresponses, payload)
 
     async with NwpClient() as client:

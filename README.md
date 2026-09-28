@@ -50,26 +50,39 @@ async def main():
     print(forecast.reference_time)
     print(forecast.resolved_latitude, forecast.resolved_longitude)
     for record in forecast.records:
-        print(record.valid_time, record.temperature, record.condition)
+        print(record.valid_time, record.temperature, record.symbol)
 
 
 if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-The typed records preserve GeoSphere API native units:
+Every request includes all 16 parameters currently exposed by the dataset.
+Typed records preserve each raw value independently in GeoSphere API native
+units:
 
-| Field                            | Unit/meaning                                        |
-| -------------------------------- | --------------------------------------------------- |
-| `temperature`                    | degrees Celsius                                     |
-| `relative_humidity`              | percent                                             |
-| `cloud_cover`                    | percent                                             |
-| `mean_sea_level_pressure`        | Pa                                                  |
-| `wind_u`, `wind_v`, `wind_speed` | m/s                                                 |
-| `wind_bearing`                   | meteorological direction from, degrees              |
-| `wind_gust`                      | m/s, maximum in the forecast interval               |
-| `precipitation`                  | kg/m², total precipitation in the forecast interval |
-| `symbol`                         | GeoSphere Austria weather-symbol code               |
+| API parameter | Record field                            | Native unit/meaning                                      |
+| ------------- | --------------------------------------- | -------------------------------------------------------- |
+| `10fg`        | `wind_gust`                             | m/s, maximum in the forecast interval                    |
+| `10u`         | `wind_u`                                | m/s, eastward component                                  |
+| `10v`         | `wind_v`                                | m/s, northward component                                 |
+| `2r`          | `relative_humidity`                     | percent                                                  |
+| `2t`          | `temperature`                           | degrees Celsius                                          |
+| `cape`        | `convective_available_potential_energy` | m²/s²                                                    |
+| `msl`         | `mean_sea_level_pressure`               | Pa                                                       |
+| `pt`          | `severe_precipitation_type`             | raw dimensionless provider code                          |
+| `rain`        | `rainfall`                              | kg/m² in the forecast interval                           |
+| `sf`          | `snowfall`                              | kg/m² in the forecast interval                           |
+| `snowlmt`     | `snow_limit`                            | m above ground                                           |
+| `ssrd`        | `surface_global_radiation`              | W/m²                                                     |
+| `sund`        | `sunshine_duration`                     | seconds in the forecast interval                         |
+| `sy`          | `symbol`                                | raw dimensionless GeoSphere weather-symbol code          |
+| `tcc`         | `cloud_cover`                           | percent                                                  |
+| `tp`          | `precipitation`                         | kg/m², total liquid and solid precipitation per interval |
+
+The client does not combine precipitation values, calculate wind speed or
+bearing, or interpret provider codes. Consumers can choose which raw fields to
+use.
 
 Meteorological values may be `None` when the API reports missing data. Both the
 requested coordinates and the resolved model-grid coordinates are available on
@@ -79,7 +92,11 @@ timezone-aware.
 `NwpClient` performs no polling, retries, or caching. Applications should set
 their own update policy and should respect GeoSphere Austria's published rate
 limits. A rate-limit response is raised as `ZamgApiError` and includes the reset
-duration when supplied by the API.
+duration when supplied by the API. HTTP failures expose their integer status as
+`ZamgApiError.status_code`. For a 429 response with a valid non-negative integer
+`ratelimit-reset` header, `ZamgApiError.rate_limit_reset` contains that delay in
+seconds; otherwise it is `None`. Both attributes are `None` for transport and
+timeout failures.
 
 ### Station observations
 

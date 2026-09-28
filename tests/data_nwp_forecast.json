@@ -23,6 +23,11 @@
             "unit": "degree Celsius",
             "data": [6.6, 7.2, null, 10.1]
           },
+          "cape": {
+            "name": "convective available potential energy",
+            "unit": "m2 s-2",
+            "data": [5.5, 5.4, null, 4.1]
+          },
           "2r": {
             "name": "relative humidity 2m above ground",
             "unit": "%",
@@ -53,6 +58,36 @@
             "unit": "Pa",
             "data": [102393.89, 102432.01, null, 102545.39]
           },
+          "pt": {
+            "name": "severe precipitation type in the last forecast interval",
+            "unit": "1",
+            "data": [0.0, 0.0, null, 0.0]
+          },
+          "rain": {
+            "name": "rainfall amount in the last forecast interval",
+            "unit": "kg m-2",
+            "data": [0.0, 0.001, null, 0.002]
+          },
+          "sf": {
+            "name": "snowfall amount in the last forecast interval",
+            "unit": "kg m-2",
+            "data": [0.0, 0.005, null, 0.002]
+          },
+          "snowlmt": {
+            "name": "snowlimit",
+            "unit": "m",
+            "data": [3397.8, 3359.8, null, 3344.5]
+          },
+          "ssrd": {
+            "name": "surface global radiation",
+            "unit": "W m-2",
+            "data": [64.2, 265.4, null, 673.4]
+          },
+          "sund": {
+            "name": "sunshine duration in the last forecast interval",
+            "unit": "s",
+            "data": [2454.5, 3587.5, null, 3573.2]
+          },
           "tp": {
             "name": "total precipitation amount in the last forecast interval",
             "unit": "kg m-2",
@@ -62,15 +97,10 @@
             "name": "weather symbol",
             "unit": "1",
             "data": [1.0, 3.0, 99.0, null]
-          },
-          "rain": {
-            "name": "rainfall amount in the last forecast interval",
-            "unit": "kg m-2",
-            "data": [0.0, 0.001, 0.0, 0.002]
           }
         }
       }
     }
   ],
-  "datapoints": 40
+  "datapoints": 64
 }
