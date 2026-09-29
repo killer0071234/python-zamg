@@ -7,7 +7,7 @@
 
 -r requirements.txt
 codecov==2.1.13
-coverage==7.6.1
+coverage==7.10.7
 freezegun==1.5.5
 mock-open==1.4.0
 mypy==1.19.1
