@@ -9,6 +9,7 @@ from .exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from .nwp import NwpClient, NwpForecast, NwpForecastRecord
 from .symbols import (
     SYMBOL_CONDITION,
     SYMBOL_TEXT_DE,
@@ -25,6 +26,9 @@ __all__ = [
     "ZamgStationNotFoundError",
     "ZamgStationUnknownError",
     "ZamgData",
+    "NwpClient",
+    "NwpForecast",
+    "NwpForecastRecord",
     "SYMBOL_CONDITION",
     "SYMBOL_TEXT_DE",
     "SYMBOL_TEXT_EN",
