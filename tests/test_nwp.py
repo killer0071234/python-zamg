@@ -5,7 +5,9 @@ import copy
 import json
 import math
 import pathlib
+import sys
 from datetime import datetime
+from unittest.mock import patch
 
 import aiohttp
 import pytest
@@ -126,6 +128,27 @@ async def test_null_and_unknown_raw_values(aresponses, nwp_payload) -> None:
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("verify_ssl", [None, True, False])
+async def test_ssl_verification_option(aresponses, nwp_payload, verify_ssl) -> None:
+    """Test the SSL override is forwarded only when explicitly configured."""
+    add_forecast_response(aresponses, nwp_payload)
+
+    async with aiohttp.ClientSession() as session:
+        with patch.object(session, "get", wraps=session.get) as get:
+            async with NwpClient(session=session) as client:
+                client.verify_ssl = verify_ssl
+                forecast = await client.get_forecast(latitude=47.5, longitude=14.0)
+
+        get.assert_called_once()
+        if verify_ssl is None:
+            assert "ssl" not in get.call_args.kwargs
+        else:
+            assert get.call_args.kwargs["ssl"] is verify_ssl
+
+    assert len(forecast.records) == 4
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     ("latitude", "longitude"),
     [
@@ -196,6 +219,31 @@ async def test_invalid_rate_limit_reset_is_ignored(aresponses, reset) -> None:
 
 
 @pytest.mark.asyncio
+async def test_oversized_rate_limit_reset_is_ignored(aresponses) -> None:
+    """Test integer conversion limits do not mask the rate-limit failure."""
+    original_limit = sys.get_int_max_str_digits()
+    limit = sys.int_info.str_digits_check_threshold
+    sys.set_int_max_str_digits(limit)
+    try:
+        add_forecast_response(
+            aresponses,
+            "rate limited",
+            status=429,
+            headers={"ratelimit-reset": "9" * (limit + 1)},
+        )
+
+        async with NwpClient() as client:
+            with pytest.raises(ZamgApiError, match="status 429") as exc_info:
+                await client.get_forecast(latitude=47.5, longitude=14.0)
+
+        assert exc_info.value.status_code == 429
+        assert exc_info.value.rate_limit_reset is None
+        assert len(aresponses.history) == 1
+    finally:
+        sys.set_int_max_str_digits(original_limit)
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "failure",
     [ServerTimeoutError(), ServerDisconnectedError(), asyncio.TimeoutError()],
@@ -253,23 +301,43 @@ async def test_invalid_json(aresponses) -> None:
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize(
-    "mutation",
+    ("mutation", "message"),
     [
-        "unequal_array",
-        "missing_parameter",
-        "unexpected_unit",
-        "naive_timestamp",
-        "duplicate_timestamp",
-        "boolean_value",
-        "multiple_features",
-        "invalid_grid_coordinate",
-        "naive_reference_time",
-        "non_finite_value",
-        "overflowing_value",
+        ("unequal_array", "parameter 2t data length does not match timestamps"),
+        ("missing_parameter", "msl"),
+        ("unexpected_unit", "parameter tcc has an unexpected unit"),
+        ("naive_timestamp", "forecast timestamp must include a timezone offset"),
+        ("duplicate_timestamp", "forecast timestamps must be strictly increasing"),
+        ("boolean_value", "parameter 2r values must be numbers or null"),
+        ("multiple_features", "forecast response must contain exactly one feature"),
+        ("invalid_grid_coordinate", "resolved longitude must be between"),
+        ("naive_reference_time", "reference_time must include a timezone offset"),
+        ("non_finite_value", "parameter 2t values must be finite"),
+        ("overflowing_value", "parameter 2t values must be finite"),
+        ("invalid_payload", "forecast response is not a FeatureCollection"),
+        ("invalid_payload_type", "forecast response is not a FeatureCollection"),
+        ("empty_timestamps", "timestamps must be a non-empty array"),
+        ("invalid_timestamps", "timestamps must be a non-empty array"),
+        ("invalid_feature", "forecast feature must be an object"),
+        ("invalid_geometry", "forecast geometry must be a Point"),
+        ("invalid_geometry_type", "forecast geometry must be a Point"),
+        (
+            "invalid_coordinates",
+            "forecast Point must contain longitude and latitude",
+        ),
+        (
+            "invalid_coordinates_length",
+            "forecast Point must contain longitude and latitude",
+        ),
+        ("invalid_properties", "forecast properties must be an object"),
+        ("invalid_parameters", "forecast parameters must be an object"),
+        ("invalid_parameter", "parameter 2t must be an object"),
+        ("non_string_timestamp", "forecast timestamp must be a string"),
+        ("non_string_reference_time", "reference_time must be a string"),
     ],
 )
 async def test_malformed_successful_responses(
-    aresponses, nwp_payload, mutation
+    aresponses, nwp_payload, mutation, message
 ) -> None:
     """Test malformed successful payloads fail atomically."""
     payload = copy.deepcopy(nwp_payload)
@@ -296,10 +364,38 @@ async def test_malformed_successful_responses(
         parameters["2t"]["data"][0] = math.inf
     elif mutation == "overflowing_value":
         parameters["2t"]["data"][0] = 10**400
+    elif mutation == "invalid_payload":
+        payload = []
+    elif mutation == "invalid_payload_type":
+        payload["type"] = "Feature"
+    elif mutation == "empty_timestamps":
+        payload["timestamps"] = []
+    elif mutation == "invalid_timestamps":
+        payload["timestamps"] = None
+    elif mutation == "invalid_feature":
+        payload["features"][0] = None
+    elif mutation == "invalid_geometry":
+        payload["features"][0]["geometry"] = None
+    elif mutation == "invalid_geometry_type":
+        payload["features"][0]["geometry"]["type"] = "LineString"
+    elif mutation == "invalid_coordinates":
+        payload["features"][0]["geometry"]["coordinates"] = None
+    elif mutation == "invalid_coordinates_length":
+        payload["features"][0]["geometry"]["coordinates"] = [14.0]
+    elif mutation == "invalid_properties":
+        payload["features"][0]["properties"] = None
+    elif mutation == "invalid_parameters":
+        payload["features"][0]["properties"]["parameters"] = None
+    elif mutation == "invalid_parameter":
+        parameters["2t"] = None
+    elif mutation == "non_string_timestamp":
+        payload["timestamps"][0] = None
+    elif mutation == "non_string_reference_time":
+        payload["reference_time"] = None
     add_forecast_response(aresponses, payload)
 
     async with NwpClient() as client:
-        with pytest.raises(ZamgNoDataError):
+        with pytest.raises(ZamgNoDataError, match=message):
             await client.get_forecast(latitude=47.5, longitude=14.0)
 
 
