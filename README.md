@@ -228,6 +228,7 @@ Thanks to everyone who has contributed to this project:
 - [Daniel Lang (@dlang-geosphereat)](https://github.com/dlang-geosphereat)
 - [Felix Hochgruber (@felix-hoc)](https://github.com/felix-hoc)
 - [Marc Mueller (@cdce8p)](https://github.com/cdce8p)
+- [@Ziykuna](https://github.com/Ziykuna)
 
 See the full list on the [contributors page](https://github.com/killer0071234/python-zamg/graphs/contributors).
 
