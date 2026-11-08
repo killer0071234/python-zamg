@@ -10,11 +10,13 @@
 
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-Python library to read 10 min weather data from GeoSphere Austria former ZAMG
+Python library for GeoSphere Austria station observations and coordinate-based
+numerical weather prediction forecasts.
 
 ## About
 
-This package allows you to read the weather data from weather stations of GeoSphere Austria weather service.
+This package reads weather-station observations and independent NWP forecasts
+from the GeoSphere Austria weather service.
 GeoSphere Austria joins Zentralanstalt für Meteorologie und Geodynamik (ZAMG) and the Geologische Bundesanstalt (GBA)
 since 1st January 2023.
 
@@ -25,6 +27,78 @@ pip install zamg
 ```
 
 ## Usage
+
+### NWP v2 forecast
+
+Use `NwpClient` for an independent coordinate-based hourly forecast. It uses
+GeoSphere Austria's `nwp-v2-1h-1km` model and does not select or request a
+weather station.
+
+```python
+import asyncio
+
+from zamg import NwpClient
+
+
+async def main():
+    async with NwpClient() as client:
+        forecast = await client.get_forecast(
+            latitude=48.2082,
+            longitude=16.3738,
+        )
+
+    print(forecast.reference_time)
+    print(forecast.resolved_latitude, forecast.resolved_longitude)
+    for record in forecast.records:
+        print(record.valid_time, record.temperature, record.symbol)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+Every request includes all 16 parameters currently exposed by the dataset.
+Typed records preserve each raw value independently in GeoSphere API native
+units:
+
+| API parameter | Record field                            | Native unit/meaning                                      |
+| ------------- | --------------------------------------- | -------------------------------------------------------- |
+| `10fg`        | `wind_gust`                             | m/s, maximum in the forecast interval                    |
+| `10u`         | `wind_u`                                | m/s, eastward component                                  |
+| `10v`         | `wind_v`                                | m/s, northward component                                 |
+| `2r`          | `relative_humidity`                     | percent                                                  |
+| `2t`          | `temperature`                           | degrees Celsius                                          |
+| `cape`        | `convective_available_potential_energy` | m²/s²                                                    |
+| `msl`         | `mean_sea_level_pressure`               | Pa                                                       |
+| `pt`          | `severe_precipitation_type`             | raw dimensionless provider code                          |
+| `rain`        | `rainfall`                              | kg/m² in the forecast interval                           |
+| `sf`          | `snowfall`                              | kg/m² in the forecast interval                           |
+| `snowlmt`     | `snow_limit`                            | m above ground                                           |
+| `ssrd`        | `surface_global_radiation`              | W/m²                                                     |
+| `sund`        | `sunshine_duration`                     | seconds in the forecast interval                         |
+| `sy`          | `symbol`                                | raw dimensionless GeoSphere weather-symbol code          |
+| `tcc`         | `cloud_cover`                           | percent                                                  |
+| `tp`          | `precipitation`                         | kg/m², total liquid and solid precipitation per interval |
+
+The client does not combine precipitation values, calculate wind speed or
+bearing, or interpret provider codes. Consumers can choose which raw fields to
+use.
+
+Meteorological values may be `None` when the API reports missing data. Both the
+requested coordinates and the resolved model-grid coordinates are available on
+`NwpForecast`. Forecast timestamps and the model reference time are
+timezone-aware.
+
+`NwpClient` performs no polling, retries, or caching. Applications should set
+their own update policy and should respect GeoSphere Austria's published rate
+limits. A rate-limit response is raised as `ZamgApiError` and includes the reset
+duration when supplied by the API. HTTP failures expose their integer status as
+`ZamgApiError.status_code`. For a 429 response with a valid non-negative integer
+`ratelimit-reset` header, `ZamgApiError.rate_limit_reset` contains that delay in
+seconds; otherwise it is `None`. Both attributes are `None` for transport and
+timeout failures.
+
+### Station observations
 
 Simple usage example to fetch specific data from the closest station.
 
@@ -80,6 +154,11 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 ```
+
+### Legacy forecast API
+
+The existing `ZamgData.get_forecast()` API remains available unchanged while
+its NWP v2 compatibility behavior is finalized.
 
 Simple usage example to fetch weather forecast for a specific location.
 

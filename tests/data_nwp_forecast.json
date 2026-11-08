@@ -1,0 +1,106 @@
+{
+  "reference_time": "2026-09-26T00:00+00:00",
+  "media_type": "application/json",
+  "type": "FeatureCollection",
+  "version": "v1",
+  "timestamps": [
+    "2026-09-26T04:00+00:00",
+    "2026-09-26T05:00+00:00",
+    "2026-09-26T06:00+00:00",
+    "2026-09-26T07:00+00:00"
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14.0045, 47.502]
+      },
+      "properties": {
+        "parameters": {
+          "2t": {
+            "name": "2m temperature",
+            "unit": "degree Celsius",
+            "data": [6.6, 7.2, null, 10.1]
+          },
+          "cape": {
+            "name": "convective available potential energy",
+            "unit": "m2 s-2",
+            "data": [5.5, 5.4, null, 4.1]
+          },
+          "2r": {
+            "name": "relative humidity 2m above ground",
+            "unit": "%",
+            "data": [96.88, 95.0, null, 83.58]
+          },
+          "10u": {
+            "name": "10m wind speed in eastward direction",
+            "unit": "m s-1",
+            "data": [0.0, -1.0, 0.0, 1.0]
+          },
+          "10v": {
+            "name": "10m wind speed in northward direction",
+            "unit": "m s-1",
+            "data": [-1.0, 0.0, 1.0, 0.0]
+          },
+          "10fg": {
+            "name": "maximum 10 metre wind gust in the last forecast interval",
+            "unit": "m s-1",
+            "data": [1.2, 1.3, null, 2.2]
+          },
+          "tcc": {
+            "name": "total cloud cover",
+            "unit": "%",
+            "data": [39.0, 100.0, null, 8.0]
+          },
+          "msl": {
+            "name": "mean sea level pressure",
+            "unit": "Pa",
+            "data": [102393.89, 102432.01, null, 102545.39]
+          },
+          "pt": {
+            "name": "severe precipitation type in the last forecast interval",
+            "unit": "1",
+            "data": [0.0, 0.0, null, 0.0]
+          },
+          "rain": {
+            "name": "rainfall amount in the last forecast interval",
+            "unit": "kg m-2",
+            "data": [0.0, 0.001, null, 0.002]
+          },
+          "sf": {
+            "name": "snowfall amount in the last forecast interval",
+            "unit": "kg m-2",
+            "data": [0.0, 0.005, null, 0.002]
+          },
+          "snowlmt": {
+            "name": "snowlimit",
+            "unit": "m",
+            "data": [3397.8, 3359.8, null, 3344.5]
+          },
+          "ssrd": {
+            "name": "surface global radiation",
+            "unit": "W m-2",
+            "data": [64.2, 265.4, null, 673.4]
+          },
+          "sund": {
+            "name": "sunshine duration in the last forecast interval",
+            "unit": "s",
+            "data": [2454.5, 3587.5, null, 3573.2]
+          },
+          "tp": {
+            "name": "total precipitation amount in the last forecast interval",
+            "unit": "kg m-2",
+            "data": [0.0, 0.006, null, 0.005]
+          },
+          "sy": {
+            "name": "weather symbol",
+            "unit": "1",
+            "data": [1.0, 3.0, 99.0, null]
+          }
+        }
+      }
+    }
+  ],
+  "datapoints": 64
+}
