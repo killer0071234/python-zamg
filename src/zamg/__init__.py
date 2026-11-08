@@ -1,6 +1,6 @@
 """Asynchronous Python client for GeoSphere Austria weather data."""
 
-__version__ = "0.4.2"
+__version__ = "0.5.0"
 
 from .exceptions import (
     ZamgApiError,
