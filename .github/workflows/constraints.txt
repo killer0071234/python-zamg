@@ -3,5 +3,5 @@ pre-commit==4.7.0
 black==26.10.1
 flake8==7.4.1
 reorder-python-imports==3.19.0
-pytest==9.1.1
+pytest==9.2.0
 aresponses==3.0.0
