@@ -157,8 +157,20 @@ if __name__ == "__main__":
 
 ### Legacy forecast API
 
-The existing `ZamgData.get_forecast()` API remains available unchanged while
-its NWP v2 compatibility behavior is finalized.
+GeoSphere Austria discontinued the NWP v1 dataset on 2026-11-04.
+`ZamgData.get_forecast()` keeps its signature and NWP v1 response shape, but
+reads the data from NWP v2 (`nwp-v2-1h-1km`) with `NwpClient`. New code should
+use `NwpClient` directly.
+
+| NWP v1 parameter                                       | NWP v2 source                                     | Conversion                             |
+| ------------------------------------------------------ | ------------------------------------------------- | -------------------------------------- |
+| `t2m`, `rh2m`, `u10m`, `v10m`, `sy`, `cape`, `snowlmt` | `2t`, `2r`, `10u`, `10v`, `sy`, `cape`, `snowlmt` | none                                   |
+| `tcc`                                                  | `tcc`                                             | percent to fraction                    |
+| `rr_acc`, `rain_acc`, `snow_acc`, `sundur_acc`         | `tp`, `rain`, `sf`, `sund`                        | summed up from the first returned step |
+
+The NWP v1 parameters `cin`, `grad`, `mnt2m`, `mxt2m`, `sp`, `ugust`, and
+`vgust` have no NWP v2 equivalent and are left out. The values come from a
+different model grid (1 km), so they differ from the former NWP v1 values.
 
 Simple usage example to fetch weather forecast for a specific location.
 
