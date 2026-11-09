@@ -12,11 +12,15 @@ from sys import version_info
 from typing import Any
 
 import aiohttp
-import async_timeout
 from aiohttp.hdrs import USER_AGENT
 
 from . import __version__
 from .exceptions import ZamgApiError, ZamgNoDataError
+
+if version_info >= (3, 11):
+    from asyncio import timeout
+else:
+    from async_timeout import timeout
 
 FORECAST_URL = (
     "https://dataset.api.hub.geosphere.at/v1/timeseries/forecast/nwp-v2-1h-1km"
@@ -128,7 +132,7 @@ class NwpClient:
             request_options["ssl"] = self.verify_ssl
 
         try:
-            async with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 async with session.get(FORECAST_URL, **request_options) as response:
                     body = await response.read()
                     if not 200 <= response.status < 300:
