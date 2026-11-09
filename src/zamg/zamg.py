@@ -22,9 +22,30 @@ from .exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from .nwp import NwpClient, NwpForecast
 from .symbols import symbol_to_condition, symbol_to_text
 
 CLIENT_AGENT = f"Python/{version_info[0]}.{version_info[1]} +https://github.com/killer0071234/python-zamg python-zamg/{__version__}"
+DEFAULT_FORECAST_PARAMETERS = "t2m,rr_acc,u10m,v10m,tcc,sy,rh2m"
+LEGACY_FORECAST_PARAMETERS = {
+    "cape": (
+        "convective_available_potential_energy",
+        "Convective available potential energy",
+        "m2 s-2",
+    ),
+    "rain_acc": ("rainfall", "total rainfall amount", "kg m-2"),
+    "rh2m": ("relative_humidity", "relative humidity 2m above ground", "%"),
+    "rr_acc": ("precipitation", "total precipitation amount", "kg m-2"),
+    "snow_acc": ("snowfall", "total snowfall amount", "kg m-2"),
+    "snowlmt": ("snow_limit", "snowlimit", "m"),
+    "sundur_acc": ("sunshine_duration", "sunshine duration accumulated", "s"),
+    "sy": ("symbol", "weather symbol", "1"),
+    "t2m": ("temperature", "2m temperature", "degree Celsius"),
+    "tcc": ("cloud_cover", "Total cloud cover", "1"),
+    "u10m": ("wind_u", "10m wind speed in eastward direction", "m s-1"),
+    "v10m": ("wind_v", "10m wind speed in northward direction", "m s-1"),
+}
+"""NWP v1 parameter name -> (NwpForecastRecord field, v1 name, v1 unit)."""
 
 
 class ZamgData:
@@ -42,10 +63,6 @@ class ZamgData:
         "https://dataset.api.hub.geosphere.at/v1/grid/forecast/nwp-v1-1h-2500m/metadata"
     )
     """API url to fetch possible stations and parameters."""
-    forecast_url: str = (
-        "https://dataset.api.hub.geosphere.at/v1/timeseries/forecast/nwp-v1-1h-2500m?parameters="
-    )
-    """API url to fetch current conditions of a weather station."""
     request_timeout: float = 8.0
     headers = {
         USER_AGENT: CLIENT_AGENT,
@@ -478,7 +495,12 @@ class ZamgData:
     async def get_forecast(
         self, lat_lon: str | None = None, current_only: bool = False
     ) -> dict | None:
-        """Return a list of all current observations of the default station id."""
+        """Return the forecast for a location in the legacy NWP v1 format.
+
+        GeoSphere Austria discontinued NWP v1, so the data is read from NWP v2
+        with NwpClient and converted to the v1 parameter names, units, and
+        dictionary shape. New code should use NwpClient directly.
+        """
         if self.last_forecast_update and (
             self.last_forecast_update + timedelta(minutes=5)
             > datetime.now(zoneinfo.ZoneInfo("UTC"))
@@ -488,44 +510,35 @@ class ZamgData:
             return (
                 self._get_forecast_from_now()
             )  # Not time to update yet; we are just reading every 5 minutes
+        if lat_lon is None:
+            station_lat, station_lon = self.get_station_location
+            lat_lon = f"{station_lat},{station_lon}"
+
+        if self.session is None:
+            self.session = aiohttp.client.ClientSession()
+            self._close_session = True
+        client = NwpClient(session=self.session)
+        client.headers = self.headers
+        client.request_timeout = self.request_timeout
+        client.verify_ssl = self.verify_ssl
         try:
-
-            if self.session is None:
-                self.session = aiohttp.client.ClientSession()
-                self._close_session = True
-
-            async with async_timeout.timeout(self.request_timeout):
-                forecast_params = (
-                    self.forecast_parameters or "t2m,rr_acc,u10m,v10m,tcc,sy,rh2m"
-                )
-                if lat_lon is None:
-                    station_lat, station_lon = self.get_station_location
-                    lat_lon = f"{station_lat},{station_lon}"
-                response = await self.session.get(
-                    url=self.forecast_url + forecast_params + "&lat_lon=" + lat_lon,
-                    allow_redirects=True,
-                    headers=self.headers,
-                    verify_ssl=self.verify_ssl,
-                )
-            if response.status in (200, 301):
-                contents = await response.read()
-                response.close()
-
-                self.data_forecast = json.loads(contents)
-                self._timestamp_forecast = (
-                    datetime.now(zoneinfo.ZoneInfo("UTC"))
-                    .replace(second=0, microsecond=0)
-                    .strftime("%Y-%m-%dT%H:%M%z")
-                )
-                if current_only:
-                    return self.get_forecast_current()
-                return self._get_forecast_from_now()
-
-            raise ZamgApiError(f"Got status {response.status} from GeoSphere Austria")
-        except (ClientConnectorError, ServerTimeoutError, ZamgApiError) as exc:
+            latitude, longitude = (float(value) for value in lat_lon.split(","))
+            forecast = await client.get_forecast(latitude=latitude, longitude=longitude)
+        except ValueError as exc:
             raise ZamgApiError(exc) from exc
-        except (TypeError, ValueError, KeyError) as exc:
-            raise ZamgNoDataError(exc) from exc
+
+        self.data_forecast = _legacy_forecast_data(
+            forecast,
+            (self.forecast_parameters or DEFAULT_FORECAST_PARAMETERS).split(","),
+        )
+        self._timestamp_forecast = (
+            datetime.now(zoneinfo.ZoneInfo("UTC"))
+            .replace(second=0, microsecond=0)
+            .strftime("%Y-%m-%dT%H:%M%z")
+        )
+        if current_only:
+            return self.get_forecast_current()
+        return self._get_forecast_from_now()
 
     async def __aenter__(self) -> ZamgData:
         """Async enter.
@@ -544,3 +557,62 @@ class ZamgData:
         if self.session is not None and self._close_session:
             await self.session.close()
             self.session = None
+
+
+def _legacy_forecast_data(forecast: NwpForecast, parameters: list[str]) -> dict:
+    """Convert an NWP v2 forecast to the NWP v1 response shape.
+
+    Parameters without an NWP v2 equivalent are left out.
+    """
+    legacy_parameters = {}
+    for name in parameters:
+        if name not in LEGACY_FORECAST_PARAMETERS:
+            continue
+        field, long_name, unit = LEGACY_FORECAST_PARAMETERS[name]
+        data = [getattr(record, field) for record in forecast.records]
+        if name == "tcc":
+            # NWP v2 reports cloud cover in percent, NWP v1 as a fraction.
+            data = [None if value is None else value / 100 for value in data]
+        elif name.endswith("_acc"):
+            data = _accumulate(data)
+        legacy_parameters[name] = {"name": long_name, "unit": unit, "data": data}
+
+    timestamps = [
+        record.valid_time.isoformat(timespec="minutes") for record in forecast.records
+    ]
+    return {
+        "media_type": "application/json",
+        "type": "FeatureCollection",
+        "version": "v1",
+        "reference_time": forecast.reference_time.isoformat(timespec="minutes"),
+        "timestamps": timestamps,
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        forecast.resolved_longitude,
+                        forecast.resolved_latitude,
+                    ],
+                },
+                "properties": {"parameters": legacy_parameters},
+            }
+        ],
+        "datapoints": len(legacy_parameters) * len(timestamps),
+    }
+
+
+def _accumulate(values: list[float | None]) -> list[float | None]:
+    """Sum up NWP v2 interval values like the accumulated NWP v1 parameters.
+
+    The sum starts at the first returned step instead of the model run. A
+    missing value makes this and all later sums unknown. Rounding removes
+    float noise; the API reports at most three decimals.
+    """
+    sums: list[float | None] = []
+    total: float | None = 0.0
+    for value in values:
+        total = None if total is None or value is None else round(total + value, 3)
+        sums.append(total)
+    return sums

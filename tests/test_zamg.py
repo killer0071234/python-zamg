@@ -3,6 +3,7 @@ import json
 import pathlib
 import zoneinfo
 from datetime import datetime, timedelta
+from unittest.mock import patch
 
 import aiohttp
 import pytest
@@ -14,6 +15,7 @@ from src.zamg.exceptions import (
     ZamgStationNotFoundError,
     ZamgStationUnknownError,
 )
+from src.zamg.nwp import EXPECTED_UNITS, FORECAST_PARAMETERS
 from src.zamg.symbols import symbol_to_condition, symbol_to_text
 from src.zamg.zamg import ZamgData
 
@@ -21,7 +23,7 @@ API_HOST = "dataset.api.hub.geosphere.at"
 STATION_METADATA_PATH = "/v1/station/current/tawes-v1-10min/metadata"
 STATION_DATA_PATH = "/v1/station/current/tawes-v1-10min"
 FORECAST_METADATA_PATH = "/v1/grid/forecast/nwp-v1-1h-2500m/metadata"
-FORECAST_PATH = "/v1/timeseries/forecast/nwp-v1-1h-2500m"
+FORECAST_PATH = "/v1/timeseries/forecast/nwp-v2-1h-1km"
 GRAZ = (46.980555555555554, 15.44, "GRAZ-THALERHOF-FLUGHAFEN")
 
 
@@ -30,6 +32,50 @@ def _load_json(name: str) -> dict:
     return json.loads(
         pathlib.Path(__file__).parent.joinpath(name).read_text(encoding="utf-8")
     )
+
+
+def _nwp_payload() -> dict:
+    """Build an NWP v2 response with one past and two upcoming timestamps."""
+    now_utc = datetime.now(zoneinfo.ZoneInfo("UTC")).replace(second=0, microsecond=0)
+    timestamps = [
+        (now_utc - timedelta(hours=1)).isoformat(timespec="minutes"),
+        (now_utc + timedelta(minutes=1)).isoformat(timespec="minutes"),
+        (now_utc + timedelta(hours=1, minutes=1)).isoformat(timespec="minutes"),
+    ]
+    data = {
+        "2t": [10.0, 11.0, 12.0],
+        "2r": [80.0, 81.0, 82.0],
+        "10u": [1.0, 2.0, 3.0],
+        "10v": [4.0, 5.0, 6.0],
+        "tcc": [10.0, 20.0, 30.0],
+        "sy": [1.0, 2.0, 3.0],
+        "tp": [0.5, 0.4, 0.5],
+        "rain": [0.25, 0.5, 0.25],
+        "sf": [0.0, 0.25, 0.5],
+        "sund": [600.0, 1200.0, 0.0],
+        "cape": [5.0, 6.0, 7.0],
+        "snowlmt": [1500.0, 1400.0, 1300.0],
+    }
+    parameters = {
+        name: {
+            "name": name,
+            "unit": EXPECTED_UNITS[name],
+            "data": data.get(name, [0.0, 0.0, 0.0]),
+        }
+        for name in FORECAST_PARAMETERS
+    }
+    return {
+        "type": "FeatureCollection",
+        "reference_time": (now_utc - timedelta(hours=2)).isoformat(timespec="minutes"),
+        "timestamps": timestamps,
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [15.44, 46.98]},
+                "properties": {"parameters": parameters},
+            }
+        ],
+    }
 
 
 def _forecast_payload(include_sy: bool = True) -> dict:
@@ -426,7 +472,7 @@ async def test_get_station_location_unknown(fix_metadata) -> None:
 async def test_get_forecast_uses_station_location(aresponses) -> None:
     """Test get_forecast uses default station location when lat_lon isn't provided."""
 
-    payload = _forecast_payload()
+    payload = _nwp_payload()
     aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
 
     async with ZamgData() as zamg:
@@ -439,15 +485,43 @@ async def test_get_forecast_uses_station_location(aresponses) -> None:
     assert result["t2m"] == 11.0
     request = aresponses.history[-1].request
     assert request.query["lat_lon"] == "46.980555555555554,15.44"
-    assert request.query["parameters"] == "t2m,rr_acc,u10m,v10m,tcc,sy,rh2m"
+    assert request.query["parameters"] == ",".join(FORECAST_PARAMETERS)
     assert zamg.last_forecast_update is not None
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_current_from_nwp_v2(aresponses) -> None:
+    """Test the current forecast keeps the NWP v1 names, units, and derived values."""
+
+    payload = _nwp_payload()
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
+
+    async with ZamgData() as zamg:
+        result = await zamg.get_forecast("47.0,15.5", current_only=True)
+
+    assert result == {
+        "reference_time": payload["reference_time"],
+        "timestamp": payload["timestamps"][1],
+        "t2m": 11.0,
+        "rh2m": 81.0,
+        "u10m": 2.0,
+        "v10m": 5.0,
+        "tcc": 0.2,
+        "sy": 2.0,
+        "rr_acc": 0.9,
+        "rr_acc_prev": 0.5,
+        "rain": 0.4,
+        "wind_speed": 19.4,
+        "sy_text": symbol_to_text(2),
+        "condition": symbol_to_condition(2),
+    }
 
 
 @pytest.mark.asyncio
 async def test_get_forecast_fetch(aresponses) -> None:
     """Test get_forecast fetches and trims data for an explicit location."""
 
-    payload = _forecast_payload()
+    payload = _nwp_payload()
     aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
 
     async with aiohttp.ClientSession() as session:
@@ -457,18 +531,82 @@ async def test_get_forecast_fetch(aresponses) -> None:
 
     request = aresponses.history[-1].request
     assert request.query["lat_lon"] == "47.0,15.5"
-    assert request.query["parameters"] == "t2m,rr_acc,u10m,v10m"
+    assert result["type"] == "FeatureCollection"
+    assert result["reference_time"] == payload["reference_time"]
     assert result["timestamps"] == payload["timestamps"][1:]
-    parameters = result["features"][0]["properties"]["parameters"]
-    assert parameters["t2m"]["data"] == [11.0, 12.0]
+    feature = result["features"][0]
+    assert feature["geometry"] == {"type": "Point", "coordinates": [15.44, 46.98]}
+    parameters = feature["properties"]["parameters"]
+    assert list(parameters) == ["t2m", "rr_acc", "u10m", "v10m", "rain", "wind_speed"]
+    assert parameters["t2m"] == {
+        "name": "2m temperature",
+        "unit": "degree Celsius",
+        "data": [11.0, 12.0],
+    }
+    assert parameters["rr_acc"]["data"] == [0.9, 1.4]
     assert parameters["rain"]["data"] == [0.4, 0.5]
+    assert parameters["wind_speed"]["data"] == [19.4, 24.1]
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_all_legacy_parameters(aresponses) -> None:
+    """Test v1 parameters are mapped where NWP v2 has an equivalent."""
+
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=_nwp_payload())
+
+    async with ZamgData() as zamg:
+        zamg.set_forecast_parameters(
+            [
+                "cape",
+                "cin",
+                "grad",
+                "mnt2m",
+                "mxt2m",
+                "rain_acc",
+                "rh2m",
+                "rr_acc",
+                "snow_acc",
+                "snowlmt",
+                "sp",
+                "sundur_acc",
+                "sy",
+                "t2m",
+                "tcc",
+                "u10m",
+                "ugust",
+                "v10m",
+                "vgust",
+            ]
+        )
+        result = await zamg.get_forecast("47.0,15.5")
+
+    parameters = result["features"][0]["properties"]["parameters"]
+    assert {name: parameters[name]["data"] for name in parameters} == {
+        "cape": [6.0, 7.0],
+        "rain_acc": [0.75, 1.0],
+        "rh2m": [81.0, 82.0],
+        "rr_acc": [0.9, 1.4],
+        "snow_acc": [0.25, 0.75],
+        "snowlmt": [1400.0, 1300.0],
+        "sundur_acc": [1800.0, 1800.0],
+        "sy": [2.0, 3.0],
+        "t2m": [11.0, 12.0],
+        "tcc": [0.2, 0.3],
+        "u10m": [2.0, 3.0],
+        "v10m": [5.0, 6.0],
+        "rain": [0.4, 0.5],
+        "wind_speed": [19.4, 24.1],
+        "sy_text": [symbol_to_text(2), symbol_to_text(3)],
+        "condition": [symbol_to_condition(2), symbol_to_condition(3)],
+    }
+    assert parameters["tcc"]["unit"] == "1"
 
 
 @pytest.mark.asyncio
 async def test_get_forecast_cached_current(aresponses) -> None:
     """Test get_forecast returns the cached current forecast within 5 minutes."""
 
-    payload = _forecast_payload()
+    payload = _nwp_payload()
     aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
 
     async with ZamgData() as zamg:
@@ -478,6 +616,24 @@ async def test_get_forecast_cached_current(aresponses) -> None:
 
     assert first == second
     assert second["timestamp"] == payload["timestamps"][1]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("verify_ssl", [None, False])
+async def test_get_forecast_request_options(aresponses, verify_ssl) -> None:
+    """Test the session, headers, and SSL option are passed to the NWP request."""
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=_nwp_payload())
+
+    async with aiohttp.ClientSession() as session:
+        with patch.object(session, "get", wraps=session.get) as get:
+            zamg = ZamgData(session=session)
+            zamg.verify_ssl = verify_ssl
+            await zamg.get_forecast("47.0,15.5")
+
+        get.assert_called_once()
+        assert get.call_args.kwargs["headers"] is zamg.headers
+        assert get.call_args.kwargs.get("ssl") is verify_ssl
+        assert not session.closed
 
 
 @pytest.mark.asyncio
@@ -491,9 +647,21 @@ async def test_get_forecast_fail_status(aresponses) -> None:
     )
 
     async with ZamgData() as zamg:
-        with pytest.raises(ZamgApiError):
+        with pytest.raises(ZamgApiError) as exc_info:
             await zamg.get_forecast("47.0,15.5")
+    assert exc_info.value.status_code == 500
     assert zamg.last_forecast_update is None
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("lat_lon", ["abc", "47.0", "47.0,15.5,1", "95.0,15.5"])
+async def test_get_forecast_invalid_location(aresponses, lat_lon) -> None:
+    """Test an invalid location raises ZamgApiError without a request."""
+
+    async with ZamgData() as zamg:
+        with pytest.raises(ZamgApiError):
+            await zamg.get_forecast(lat_lon)
+    assert not aresponses.history
 
 
 @pytest.mark.asyncio
@@ -519,6 +687,50 @@ async def test_get_forecast_fail_no_data(aresponses) -> None:
     async with ZamgData() as zamg:
         with pytest.raises(ZamgNoDataError):
             await zamg.get_forecast("47.0,15.5")
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_fail_no_timestamps(aresponses) -> None:
+    """Test a model run without forecast steps raises ZamgNoDataError."""
+    payload = _nwp_payload()
+    payload["timestamps"] = []
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
+
+    async with ZamgData() as zamg:
+        with pytest.raises(ZamgNoDataError):
+            await zamg.get_forecast("47.0,15.5")
+    assert zamg.last_forecast_update is None
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_missing_values(aresponses) -> None:
+    """Test missing values stay missing and don't affect other parameters."""
+    payload = _nwp_payload()
+    parameters = payload["features"][0]["properties"]["parameters"]
+    parameters["tcc"]["data"][2] = None
+    parameters["sund"]["data"][1] = None
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
+
+    async with ZamgData() as zamg:
+        zamg.set_forecast_parameters(["rr_acc", "u10m", "v10m", "tcc", "sundur_acc"])
+        result = await zamg.get_forecast("47.0,15.5")
+
+    parameters = result["features"][0]["properties"]["parameters"]
+    assert parameters["tcc"]["data"] == [0.2, None]
+    assert parameters["sundur_acc"]["data"] == [None, None]
+    assert parameters["rain"]["data"] == [0.4, 0.5]
+
+
+@pytest.mark.asyncio
+async def test_get_forecast_missing_precipitation(aresponses) -> None:
+    """Test a missing precipitation value raises ZamgNoDataError."""
+    payload = _nwp_payload()
+    payload["features"][0]["properties"]["parameters"]["tp"]["data"][1] = None
+    aresponses.add(API_HOST, FORECAST_PATH, "GET", response=payload)
+
+    async with ZamgData() as zamg:
+        with pytest.raises(ZamgNoDataError):
+            await zamg.get_forecast("47.0,15.5", current_only=True)
 
 
 @pytest.mark.asyncio
