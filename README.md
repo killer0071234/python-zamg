@@ -26,6 +26,9 @@ since 1st January 2023.
 pip install zamg
 ```
 
+Python 3.9–3.14 is supported. Request timeouts use `asyncio.timeout` on Python
+3.11 and newer; `async-timeout` is only required on Python 3.9 and 3.10.
+
 ## Usage
 
 ### NWP v2 forecast

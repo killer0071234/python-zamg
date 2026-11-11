@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 from sys import version_info
 
 import aiohttp
-import async_timeout
 from aiohttp.client_exceptions import (
     ClientConnectorError,
     ServerDisconnectedError,
@@ -24,6 +23,11 @@ from .exceptions import (
 )
 from .nwp import NwpClient, NwpForecast
 from .symbols import symbol_to_condition, symbol_to_text
+
+if version_info >= (3, 11):
+    from asyncio import timeout
+else:
+    from async_timeout import timeout
 
 CLIENT_AGENT = f"Python/{version_info[0]}.{version_info[1]} +https://github.com/killer0071234/python-zamg python-zamg/{__version__}"
 DEFAULT_FORECAST_PARAMETERS = "t2m,rr_acc,u10m,v10m,tcc,sy,rh2m"
@@ -269,7 +273,7 @@ class ZamgData:
                 self.session = aiohttp.client.ClientSession()
                 self._close_session = True
 
-            async with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 response = await self.session.get(
                     url=self.forecast_metadata_url,
                     allow_redirects=True,
@@ -291,7 +295,7 @@ class ZamgData:
                 if self.forecast_parameters is None:
                     self.forecast_parameters = station_parameters
 
-            async with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 response = await self.session.get(
                     url=self.dataset_metadata_url,
                     allow_redirects=True,
@@ -457,7 +461,7 @@ class ZamgData:
                 self.session = aiohttp.client.ClientSession()
                 self._close_session = True
 
-            async with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 response = await self.session.get(
                     url=self.dataset_data_url
                     + str(self.station_parameters)
