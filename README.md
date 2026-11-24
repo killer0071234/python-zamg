@@ -26,8 +26,9 @@ since 1st January 2023.
 pip install zamg
 ```
 
-Python 3.9–3.14 is supported. Request timeouts use `asyncio.timeout` on Python
-3.11 and newer; `async-timeout` is only required on Python 3.9 and 3.10.
+Python 3.10–3.15 is supported (Python 3.9 support was dropped in 0.6.0; use
+`zamg<0.6` if you are still on 3.9). Request timeouts use `asyncio.timeout` on
+Python 3.11 and newer; `async-timeout` is only required on Python 3.10.
 
 ## Usage
 

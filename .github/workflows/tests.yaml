@@ -45,7 +45,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+        python: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v7
@@ -62,9 +62,9 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: pip-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+          key: pip-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            pip-${{ steps.python.outputs.python-version }}-
+            pip-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install workflow dependencies
         run: |
           pip install -r requirements.txt
@@ -75,9 +75,9 @@ jobs:
         uses: actions/cache@v6
         with:
           path: .venv
-          key: venv-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
+          key: venv-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-${{ hashFiles('pyproject.toml') }}
           restore-keys: |
-            venv-${{ runner.os }}-${{ steps.python.outputs.python-version }}-
+            venv-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Run pytest
@@ -110,9 +110,9 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: pip-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+          key: pip-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            pip-${{ steps.python.outputs.python-version }}-
+            pip-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install workflow dependencies
         run: |
           pip install -r requirements.txt
@@ -123,9 +123,9 @@ jobs:
         uses: actions/cache@v6
         with:
           path: .venv
-          key: >-
-            venv-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
-            venv-${{ steps.python.outputs.python-version }}-
+          key: venv-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            venv-${{ env.ImageOS }}-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Process coverage results
